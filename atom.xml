@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-16T01:39:47.541Z</updated>
+  <updated>2017-08-16T05:03:38.027Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,502 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>vim入坑指南</title>
+    <link href="http://yoursite.com/2016/12/14/vim%E5%85%A5%E5%9D%91%E6%8C%87%E5%8D%97/"/>
+    <id>http://yoursite.com/2016/12/14/vim入坑指南/</id>
+    <published>2016-12-14T02:04:38.000Z</published>
+    <updated>2017-08-16T05:03:38.027Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="vim入坑指南"><a href="#vim入坑指南" class="headerlink" title="vim入坑指南"></a>vim入坑指南</h1><h2 id="什么是VIM"><a href="#什么是VIM" class="headerlink" title="什么是VIM"></a>什么是VIM</h2><p>Vim是从 vi 发展出来的一个文本编辑器。代码补全、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用，和Emacs并列成为类Unix系统用户最喜欢的文本编辑器。</p>
+<h2 id="vim的设计理念"><a href="#vim的设计理念" class="headerlink" title="vim的设计理念"></a>vim的设计理念</h2><h3 id="命令组合"><a href="#命令组合" class="headerlink" title="命令组合:"></a>命令组合:</h3><p>Vim强大的编辑能力中很大部分是来自于其普通模式命令。vim的设计理念是命令的组合。例如普通模式命令”dd”删除当前行，”dj”代表删除到下一行,原理是第一个”d”含义是删除,”j”键代表移动到下一行,组合后”dj”删除当前行和下一行。另外还可以指定命令重复次数，”2dd”（重复”dd”两次），和”dj”的效果是一样的。”d^”,”^”代表行首,故组合后含义是删除到光标开始到行首间的内容(不包含光标);”d$” $”代表行尾,删除到行尾的内容(包含光标);用户学习了各种各样的文本间移动/跳转的命令和其他的普通模式的编辑命令，并且能够灵活组合使用的话，能够比那些没有模式的编辑器更加高效的进行文本编辑。</p>
+<h3 id="模式间的组合"><a href="#模式间的组合" class="headerlink" title="模式间的组合:"></a>模式间的组合:</h3><p>在普通模式中，有很多方法可以进入插入模式。比较普通的方式是按”a”（append/追加）键或者”i”（insert/插入）键。</p>
+<h2 id="Vim三种模式"><a href="#Vim三种模式" class="headerlink" title="Vim三种模式"></a>Vim三种模式</h2><h3 id="插入模式：即-insert-模式，用来输入文本；"><a href="#插入模式：即-insert-模式，用来输入文本；" class="headerlink" title="插入模式：即 insert 模式，用来输入文本；"></a>插入模式：即 insert 模式，用来输入文本；</h3><h3 id="编辑模式：用以执行命令，也称为正常模式，也是进入Vim的缺省模式；"><a href="#编辑模式：用以执行命令，也称为正常模式，也是进入Vim的缺省模式；" class="headerlink" title="编辑模式：用以执行命令，也称为正常模式，也是进入Vim的缺省模式；"></a>编辑模式：用以执行命令，也称为正常模式，也是进入Vim的缺省模式；</h3><h3 id="命令模式：用来执行冒号命令。"><a href="#命令模式：用来执行冒号命令。" class="headerlink" title="命令模式：用来执行冒号命令。"></a>命令模式：用来执行冒号命令。</h3><p>进入Vim后会直接进入编辑模式，接下来按下i进入插入模式，可以输入字符，按下<esc>键将从插入模式转换到编辑模式，该模式用于移动和操纵文本。在编辑模式下输入:即可进入命令模式，可以进行保存、查找、替换、配置Vim操作等。</esc></p>
+<h2 id="按键功能"><a href="#按键功能" class="headerlink" title="按键功能"></a>按键功能</h2><p>在Vim的编辑模式下，一些常用的按键都变成了功能键，并且与大家在Windows下常用的快捷键完全不同，在这里，总结一些初学Vim所用的按键功能：</p>
+<table>
+<thead>
+<tr>
+<th>按键</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>h或←</td>
+<td style="text-align:center">光标左移</td>
+</tr>
+<tr>
+<td>l或→</td>
+<td style="text-align:center">光标右移</td>
+</tr>
+<tr>
+<td>k或↑</td>
+<td style="text-align:center">光标上移</td>
+</tr>
+<tr>
+<td>j或↓</td>
+<td style="text-align:center">光标下移</td>
+</tr>
+<tr>
+<td>gg</td>
+<td style="text-align:center">快速定位到文本开头</td>
+</tr>
+<tr>
+<td>G（shift+g）</td>
+<td style="text-align:center">快速定位到文本最后一段</td>
+</tr>
+<tr>
+<td>0或home</td>
+<td style="text-align:center">快速定位到当前段首</td>
+</tr>
+<tr>
+<td>$或end</td>
+<td style="text-align:center">快速定位到当前段首</td>
+</tr>
+<tr>
+<td>Ctrl+f</td>
+<td style="text-align:center">向下翻一页</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td style="text-align:center">向上翻一页</td>
+</tr>
+<tr>
+<td>Ctrl+d</td>
+<td style="text-align:center">向下翻半页</td>
+</tr>
+<tr>
+<td>Ctrl+u</td>
+<td style="text-align:center">向上翻一页</td>
+</tr>
+<tr>
+<td>/string</td>
+<td style="text-align:center">查找文本中光标位置下方的string字符串，如要查找kabc则直接输入/kabc即可</td>
+</tr>
+<tr>
+<td>?string</td>
+<td style="text-align:center">查找文本中光标位置上方的string字符串，如要查找kabc则直接输入?kabc即可</td>
+</tr>
+<tr>
+<td>yy</td>
+<td style="text-align:center">复制光标所在的段落</td>
+</tr>
+<tr>
+<td>y0</td>
+<td style="text-align:center">复制光标位置到段首的所有字符</td>
+</tr>
+<tr>
+<td>y$</td>
+<td style="text-align:center">复制光标位置到段尾的所有字符</td>
+</tr>
+<tr>
+<td>nyy</td>
+<td style="text-align:center">从光标位置向下复制n段，包含光标所在的段落</td>
+</tr>
+<tr>
+<td>ygg</td>
+<td style="text-align:center">复制光标位置所在段落到文本开头的所有内容</td>
+</tr>
+<tr>
+<td>yG</td>
+<td style="text-align:center">复制光标位置所在段落到文本结尾的所有内容</td>
+</tr>
+<tr>
+<td>p</td>
+<td style="text-align:center">将复制的内容粘贴为光标所在段落的下一段</td>
+</tr>
+<tr>
+<td>P</td>
+<td style="text-align:center">将复制的内容粘贴为光标所在段落的上一段</td>
+</tr>
+<tr>
+<td>dd</td>
+<td style="text-align:center">删除光标所在的段落</td>
+</tr>
+<tr>
+<td>d0</td>
+<td style="text-align:center">删除光标位置到段首的所有字符</td>
+</tr>
+<tr>
+<td>d$</td>
+<td style="text-align:center">删除光标位置到段尾的所有字符</td>
+</tr>
+<tr>
+<td>dgg</td>
+<td style="text-align:center">删除光标位置所在段落到文本开头的所有内容</td>
+</tr>
+<tr>
+<td>dG</td>
+<td style="text-align:center">删除光标位置所在段落到文本结尾的所有内容</td>
+</tr>
+<tr>
+<td>ndd</td>
+<td style="text-align:center">从光标位置向下删除n段，包含光标所在的段落</td>
+</tr>
+<tr>
+<td>u</td>
+<td style="text-align:center">撤销上一个操作</td>
+</tr>
+<tr>
+<td>Ctrl+r</td>
+<td style="text-align:center">重复上一个操作</td>
+</tr>
+<tr>
+<td>:w</td>
+<td style="text-align:center">保存数据</td>
+</tr>
+<tr>
+<td>:w!</td>
+<td style="text-align:center">保存时强制写入数据，不管文件是否为只读文件</td>
+</tr>
+<tr>
+<td>:q</td>
+<td style="text-align:center">关闭Vim</td>
+</tr>
+<tr>
+<td>:q!</td>
+<td style="text-align:center">关闭Vim，对所做的修改不做保存</td>
+</tr>
+<tr>
+<td>:wq</td>
+<td style="text-align:center">保存数据后关闭Vim</td>
+</tr>
+<tr>
+<td>:wq!</td>
+<td style="text-align:center">强制保存数据并关闭Vim</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;vim入坑指南&quot;&gt;&lt;a href=&quot;#vim入坑指南&quot; class=&quot;headerlink&quot; title=&quot;vim入坑指南&quot;&gt;&lt;/a&gt;vim入坑指南&lt;/h1&gt;&lt;h2 id=&quot;什么是VIM&quot;&gt;&lt;a href=&quot;#什么是VIM&quot; class=&quot;headerlink&quot; 
+    
+    </summary>
+    
+    
+      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="编程" scheme="http://yoursite.com/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>markdown学习笔记</title>
+    <link href="http://yoursite.com/2016/10/22/markdown%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2016/10/22/markdown学习笔记/</id>
+    <published>2016-10-22T06:56:10.000Z</published>
+    <updated>2017-08-16T05:39:37.523Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。</p>
+<h1 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h1><p>Markdown的语法简洁明了、学习容易，而且功能比纯文本更强，因此有很多人用它写博客。世界上最流行的博客平台WordPress和大型CMS如Joomla、Drupal都能很好的支持Markdown。完全采用Markdown编辑器的博客平台有Ghost和Typecho。</p>
+<h1 id="Markdown-官方文档"><a href="#Markdown-官方文档" class="headerlink" title="Markdown 官方文档"></a>Markdown 官方文档</h1><ul>
+<li><a href="https://daringfireball.net/projects/markdown/syntax" target="_blank" rel="external">创始人 John Gruber 的 Markdown 语法说明</a></li>
+<li><a href="http://wowubuntu.com/markdown/" target="_blank" rel="external">Markdown 中文版语法说明</a></li>
+</ul>
+<h1 id="Markdown-语法"><a href="#Markdown-语法" class="headerlink" title="Markdown 语法"></a>Markdown 语法</h1><h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>标题是每篇文章都需要也是最常用的格式，在 Markdown 中，如果一段文字被定义为标题，只要在这段文字前加 # 号即可。</p>
+<p>#一级标题</p>
+<p>##二级标题</p>
+<p>###三级标题</p>
+<ul>
+<li><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1></li>
+<li><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2></li>
+<li><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3></li>
+</ul>
+<p>以此类推，总共六级标题，建议在井号后加一个空格，这是最标准的 Markdown 语法。</p>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>熟悉 HTML 的同学肯定知道有序列表与无序列表的区别，在 Markdown 下，列表的显示只需要在文字前加上 - 或 * 即可变为无序列表，有序列表则直接在文字前加1. 2. 3. 符号要和文字之间加上一个字符的空格。</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>如果你需要引用一小段别处的句子，那么就要用引用的格式。只需要在文本前加入 &gt; 这种尖括号（大于号）即可</p>
+<blockquote>
+<p>例如这样</p>
+<p>例如这样</p>
+</blockquote>
+<h2 id="图片与链接"><a href="#图片与链接" class="headerlink" title="图片与链接"></a>图片与链接</h2><p>插入链接与插入图片的语法很像，区别在一个 !号</p>
+<ul>
+<li><p>图片为：<img src="" alt="">{ImgCap}{/ImgCap}</p>
+</li>
+<li><p>链接为：<a href=""></a></p>
+</li>
+</ul>
+<h2 id="粗体与斜体"><a href="#粗体与斜体" class="headerlink" title="粗体与斜体"></a>粗体与斜体</h2><p>Markdown 的粗体和斜体也非常简单，用两个 <em> 包含一段文本就是粗体的语法，用一个 </em> 包含一段文本就是斜体的语法。</p>
+<p>例如：<strong> 这里是粗体 </strong>  <em>这里是斜体</em></p>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><table>
+<thead>
+<tr>
+<th>效果</th>
+<th style="text-align:center">语法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Blod</td>
+<td style="text-align:center"><strong>text</strong></td>
+</tr>
+<tr>
+<td>Emphasize</td>
+<td style="text-align:center"><em>text</em></td>
+</tr>
+<tr>
+<td>Strike-through</td>
+<td style="text-align:center"><del>text</del></td>
+</tr>
+<tr>
+<td>Link</td>
+<td style="text-align:center"><a href="http://" target="_blank" rel="external">title</a></td>
+</tr>
+<tr>
+<td>Inline Code</td>
+<td style="text-align:center"><code>code</code></td>
+</tr>
+<tr>
+<td>Image</td>
+<td style="text-align:center"><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://" alt="alt" title="">
+                </div>
+                <div class="image-caption">alt</div>
+            </figure></td>
+</tr>
+<tr>
+<td>List</td>
+<td style="text-align:center">* item</td>
+</tr>
+<tr>
+<td>Blockquote</td>
+<td style="text-align:center">&gt; quote</td>
+</tr>
+</tbody>
+</table>
+<h2 id="代码框"><a href="#代码框" class="headerlink" title="代码框"></a>代码框</h2><p>如果你是个程序猿，需要在文章里优雅的引用代码框，在 Markdown下实现也非常简单，只需要用两个 ` 把中间的代码包裹起来。</p>
+<h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><p>分割线的语法只需要三个 * 号。</p>
+<h1 id="markdown-api"><a href="#markdown-api" class="headerlink" title="markdown api"></a>markdown api</h1><p><a href="http://api.jirengu.com/#markdown" target="_blank" rel="external">饥人谷markdwon api:http://api.jirengu.com/#markdown</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h1&gt;&lt;p&gt;Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。&lt;/p&gt;
+&lt;h1 id=
+    
+    </summary>
+    
+    
+      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="指南" scheme="http://yoursite.com/tags/%E6%8C%87%E5%8D%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HTML5音频可视化</title>
+    <link href="http://yoursite.com/2015/12/19/HTML5%E9%9F%B3%E9%A2%91%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+    <id>http://yoursite.com/2015/12/19/HTML5音频可视化/</id>
+    <published>2015-12-19T13:12:55.000Z</published>
+    <updated>2017-08-16T07:47:22.370Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="HTML5音频可视化"><a href="#HTML5音频可视化" class="headerlink" title="HTML5音频可视化"></a>HTML5音频可视化</h1><p>2015年过的可是真快，眼睛一闭一睁，一睁一闭……</p>
+<p>突然发现这一年自己完成了从一个（只会写写黑窗口程序，刷刷acm题目）的菜鸟级程序猿到前端初级攻城狮的升级。就像是经过了累年的蹲马步，站木桩式的修行，终于突破了基本功修炼瓶颈，进入到了一个新的武学世界。开始可以玩玩更加酷炫的东西了……</p>
+<p>话说回来，想当初在读高中的时候，看到天天动听，realplayer做出来的音频可视化效果非常的酷炫，也很想知道这种效果怎么做出来的。而正好，这学期的计算机图形学课程设计里正好有这个选题的研究，于是我果断的跳进了这个坑。</p>
+<p>话不多说，先上预览地址效果图：<a href="https://code.w3ctech.com/detail/3443" target="_blank" rel="external">HTML5 web audio</a></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://images.cnblogs.com/cnblogs_com/younth/1059645/o_webaudio.jpg" alt="选择本地音乐文件" title="">
+                </div>
+                <div class="image-caption">选择本地音乐文件</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://images.cnblogs.com/cnblogs_com/younth/1059658/o_playing.jpg" alt="播放效果" title="">
+                </div>
+                <div class="image-caption">播放效果</div>
+            </figure>
+<h1 id="实现思路与程序运行流程"><a href="#实现思路与程序运行流程" class="headerlink" title="实现思路与程序运行流程"></a>实现思路与程序运行流程</h1><h2 id="1-初始化canvas"><a href="#1-初始化canvas" class="headerlink" title="1.初始化canvas"></a>1.初始化canvas</h2><h2 id="2-显示音频文件选取对话框"><a href="#2-显示音频文件选取对话框" class="headerlink" title="2.显示音频文件选取对话框"></a>2.显示音频文件选取对话框</h2><h2 id="3-选择要播放的音乐文件，解码音乐文件，"><a href="#3-选择要播放的音乐文件，解码音乐文件，" class="headerlink" title="3.选择要播放的音乐文件，解码音乐文件，"></a>3.选择要播放的音乐文件，解码音乐文件，</h2><h2 id="4-将解码后的数据通过audioContext对象进行处理得到analyser"><a href="#4-将解码后的数据通过audioContext对象进行处理得到analyser" class="headerlink" title="4.将解码后的数据通过audioContext对象进行处理得到analyser"></a>4.将解码后的数据通过audioContext对象进行处理得到analyser</h2><h2 id="5-将解析后的analyser数据逐帧显示在canvas画布上，从而获得音乐的逐帧动画。"><a href="#5-将解析后的analyser数据逐帧显示在canvas画布上，从而获得音乐的逐帧动画。" class="headerlink" title="5.将解析后的analyser数据逐帧显示在canvas画布上，从而获得音乐的逐帧动画。"></a>5.将解析后的analyser数据逐帧显示在canvas画布上，从而获得音乐的逐帧动画。</h2><h1 id="选题所用到的知识点"><a href="#选题所用到的知识点" class="headerlink" title="选题所用到的知识点"></a>选题所用到的知识点</h1><ul>
+<li>HTML5 CANVAS绘图操作</li>
+<li>HTML5 AUDIO API</li>
+<li>文件读取及浏览器同源策略与FileReader</li>
+<li>逐帧动画原理requestAnimationFrame</li>
+<li>浏览器事件响应</li>
+</ul>
+<h1 id="主要代码"><a href="#主要代码" class="headerlink" title="主要代码"></a>主要代码</h1><p>‘’’javascript </p>
+<p>window.onload = function () {<br>    var HEIGHT = window.innerHeight, WIDTH = window.innerWidth;<br>    var canvas = document.getElementById(“canvas”), audioInput = document.getElementById(‘uploadedFile’);<br>    var ctx = canvas.getContext(“2d”);<br>    var mfile, mfileName;<br>    var audioContext = new (window.AudioContext || window.webkitAudioContext || window.mozAudioContext)();<br>    window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;</p>
+<pre><code>function initCanvas() {
+    canvas.height = HEIGHT;
+    canvas.width = WIDTH;
+    canvas.style.backgroundColor = &quot;#fff&quot;;
+}
+function loadPanel() {
+    document.getElementById(&quot;panel&quot;).style.top = &quot;150px&quot;;
+}
+function outPanel() {
+    document.getElementById(&quot;panel&quot;).style.top = &quot;-150px&quot;;
+}
+audioInput.onchange = function () {
+    //这里判断一下文件长度可以确定用户是否真的选择了文件，如果点了取消则文件长度为0
+    if (audioInput.files.length !== 0) {
+        mfile = audioInput.files[0]; //将文件赋值到Visualizer对象的属性上
+        mfileName = mfile.name;
+        document.getElementById(&quot;title&quot;).innerHTML = &quot;解码中……*_*&quot;;
+        start(); //获取到文件后，开始程序，这个方法会在后面定义并实现
+    };
+}
+function start() {
+    var fr = new FileReader();
+    fr.onload = function (e) { //文件读取完后调用此函数
+        var fileResult = e.target.result; //这是读取成功得到的结果ArrayBuffer数据
+        audioContext.decodeAudioData(fileResult, function (buffer) { //解码成功则调用此函数，参数buffer为解码后得到的结果
+            var audioBufferSouceNode = audioContext.createBufferSource();
+            var analyser = audioContext.createAnalyser();
+            audioBufferSouceNode.connect(analyser);
+            analyser.connect(audioContext.destination);
+            audioBufferSouceNode.buffer = buffer;
+            audioBufferSouceNode.start(0);
+            draw(analyser);
+            outPanel();
+        }, function (e) {
+            document.getElementById(&quot;title&quot;).innerHTML = &quot;文件解码失败:(&quot;;
+        });
+    };
+    //将上一步获取的文件传递给FileReader从而将其读取为ArrayBuffer格式
+    fr.readAsArrayBuffer(mfile);
+}
+function draw(analyser) {
+    var cNum = 128;
+    analyser.fftSize = cNum * 2;
+    var Dots = [];
+    function random(m, n) {
+        return Math.round(Math.random() * (n - m) + m);
+    }
+    function getDots() {
+        Dots = [];
+        for (var i = 0; i &lt; cNum; i++) {
+            var x = random(0, canvas.width);
+            var y = random(0, canvas.height);
+            var color = &quot;rgba(&quot; + random(0, 255) + &quot;,&quot; + random(0, 255) + &quot;,&quot; + random(0, 255) + &quot;,&quot; + random(0,10)/10 + &quot;)&quot;;
+            Dots.push({
+                x: x,
+                y: y,
+                dy: random(0, 2),
+                color: color
+            });
+        }
+    }
+    getDots();
+    var drawCircle = function () {
+        var array = new Uint8Array(analyser.frequencyBinCount);
+        analyser.getByteFrequencyData(array);
+        ctx.clearRect(0, 0, WIDTH, HEIGHT);
+        for (var i = 0; i &lt; cNum; i++) {
+            ctx.beginPath();
+
+            var o = Dots[i];
+            var r = array[i] / 256 * 30;                       
+            if (o.x &gt; canvas.width||o.y&gt;canvas.height) {
+                o.y = 0;                            
+            }
+            else {                            
+                o.y = o.y;
+            }
+
+            ctx.arc(o.x, o.y, r, 0, Math.PI * 2, true);
+            var g = ctx.createRadialGradient(o.x, o.y, 0, o.x, o.y, r);
+            g.addColorStop(0, &quot;#fff&quot;);
+            g.addColorStop(0.9, &quot;#fff&quot;);
+            g.addColorStop(1, o.color);
+            //g.addColorStop(1, &quot;rgb(114,208,156)&quot;);
+            ctx.fillStyle = g;
+            ctx.fill();
+            ctx.closePath();
+        }
+        requestAnimationFrame(drawCircle);                    
+    }
+    requestAnimationFrame(drawCircle);                
+}
+initCanvas();
+loadPanel();
+</code></pre><p>}<br>‘’’</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>1.<a href="https://developer.mozilla.org/en-US/docs/Web/API/FileReader" target="_blank" rel="external">File reader in JavaScript</a><br>2.<a href="https://developer.mozilla.org/en-US/docs/Web/API/AudioContext" target="_blank" rel="external">Audio context from MDN</a><br>3.<a href="https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame" target="_blank" rel="external">Window.requestAnimationFrame</a><br>4.<a href="http://www.cnblogs.com/Wayou/p/3543577.html#home" target="_blank" rel="external">开大你的音响，感受HTML5 Audio API带来的视听盛宴</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;HTML5音频可视化&quot;&gt;&lt;a href=&quot;#HTML5音频可视化&quot; class=&quot;headerlink&quot; title=&quot;HTML5音频可视化&quot;&gt;&lt;/a&gt;HTML5音频可视化&lt;/h1&gt;&lt;p&gt;2015年过的可是真快，眼睛一闭一睁，一睁一闭……&lt;/p&gt;
+&lt;p&gt;突然发现这
+    
+    </summary>
+    
+    
+      <category term="html5" scheme="http://yoursite.com/tags/html5/"/>
+    
+      <category term="web audio" scheme="http://yoursite.com/tags/web-audio/"/>
+    
+      <category term="canvas" scheme="http://yoursite.com/tags/canvas/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>纯css实现扁平化360卫士logo</title>
+    <link href="http://yoursite.com/2015/12/10/%E7%BA%AFcss%E5%AE%9E%E7%8E%B0%E6%89%81%E5%B9%B3%E5%8C%96360%E5%8D%AB%E5%A3%ABlogo/"/>
+    <id>http://yoursite.com/2015/12/10/纯css实现扁平化360卫士logo/</id>
+    <published>2015-12-10T08:42:51.000Z</published>
+    <updated>2017-08-16T05:50:51.831Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="纯css实现扁平化360卫士logo"><a href="#纯css实现扁平化360卫士logo" class="headerlink" title="纯css实现扁平化360卫士logo"></a>纯css实现扁平化360卫士logo</h1><p>前几天在w3ctech上看到有人用纯css写出了360卫士的logo，感觉蛮好玩的。</p>
+<p>因为自己用css以来，还没有写过这种玩意，出于娱乐，我也来试着尝试一下。</p>
+<p>开始也不知到怎么下手，最棘手的是那两个像太极的东东不好弄。不过，好在以前用过photoshop绘制过一些简单的icon。所以，经过我仔细</p>
+<p>的分析。大概有了思路，这两个东东是可以利用box-shadow这个属性来实现。虽然跟photoshop绘制有点不同，但是大致还是差不多的。</p>
+<p><a href="http://code.w3ctech.com/detail/2501" target="_blank" rel="external">代码效果预览地址：http://code.w3ctech.com/detail/2501</a></p>
+<p>对于刚在学习css的同学是个不错的小案例，分享给你们，有兴趣的可以试试。当然，如果有更好的思路的，可以在下面留言，相互探讨，一起进步。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;纯css实现扁平化360卫士logo&quot;&gt;&lt;a href=&quot;#纯css实现扁平化360卫士logo&quot; class=&quot;headerlink&quot; title=&quot;纯css实现扁平化360卫士logo&quot;&gt;&lt;/a&gt;纯css实现扁平化360卫士logo&lt;/h1&gt;&lt;p&gt;前几天在w3
+    
+    </summary>
+    
+    
+      <category term="css3" scheme="http://yoursite.com/tags/css3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我喜欢出发</title>
+    <link href="http://yoursite.com/2014/08/17/%E6%88%91%E5%96%9C%E6%AC%A2%E5%87%BA%E5%8F%91/"/>
+    <id>http://yoursite.com/2014/08/17/我喜欢出发/</id>
+    <published>2014-08-17T11:54:13.000Z</published>
+    <updated>2017-08-16T03:58:13.791Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="我喜欢出发"><a href="#我喜欢出发" class="headerlink" title="我喜欢出发"></a>我喜欢出发</h1><h3 id="——汪国真"><a href="#——汪国真" class="headerlink" title="——汪国真"></a>——汪国真</h3><p>我喜欢出发。</p>
+<p>　　凡是到达了的地方，都属于昨天。哪怕那山再青，那水再秀，那风再温柔。太深的流连便成了一种羁绊，绊住的不仅有双脚，还有未来。</p>
+<p>　　怎么能不喜欢出发呢?没见过大山的巍峨，真是遗憾；见了大山的巍峨没见过大海的浩瀚仍然遗憾；见了大海的浩瀚没见过大漠的广袤，依旧遗憾；见了大漠的广袤没见过森林的神秘，还是遗憾。世界上有不绝的风景，我有不老的心情。</p>
+<p>　　我自然知道，大山有坎坷，大海有浪涛，大漠有风沙，森林有猛兽。即便这样，我依然喜欢。</p>
+<p>　　打破生活的平静便是另一番景致，一种属于年轻的景致。真庆幸，我还没有老。即便真老了又怎么样，不是有句话叫老当益壮吗?</p>
+<p>　　于是，我还想从大山那里学习深刻，我还想从大海那里学习勇敢，我还想从大漠那里学习沉着，我还想从森林那里学习机敏。我想学着品味一种缤纷的人生。</p>
+<p>　　人能走多远?这话不是要问两脚而是要问志向；人能攀多高?这事不是要问双手而是要问意志。于是，我想用青春的热血给自己树起一个高远的目标。不仅是为了争取一种光荣，更是为了追求一种境界。目标实现了，便是光荣；目标实现不了，人生也会因这一路风雨跋涉变得丰富而充实；在我看来，这就是不虚此生。</p>
+<p>　　是的，我喜欢出发，愿你也喜欢。</p>
+<p>每次看完这篇文章，心情都会舒畅很多，很多的不快和忧愁便会如烟散去。</p>
+<p>想到自己还有那么多的事情没有去做，没有去尝试，就觉得自己应该坚强起来，坚持，勇敢的去一步一步的朝目标前进。虽然不知道前方等待我的是什么，但正如作者所说:”只要热爱生命，一切都在意料之中“。</p>
+<p>是的，我也喜欢出发，喜欢去探索新的生活。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;我喜欢出发&quot;&gt;&lt;a href=&quot;#我喜欢出发&quot; class=&quot;headerlink&quot; title=&quot;我喜欢出发&quot;&gt;&lt;/a&gt;我喜欢出发&lt;/h1&gt;&lt;h3 id=&quot;——汪国真&quot;&gt;&lt;a href=&quot;#——汪国真&quot; class=&quot;headerlink&quot; title=&quot;——汪
+    
+    </summary>
+    
+    
+      <category term="心情" scheme="http://yoursite.com/tags/%E5%BF%83%E6%83%85/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2017/08/16/hello-world/"/>
-    <id>http://yoursite.com/2017/08/16/hello-world/</id>
-    <published>2017-08-16T01:39:47.541Z</published>
-    <updated>2017-08-16T01:39:47.541Z</updated>
+    <link href="http://yoursite.com/2014/07/11/hello-world/"/>
+    <id>http://yoursite.com/2014/07/11/hello-world/</id>
+    <published>2014-07-11T08:24:56.000Z</published>
+    <updated>2017-08-16T04:00:18.922Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>

@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>HTML5音频可视化 | 我一路向北</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="html5,web audio,canvas">
+    <meta name="description" content="HTML5音频可视化2015年过的可是真快，眼睛一闭一睁，一睁一闭…… 突然发现这一年自己完成了从一个（只会写写黑窗口程序，刷刷acm题目）的菜鸟级程序猿到前端初级攻城狮的升级。就像是经过了累年的蹲马步，站木桩式的修行，终于突破了基本功修炼瓶颈，进入到了一个新的武学世界。开始可以玩玩更加酷炫的东西了…… 话说回来，想当初在读高中的时候，看到天天动听，realplayer做出来的音频可视化效果非常的">
+<meta name="keywords" content="html5,web audio,canvas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5音频可视化">
+<meta property="og:url" content="http://yoursite.com/2015/12/19/HTML5音频可视化/index.html">
+<meta property="og:site_name" content="我一路向北">
+<meta property="og:description" content="HTML5音频可视化2015年过的可是真快，眼睛一闭一睁，一睁一闭…… 突然发现这一年自己完成了从一个（只会写写黑窗口程序，刷刷acm题目）的菜鸟级程序猿到前端初级攻城狮的升级。就像是经过了累年的蹲马步，站木桩式的修行，终于突破了基本功修炼瓶颈，进入到了一个新的武学世界。开始可以玩玩更加酷炫的东西了…… 话说回来，想当初在读高中的时候，看到天天动听，realplayer做出来的音频可视化效果非常的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/younth/1059645/o_webaudio.jpg">
+<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/younth/1059658/o_playing.jpg">
+<meta property="og:updated_time" content="2017-08-16T07:47:22.370Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML5音频可视化">
+<meta name="twitter:description" content="HTML5音频可视化2015年过的可是真快，眼睛一闭一睁，一睁一闭…… 突然发现这一年自己完成了从一个（只会写写黑窗口程序，刷刷acm题目）的菜鸟级程序猿到前端初级攻城狮的升级。就像是经过了累年的蹲马步，站木桩式的修行，终于突破了基本功修炼瓶颈，进入到了一个新的武学世界。开始可以玩玩更加酷炫的东西了…… 话说回来，想当初在读高中的时候，看到天天动听，realplayer做出来的音频可视化效果非常的">
+<meta name="twitter:image" content="http://images.cnblogs.com/cnblogs_com/younth/1059645/o_webaudio.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="我一路向北" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/header.jpg">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.png)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/header.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">我一路向北</h5>
+          <a href="mailto:1084190606@qq.com" title="1084190606@qq.com" class="mail">1084190606@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/f1084" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/cuterr" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">HTML5音频可视化</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">HTML5音频可视化</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2015-12-19T13:12:55.000Z" itemprop="datePublished" class="page-time">
+  2015-12-19
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#HTML5音频可视化"><span class="post-toc-number">1.</span> <span class="post-toc-text">HTML5音频可视化</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#实现思路与程序运行流程"><span class="post-toc-number">2.</span> <span class="post-toc-text">实现思路与程序运行流程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-初始化canvas"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">1.初始化canvas</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-显示音频文件选取对话框"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2.显示音频文件选取对话框</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-选择要播放的音乐文件，解码音乐文件，"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">3.选择要播放的音乐文件，解码音乐文件，</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-将解码后的数据通过audioContext对象进行处理得到analyser"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">4.将解码后的数据通过audioContext对象进行处理得到analyser</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-将解析后的analyser数据逐帧显示在canvas画布上，从而获得音乐的逐帧动画。"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">5.将解析后的analyser数据逐帧显示在canvas画布上，从而获得音乐的逐帧动画。</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#选题所用到的知识点"><span class="post-toc-number">3.</span> <span class="post-toc-text">选题所用到的知识点</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#主要代码"><span class="post-toc-number">4.</span> <span class="post-toc-text">主要代码</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考资料"><span class="post-toc-number">5.</span> <span class="post-toc-text">参考资料</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-HTML5音频可视化"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">HTML5音频可视化</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2015-12-19 21:12:55" datetime="2015-12-19T13:12:55.000Z"  itemprop="datePublished">2015-12-19</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="HTML5音频可视化"><a href="#HTML5音频可视化" class="headerlink" title="HTML5音频可视化"></a>HTML5音频可视化</h1><p>2015年过的可是真快，眼睛一闭一睁，一睁一闭……</p>
+<p>突然发现这一年自己完成了从一个（只会写写黑窗口程序，刷刷acm题目）的菜鸟级程序猿到前端初级攻城狮的升级。就像是经过了累年的蹲马步，站木桩式的修行，终于突破了基本功修炼瓶颈，进入到了一个新的武学世界。开始可以玩玩更加酷炫的东西了……</p>
+<p>话说回来，想当初在读高中的时候，看到天天动听，realplayer做出来的音频可视化效果非常的酷炫，也很想知道这种效果怎么做出来的。而正好，这学期的计算机图形学课程设计里正好有这个选题的研究，于是我果断的跳进了这个坑。</p>
+<p>话不多说，先上预览地址效果图：<a href="https://code.w3ctech.com/detail/3443" target="_blank" rel="external">HTML5 web audio</a></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://images.cnblogs.com/cnblogs_com/younth/1059645/o_webaudio.jpg" alt="选择本地音乐文件" title="">
+                </div>
+                <div class="image-caption">选择本地音乐文件</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://images.cnblogs.com/cnblogs_com/younth/1059658/o_playing.jpg" alt="播放效果" title="">
+                </div>
+                <div class="image-caption">播放效果</div>
+            </figure>
+<h1 id="实现思路与程序运行流程"><a href="#实现思路与程序运行流程" class="headerlink" title="实现思路与程序运行流程"></a>实现思路与程序运行流程</h1><h2 id="1-初始化canvas"><a href="#1-初始化canvas" class="headerlink" title="1.初始化canvas"></a>1.初始化canvas</h2><h2 id="2-显示音频文件选取对话框"><a href="#2-显示音频文件选取对话框" class="headerlink" title="2.显示音频文件选取对话框"></a>2.显示音频文件选取对话框</h2><h2 id="3-选择要播放的音乐文件，解码音乐文件，"><a href="#3-选择要播放的音乐文件，解码音乐文件，" class="headerlink" title="3.选择要播放的音乐文件，解码音乐文件，"></a>3.选择要播放的音乐文件，解码音乐文件，</h2><h2 id="4-将解码后的数据通过audioContext对象进行处理得到analyser"><a href="#4-将解码后的数据通过audioContext对象进行处理得到analyser" class="headerlink" title="4.将解码后的数据通过audioContext对象进行处理得到analyser"></a>4.将解码后的数据通过audioContext对象进行处理得到analyser</h2><h2 id="5-将解析后的analyser数据逐帧显示在canvas画布上，从而获得音乐的逐帧动画。"><a href="#5-将解析后的analyser数据逐帧显示在canvas画布上，从而获得音乐的逐帧动画。" class="headerlink" title="5.将解析后的analyser数据逐帧显示在canvas画布上，从而获得音乐的逐帧动画。"></a>5.将解析后的analyser数据逐帧显示在canvas画布上，从而获得音乐的逐帧动画。</h2><h1 id="选题所用到的知识点"><a href="#选题所用到的知识点" class="headerlink" title="选题所用到的知识点"></a>选题所用到的知识点</h1><ul>
+<li>HTML5 CANVAS绘图操作</li>
+<li>HTML5 AUDIO API</li>
+<li>文件读取及浏览器同源策略与FileReader</li>
+<li>逐帧动画原理requestAnimationFrame</li>
+<li>浏览器事件响应</li>
+</ul>
+<h1 id="主要代码"><a href="#主要代码" class="headerlink" title="主要代码"></a>主要代码</h1><p>‘’’javascript </p>
+<p>window.onload = function () {<br>    var HEIGHT = window.innerHeight, WIDTH = window.innerWidth;<br>    var canvas = document.getElementById(“canvas”), audioInput = document.getElementById(‘uploadedFile’);<br>    var ctx = canvas.getContext(“2d”);<br>    var mfile, mfileName;<br>    var audioContext = new (window.AudioContext || window.webkitAudioContext || window.mozAudioContext)();<br>    window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;</p>
+<pre><code>function initCanvas() {
+    canvas.height = HEIGHT;
+    canvas.width = WIDTH;
+    canvas.style.backgroundColor = &quot;#fff&quot;;
+}
+function loadPanel() {
+    document.getElementById(&quot;panel&quot;).style.top = &quot;150px&quot;;
+}
+function outPanel() {
+    document.getElementById(&quot;panel&quot;).style.top = &quot;-150px&quot;;
+}
+audioInput.onchange = function () {
+    //这里判断一下文件长度可以确定用户是否真的选择了文件，如果点了取消则文件长度为0
+    if (audioInput.files.length !== 0) {
+        mfile = audioInput.files[0]; //将文件赋值到Visualizer对象的属性上
+        mfileName = mfile.name;
+        document.getElementById(&quot;title&quot;).innerHTML = &quot;解码中……*_*&quot;;
+        start(); //获取到文件后，开始程序，这个方法会在后面定义并实现
+    };
+}
+function start() {
+    var fr = new FileReader();
+    fr.onload = function (e) { //文件读取完后调用此函数
+        var fileResult = e.target.result; //这是读取成功得到的结果ArrayBuffer数据
+        audioContext.decodeAudioData(fileResult, function (buffer) { //解码成功则调用此函数，参数buffer为解码后得到的结果
+            var audioBufferSouceNode = audioContext.createBufferSource();
+            var analyser = audioContext.createAnalyser();
+            audioBufferSouceNode.connect(analyser);
+            analyser.connect(audioContext.destination);
+            audioBufferSouceNode.buffer = buffer;
+            audioBufferSouceNode.start(0);
+            draw(analyser);
+            outPanel();
+        }, function (e) {
+            document.getElementById(&quot;title&quot;).innerHTML = &quot;文件解码失败:(&quot;;
+        });
+    };
+    //将上一步获取的文件传递给FileReader从而将其读取为ArrayBuffer格式
+    fr.readAsArrayBuffer(mfile);
+}
+function draw(analyser) {
+    var cNum = 128;
+    analyser.fftSize = cNum * 2;
+    var Dots = [];
+    function random(m, n) {
+        return Math.round(Math.random() * (n - m) + m);
+    }
+    function getDots() {
+        Dots = [];
+        for (var i = 0; i &lt; cNum; i++) {
+            var x = random(0, canvas.width);
+            var y = random(0, canvas.height);
+            var color = &quot;rgba(&quot; + random(0, 255) + &quot;,&quot; + random(0, 255) + &quot;,&quot; + random(0, 255) + &quot;,&quot; + random(0,10)/10 + &quot;)&quot;;
+            Dots.push({
+                x: x,
+                y: y,
+                dy: random(0, 2),
+                color: color
+            });
+        }
+    }
+    getDots();
+    var drawCircle = function () {
+        var array = new Uint8Array(analyser.frequencyBinCount);
+        analyser.getByteFrequencyData(array);
+        ctx.clearRect(0, 0, WIDTH, HEIGHT);
+        for (var i = 0; i &lt; cNum; i++) {
+            ctx.beginPath();
+
+            var o = Dots[i];
+            var r = array[i] / 256 * 30;                       
+            if (o.x &gt; canvas.width||o.y&gt;canvas.height) {
+                o.y = 0;                            
+            }
+            else {                            
+                o.y = o.y;
+            }
+
+            ctx.arc(o.x, o.y, r, 0, Math.PI * 2, true);
+            var g = ctx.createRadialGradient(o.x, o.y, 0, o.x, o.y, r);
+            g.addColorStop(0, &quot;#fff&quot;);
+            g.addColorStop(0.9, &quot;#fff&quot;);
+            g.addColorStop(1, o.color);
+            //g.addColorStop(1, &quot;rgb(114,208,156)&quot;);
+            ctx.fillStyle = g;
+            ctx.fill();
+            ctx.closePath();
+        }
+        requestAnimationFrame(drawCircle);                    
+    }
+    requestAnimationFrame(drawCircle);                
+}
+initCanvas();
+loadPanel();
+</code></pre><p>}<br>‘’’</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>1.<a href="https://developer.mozilla.org/en-US/docs/Web/API/FileReader" target="_blank" rel="external">File reader in JavaScript</a><br>2.<a href="https://developer.mozilla.org/en-US/docs/Web/API/AudioContext" target="_blank" rel="external">Audio context from MDN</a><br>3.<a href="https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame" target="_blank" rel="external">Window.requestAnimationFrame</a><br>4.<a href="http://www.cnblogs.com/Wayou/p/3543577.html#home" target="_blank" rel="external">开大你的音响，感受HTML5 Audio API带来的视听盛宴</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-08-16T07:47:22.370Z" itemprop="dateUpdated">2017-08-16 15:47:22</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2015/12/19/HTML5音频可视化/" target="_blank" rel="external">http://yoursite.com/2015/12/19/HTML5音频可视化/</a>
+        
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/header.png" alt="我一路向北">
+            我一路向北
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/canvas/">canvas</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html5/">html5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web-audio/">web audio</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2015/12/19/HTML5音频可视化/&title=《HTML5音频可视化》 — 我一路向北&pic=http://yoursite.com/img/header.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2015/12/19/HTML5音频可视化/&title=《HTML5音频可视化》 — 我一路向北&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/12/19/HTML5音频可视化/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《HTML5音频可视化》 — 我一路向北&url=http://yoursite.com/2015/12/19/HTML5音频可视化/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2015/12/19/HTML5音频可视化/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/10/22/markdown学习笔记/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">markdown学习笔记</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2015/12/10/纯css实现扁平化360卫士logo/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">纯css实现扁平化360卫士logo</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=2141718"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wx.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wx.jpg" data-alipay="/img/ali.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+    </div>
+    <div class="bottom">
+        <p><span>我一路向北 &copy; 2016 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2015/12/19/HTML5音频可视化/&title=《HTML5音频可视化》 — 我一路向北&pic=http://yoursite.com/img/header.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2015/12/19/HTML5音频可视化/&title=《HTML5音频可视化》 — 我一路向北&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/12/19/HTML5音频可视化/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《HTML5音频可视化》 — 我一路向北&url=http://yoursite.com/2015/12/19/HTML5音频可视化/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2015/12/19/HTML5音频可视化/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKklEQVR42u3asZLrIBAEQP//T+slF7xEaJbFrhI00ZVsS2qCPWD284nHdTOS7/9/5e7T8fVlAwMD47WMaziSByQPzu8/vn77JhgYGAcwxi83/s64sHZ+VZg4DAwMjOGtk3KcLy4xMDAwfl9wkysYGBgYCSPZZI4fNj5ES7a7P9qLY2BgvJCRn7r//u+v5BsYGBivYlzFUS2Cedg59z5/v8XAwNia0QkgkyVjXsQ7gSgGBsYJjPEt8saLTsmuRg4YGBhnMuaO43Ne8qKdIz8MDIxdGWuP4PMgc26Le/tbDAyMrRl5Pc6bKqrHcHmL2EP5xsDA2JSRbyyTwre2daxQgjEwMLZmzPUzzIWR1Un5CgkDA+O1jFUNE3OvXo0fHjaxGBgYmzLyyLCzHFybZjz8x8DAwNiIkTdDdFouktggn8TbCBMDA2NTRj+8zItmBxYFGBgYGJsykjLaCTg7q9TC0hMDA2NrxtxCcO74fm3AeZvHYmBgbMpIjtXmyvHcdHQmBQMDY1dGNbbsF9z8WC2JVzEwME5mrPq038wRRQgYGBhHMqqLwnx07vbQcoGBgbEd4yqO/HA/j0I77RoYGBgnMOZKZN62VW2eaPWMYGBgbM34RpHN8XMFN5ppDAyM7RjVwpc3fuWb5OomFgMDA2OOUV1cJk//dHwYGBhHMqrLuzx+mDuSw8DAOIdRbS3Nt6zVAp03pWFgYJzDaG0dp9Zpc9QFDR8YGBjvY/wDN7AD8b7wF44AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

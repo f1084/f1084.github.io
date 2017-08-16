@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>vim入坑指南 | 我一路向北</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="工具,编程">
+    <meta name="description" content="vim入坑指南什么是VIMVim是从 vi 发展出来的一个文本编辑器。代码补全、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用，和Emacs并列成为类Unix系统用户最喜欢的文本编辑器。 vim的设计理念命令组合:Vim强大的编辑能力中很大部分是来自于其普通模式命令。vim的设计理念是命令的组合。例如普通模式命令”dd”删除当前行，”dj”代表删除到下一行,原理是第一个”d”含义是删">
+<meta name="keywords" content="工具,编程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vim入坑指南">
+<meta property="og:url" content="http://yoursite.com/2016/12/14/vim入坑指南/index.html">
+<meta property="og:site_name" content="我一路向北">
+<meta property="og:description" content="vim入坑指南什么是VIMVim是从 vi 发展出来的一个文本编辑器。代码补全、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用，和Emacs并列成为类Unix系统用户最喜欢的文本编辑器。 vim的设计理念命令组合:Vim强大的编辑能力中很大部分是来自于其普通模式命令。vim的设计理念是命令的组合。例如普通模式命令”dd”删除当前行，”dj”代表删除到下一行,原理是第一个”d”含义是删">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-08-16T05:03:38.027Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vim入坑指南">
+<meta name="twitter:description" content="vim入坑指南什么是VIMVim是从 vi 发展出来的一个文本编辑器。代码补全、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用，和Emacs并列成为类Unix系统用户最喜欢的文本编辑器。 vim的设计理念命令组合:Vim强大的编辑能力中很大部分是来自于其普通模式命令。vim的设计理念是命令的组合。例如普通模式命令”dd”删除当前行，”dj”代表删除到下一行,原理是第一个”d”含义是删">
+    
+        <link rel="alternate" type="application/atom+xml" title="我一路向北" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/header.jpg">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.png)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/header.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">我一路向北</h5>
+          <a href="mailto:1084190606@qq.com" title="1084190606@qq.com" class="mail">1084190606@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/f1084" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/cuterr" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">vim入坑指南</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">vim入坑指南</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-12-14T02:04:38.000Z" itemprop="datePublished" class="page-time">
+  2016-12-14
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#vim入坑指南"><span class="post-toc-number">1.</span> <span class="post-toc-text">vim入坑指南</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么是VIM"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">什么是VIM</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#vim的设计理念"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">vim的设计理念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#命令组合"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">命令组合:</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#模式间的组合"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">模式间的组合:</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Vim三种模式"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Vim三种模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#插入模式：即-insert-模式，用来输入文本；"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">插入模式：即 insert 模式，用来输入文本；</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#编辑模式：用以执行命令，也称为正常模式，也是进入Vim的缺省模式；"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">编辑模式：用以执行命令，也称为正常模式，也是进入Vim的缺省模式；</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#命令模式：用来执行冒号命令。"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">命令模式：用来执行冒号命令。</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#按键功能"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">按键功能</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-vim入坑指南"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">vim入坑指南</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016-12-14 10:04:38" datetime="2016-12-14T02:04:38.000Z"  itemprop="datePublished">2016-12-14</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="vim入坑指南"><a href="#vim入坑指南" class="headerlink" title="vim入坑指南"></a>vim入坑指南</h1><h2 id="什么是VIM"><a href="#什么是VIM" class="headerlink" title="什么是VIM"></a>什么是VIM</h2><p>Vim是从 vi 发展出来的一个文本编辑器。代码补全、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用，和Emacs并列成为类Unix系统用户最喜欢的文本编辑器。</p>
+<h2 id="vim的设计理念"><a href="#vim的设计理念" class="headerlink" title="vim的设计理念"></a>vim的设计理念</h2><h3 id="命令组合"><a href="#命令组合" class="headerlink" title="命令组合:"></a>命令组合:</h3><p>Vim强大的编辑能力中很大部分是来自于其普通模式命令。vim的设计理念是命令的组合。例如普通模式命令”dd”删除当前行，”dj”代表删除到下一行,原理是第一个”d”含义是删除,”j”键代表移动到下一行,组合后”dj”删除当前行和下一行。另外还可以指定命令重复次数，”2dd”（重复”dd”两次），和”dj”的效果是一样的。”d^”,”^”代表行首,故组合后含义是删除到光标开始到行首间的内容(不包含光标);”d$” $”代表行尾,删除到行尾的内容(包含光标);用户学习了各种各样的文本间移动/跳转的命令和其他的普通模式的编辑命令，并且能够灵活组合使用的话，能够比那些没有模式的编辑器更加高效的进行文本编辑。</p>
+<h3 id="模式间的组合"><a href="#模式间的组合" class="headerlink" title="模式间的组合:"></a>模式间的组合:</h3><p>在普通模式中，有很多方法可以进入插入模式。比较普通的方式是按”a”（append/追加）键或者”i”（insert/插入）键。</p>
+<h2 id="Vim三种模式"><a href="#Vim三种模式" class="headerlink" title="Vim三种模式"></a>Vim三种模式</h2><h3 id="插入模式：即-insert-模式，用来输入文本；"><a href="#插入模式：即-insert-模式，用来输入文本；" class="headerlink" title="插入模式：即 insert 模式，用来输入文本；"></a>插入模式：即 insert 模式，用来输入文本；</h3><h3 id="编辑模式：用以执行命令，也称为正常模式，也是进入Vim的缺省模式；"><a href="#编辑模式：用以执行命令，也称为正常模式，也是进入Vim的缺省模式；" class="headerlink" title="编辑模式：用以执行命令，也称为正常模式，也是进入Vim的缺省模式；"></a>编辑模式：用以执行命令，也称为正常模式，也是进入Vim的缺省模式；</h3><h3 id="命令模式：用来执行冒号命令。"><a href="#命令模式：用来执行冒号命令。" class="headerlink" title="命令模式：用来执行冒号命令。"></a>命令模式：用来执行冒号命令。</h3><p>进入Vim后会直接进入编辑模式，接下来按下i进入插入模式，可以输入字符，按下<esc>键将从插入模式转换到编辑模式，该模式用于移动和操纵文本。在编辑模式下输入:即可进入命令模式，可以进行保存、查找、替换、配置Vim操作等。</esc></p>
+<h2 id="按键功能"><a href="#按键功能" class="headerlink" title="按键功能"></a>按键功能</h2><p>在Vim的编辑模式下，一些常用的按键都变成了功能键，并且与大家在Windows下常用的快捷键完全不同，在这里，总结一些初学Vim所用的按键功能：</p>
+<table>
+<thead>
+<tr>
+<th>按键</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>h或←</td>
+<td style="text-align:center">光标左移</td>
+</tr>
+<tr>
+<td>l或→</td>
+<td style="text-align:center">光标右移</td>
+</tr>
+<tr>
+<td>k或↑</td>
+<td style="text-align:center">光标上移</td>
+</tr>
+<tr>
+<td>j或↓</td>
+<td style="text-align:center">光标下移</td>
+</tr>
+<tr>
+<td>gg</td>
+<td style="text-align:center">快速定位到文本开头</td>
+</tr>
+<tr>
+<td>G（shift+g）</td>
+<td style="text-align:center">快速定位到文本最后一段</td>
+</tr>
+<tr>
+<td>0或home</td>
+<td style="text-align:center">快速定位到当前段首</td>
+</tr>
+<tr>
+<td>$或end</td>
+<td style="text-align:center">快速定位到当前段首</td>
+</tr>
+<tr>
+<td>Ctrl+f</td>
+<td style="text-align:center">向下翻一页</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td style="text-align:center">向上翻一页</td>
+</tr>
+<tr>
+<td>Ctrl+d</td>
+<td style="text-align:center">向下翻半页</td>
+</tr>
+<tr>
+<td>Ctrl+u</td>
+<td style="text-align:center">向上翻一页</td>
+</tr>
+<tr>
+<td>/string</td>
+<td style="text-align:center">查找文本中光标位置下方的string字符串，如要查找kabc则直接输入/kabc即可</td>
+</tr>
+<tr>
+<td>?string</td>
+<td style="text-align:center">查找文本中光标位置上方的string字符串，如要查找kabc则直接输入?kabc即可</td>
+</tr>
+<tr>
+<td>yy</td>
+<td style="text-align:center">复制光标所在的段落</td>
+</tr>
+<tr>
+<td>y0</td>
+<td style="text-align:center">复制光标位置到段首的所有字符</td>
+</tr>
+<tr>
+<td>y$</td>
+<td style="text-align:center">复制光标位置到段尾的所有字符</td>
+</tr>
+<tr>
+<td>nyy</td>
+<td style="text-align:center">从光标位置向下复制n段，包含光标所在的段落</td>
+</tr>
+<tr>
+<td>ygg</td>
+<td style="text-align:center">复制光标位置所在段落到文本开头的所有内容</td>
+</tr>
+<tr>
+<td>yG</td>
+<td style="text-align:center">复制光标位置所在段落到文本结尾的所有内容</td>
+</tr>
+<tr>
+<td>p</td>
+<td style="text-align:center">将复制的内容粘贴为光标所在段落的下一段</td>
+</tr>
+<tr>
+<td>P</td>
+<td style="text-align:center">将复制的内容粘贴为光标所在段落的上一段</td>
+</tr>
+<tr>
+<td>dd</td>
+<td style="text-align:center">删除光标所在的段落</td>
+</tr>
+<tr>
+<td>d0</td>
+<td style="text-align:center">删除光标位置到段首的所有字符</td>
+</tr>
+<tr>
+<td>d$</td>
+<td style="text-align:center">删除光标位置到段尾的所有字符</td>
+</tr>
+<tr>
+<td>dgg</td>
+<td style="text-align:center">删除光标位置所在段落到文本开头的所有内容</td>
+</tr>
+<tr>
+<td>dG</td>
+<td style="text-align:center">删除光标位置所在段落到文本结尾的所有内容</td>
+</tr>
+<tr>
+<td>ndd</td>
+<td style="text-align:center">从光标位置向下删除n段，包含光标所在的段落</td>
+</tr>
+<tr>
+<td>u</td>
+<td style="text-align:center">撤销上一个操作</td>
+</tr>
+<tr>
+<td>Ctrl+r</td>
+<td style="text-align:center">重复上一个操作</td>
+</tr>
+<tr>
+<td>:w</td>
+<td style="text-align:center">保存数据</td>
+</tr>
+<tr>
+<td>:w!</td>
+<td style="text-align:center">保存时强制写入数据，不管文件是否为只读文件</td>
+</tr>
+<tr>
+<td>:q</td>
+<td style="text-align:center">关闭Vim</td>
+</tr>
+<tr>
+<td>:q!</td>
+<td style="text-align:center">关闭Vim，对所做的修改不做保存</td>
+</tr>
+<tr>
+<td>:wq</td>
+<td style="text-align:center">保存数据后关闭Vim</td>
+</tr>
+<tr>
+<td>:wq!</td>
+<td style="text-align:center">强制保存数据并关闭Vim</td>
+</tr>
+</tbody>
+</table>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-08-16T05:03:38.027Z" itemprop="dateUpdated">2017-08-16 13:03:38</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2016/12/14/vim入坑指南/" target="_blank" rel="external">http://yoursite.com/2016/12/14/vim入坑指南/</a>
+        
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/header.png" alt="我一路向北">
+            我一路向北
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工具/">工具</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/12/14/vim入坑指南/&title=《vim入坑指南》 — 我一路向北&pic=http://yoursite.com/img/header.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/12/14/vim入坑指南/&title=《vim入坑指南》 — 我一路向北&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/12/14/vim入坑指南/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vim入坑指南》 — 我一路向北&url=http://yoursite.com/2016/12/14/vim入坑指南/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/12/14/vim入坑指南/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/10/22/markdown学习笔记/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">markdown学习笔记</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=2141718"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wx.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wx.jpg" data-alipay="/img/ali.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+    </div>
+    <div class="bottom">
+        <p><span>我一路向北 &copy; 2016 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/12/14/vim入坑指南/&title=《vim入坑指南》 — 我一路向北&pic=http://yoursite.com/img/header.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/12/14/vim入坑指南/&title=《vim入坑指南》 — 我一路向北&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/12/14/vim入坑指南/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vim入坑指南》 — 我一路向北&url=http://yoursite.com/2016/12/14/vim入坑指南/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/12/14/vim入坑指南/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLUlEQVR42u3aXXKDMAxF4ex/03QBreFcyekM8vFTJ5CYjwfV+vl88Lp+rdU9q/tXV1e7fL6xZMiQ8VrGdbtWG5Bv3fPIa+K7yJAh4wQGCaCr+zsPl+61/FyGDBkywHEtDdP3L0WGDBky+gxy4OskwDJkyJBRS2LJgY88OgF/MReXIUPGCxm86v7/f3+lvyFDhoxXMa5wpcGRPNbVXjJkyJjN6JTS0iZBP3F92EWGDBmjGST8cQxPcfvN0fiwKEOGjBcyeLE+Daa8lJa+oD+uypAh4xjGrhJ/q3Af/o4MGTLOYaTjFLXDXzreSop6rakQGTJkvJCRlul54Yx8wotuaK5NhgwZ4xjBF0qHv1o7M3hCGTJkHMPY1VBMD5S1BsPDzIgMGTIGMXjzkiS6aUuSp8QIIEOGjKGM2vAEaQbwoY20kRkMW8iQIWMEo5ZkdtLdtJHAWxcyZMg4jcHTTn7E7PxO3OWQIUPGIMbeZmQ6ZrGtzSBDhozRjH6hn4TIWipbO4zKkCFjKoOEPB6IefqaNkfRAVGGDBnHMHjaWSuT8f5qkAbLkCHjAAYflUibAbV74lOtDBkyhjKucPEBiA4mDtwyZMgYzUiDHS+xpYMX/X8AMmTImM0gQZaHRf62NgdcGTJkHMBIxxr4QTAt27VSWRkyZMgo5Yz9AyK6KkOGDBl4mJWH3TQBfgjiMmTIOIBBkth0y11thvtfkyFDxgmMVupYSlb3hmwZMmSMZvwAyWvk8zMBrF4AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
