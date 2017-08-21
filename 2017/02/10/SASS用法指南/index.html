@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>SASS用法指南 | 我一路向北</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="css,sass">
+    <meta name="description" content="SASS用法指南  学过CSS的人都知道，它不是一种编程语言。你可以用它开发网页样式，但是没法用它编程。也就是说，CSS基本上是设计师的工具，不是程序员的工具。在程序员眼里，CSS是一件很麻烦的东西。它没有变量，也没有条件语句，只是一行行单纯的描述，写起来相当费事。很自然地，有人就开始为CSS加入编程元素，这被叫做”CSS预处理器”（css preprocessor）。它的基本思想是，用一种专门的">
+<meta name="keywords" content="css,sass">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SASS用法指南">
+<meta property="og:url" content="http://yoursite.com/2017/02/10/SASS用法指南/index.html">
+<meta property="og:site_name" content="我一路向北">
+<meta property="og:description" content="SASS用法指南  学过CSS的人都知道，它不是一种编程语言。你可以用它开发网页样式，但是没法用它编程。也就是说，CSS基本上是设计师的工具，不是程序员的工具。在程序员眼里，CSS是一件很麻烦的东西。它没有变量，也没有条件语句，只是一行行单纯的描述，写起来相当费事。很自然地，有人就开始为CSS加入编程元素，这被叫做”CSS预处理器”（css preprocessor）。它的基本思想是，用一种专门的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-08-21T09:45:25.544Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SASS用法指南">
+<meta name="twitter:description" content="SASS用法指南  学过CSS的人都知道，它不是一种编程语言。你可以用它开发网页样式，但是没法用它编程。也就是说，CSS基本上是设计师的工具，不是程序员的工具。在程序员眼里，CSS是一件很麻烦的东西。它没有变量，也没有条件语句，只是一行行单纯的描述，写起来相当费事。很自然地，有人就开始为CSS加入编程元素，这被叫做”CSS预处理器”（css preprocessor）。它的基本思想是，用一种专门的">
+    
+        <link rel="alternate" type="application/atom+xml" title="我一路向北" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/header.jpg">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.png)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/header.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">我一路向北</h5>
+          <a href="mailto:1084190606@qq.com" title="1084190606@qq.com" class="mail">1084190606@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/f1084" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/cuterr" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://code.w3ctech.com/5404"  >
+                <i class="icon icon-lg icon-link"></i>
+                Demo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">SASS用法指南</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">SASS用法指南</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-02-10T03:42:31.000Z" itemprop="datePublished" class="page-time">
+  2017-02-10
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#什么是SASS"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么是SASS</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装和使用"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装和使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#基本用法"><span class="post-toc-number">3.</span> <span class="post-toc-text">基本用法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#变量"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">变量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#计算功能"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">计算功能</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#嵌套"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">嵌套</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注释"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">注释</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#代码的重用"><span class="post-toc-number">4.</span> <span class="post-toc-text">代码的重用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#继承"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">继承</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Mixin"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">Mixin</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#颜色函数"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">颜色函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#插入文件"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">插入文件</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#高级用法"><span class="post-toc-number">5.</span> <span class="post-toc-text">高级用法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#条件语句"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">条件语句</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#循环语句"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">循环语句</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#自定义函数"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">自定义函数</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-SASS用法指南"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">SASS用法指南</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-02-10 11:42:31" datetime="2017-02-10T03:42:31.000Z"  itemprop="datePublished">2017-02-10</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>SASS用法指南</p>
+<blockquote>
+<p>学过CSS的人都知道，它不是一种编程语言。<br>你可以用它开发网页样式，但是没法用它编程。也就是说，CSS基本上是设计师的工具，不是程序员的工具。在程序员眼里，CSS是一件很麻烦的东西。它没有变量，也没有条件语句，只是一行行单纯的描述，写起来相当费事。<br>很自然地，有人就开始为CSS加入编程元素，这被叫做”CSS预处理器”（css preprocessor）。它的基本思想是，用一种专门的编程语言，进行网页样式设计，然后再编译成正常的CSS文件。<br>各种”CSS预处理器”之中，我自己最喜欢SASS，觉得它有很多优点，打算以后都用它来写CSS。下面是我整理的用法总结，供自己开发时参考，相信对其他人也有用。</p>
+</blockquote>
+<h1 id="什么是SASS"><a href="#什么是SASS" class="headerlink" title="什么是SASS"></a>什么是SASS</h1><p>SASS是一种CSS的开发工具，提供了许多便利的写法，大大节省了设计者的时间，使得CSS的开发，变得简单和可维护。<br>本文总结了SASS的主要用法。我的目标是，有了这篇文章，日常的一般使用就不需要去看官方文档了。</p>
+<h1 id="安装和使用"><a href="#安装和使用" class="headerlink" title="安装和使用"></a>安装和使用</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>SASS是Ruby语言写的，但是两者的语法没有关系。不懂Ruby，照样使用。只是必须先安装Ruby，然后再安装SASS。<br>假定你已经安装好了Ruby，接着在命令行输入下面的命令：<br>　　gem install sass<br>然后，就可以使用了。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>SASS文件就是普通的文本文件，里面可以直接使用CSS语法。文件后缀名是.scss，意思为Sassy CSS。<br>下面的命令，可以在屏幕上显示.scss文件转化的css代码。（假设文件名为test。）<br>　　sass test.scss<br>如果要将显示结果保存成文件，后面再跟一个.css文件名。<br>　　sass test.scss test.css<br>SASS提供四个编译风格的选项：<br>　　 nested：嵌套缩进的css代码，它是默认值。 　　 expanded：没有缩进的、扩展的css代码。<br>　　 compact：简洁格式的css代码。 　　 compressed：压缩后的css代码。<br>生产环境当中，一般使用最后一个选项。<br>　　sass –style compressed test.sass test.css<br>你也可以让SASS监听某个文件或目录，一旦源文件有变动，就自动生成编译后的版本。</p>
+<p>　　// watch a file<br>　　sass –watch input.scss:output.css<br>　　<br>　　// watch a directory<br>　　sass –watch app/sass:public/stylesheets<br>　　<br>SASS的官方网站，提供了一个在线转换器。你可以在那里，试运行下面的各种例子。</p>
+<h1 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>SASS允许使用变量，所有变量以$开头。</p>
+<p>　　$blue : #1875e7;　<br>　　div {<br>　　　color : $blue;<br>　　}<br>　　<br>如果变量需要镶嵌在字符串之中，就必须需要写在#{}之中。</p>
+<p>　　$side : left;<br>　　.rounded {<br>　　　　border-#{$side}-radius: 5px;<br>　　}</p>
+<h2 id="计算功能"><a href="#计算功能" class="headerlink" title="计算功能"></a>计算功能</h2><p>SASS允许在代码中使用算式：</p>
+<p>　　body {<br>　　　　margin: (14px/2);<br>　　　　top: 50px + 100px;<br>　　　　right: $var * 10%;<br>　　}</p>
+<h2 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h2><p>SASS允许选择器嵌套。比如，下面的CSS代码：</p>
+<p>　　div h1 {<br>　　　　color : red;<br>　　}<br>可以写成：</p>
+<p>　　div {<br>　　　　hi {<br>　　　　　　color:red;<br>　　　　}<br>　　}<br>属性也可以嵌套，比如border-color属性，可以写成：</p>
+<p>　　p {<br>　　　　border: {<br>　　　　　　color: red;<br>　　　　}<br>　　}<br>注意，border后面必须加上冒号。<br>在嵌套的代码块内，可以使用&amp;引用父元素。比如a:hover伪类，可以写成：</p>
+<p>　　a {<br>　　　　&amp;:hover { color: #ffb3ff; }<br>　　}</p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>SASS共有两种注释风格。<br>标准的CSS注释 /<em> comment </em>/，会保留到编译后的文件。<br>单行注释 // comment，只保留在SASS源文件中，编译后被省略。<br>在/*后面加一个感叹号，表示这是”重要注释”。即使是压缩模式编译，也会保留这行注释，通常可以用于声明版权信息。</p>
+<p>　　/<em>!<br>　　　　重要注释！
+　　</em>/</p>
+<h1 id="代码的重用"><a href="#代码的重用" class="headerlink" title="代码的重用"></a>代码的重用</h1><h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>SASS允许一个选择器，继承另一个选择器。比如，现有class1：</p>
+<p>　　.class1 {<br>　　　　border: 1px solid #ddd;<br>　　}<br>class2要继承class1，就要使用@extend命令：</p>
+<p>　　.class2 {<br>　　　　@extend .class1;<br>　　　　font-size:120%;<br>　　}</p>
+<h2 id="Mixin"><a href="#Mixin" class="headerlink" title="Mixin"></a>Mixin</h2><p>Mixin有点像C语言的宏（macro），是可以重用的代码块。<br>使用@mixin命令，定义一个代码块。</p>
+<p>　　@mixin left {<br>　　　　float: left;<br>　　　　margin-left: 10px;<br>　　}<br>使用@include命令，调用这个mixin。</p>
+<p>　　div {<br>　　　　@include left;<br>　　}<br>mixin的强大之处，在于可以指定参数和缺省值。</p>
+<p>　　@mixin left($value: 10px) {<br>　　　　float: left;<br>　　　　margin-right: $value;<br>　　}<br>使用的时候，根据需要加入参数：</p>
+<p>　　div {<br>　　　　@include left(20px);<br>　　}<br>下面是一个mixin的实例，用来生成浏览器前缀。</p>
+<p>　　@mixin rounded($vert, $horz, $radius: 10px) {<br>　　　　border-#{$vert}-#{$horz}-radius: $radius;<br>　　　　-moz-border-radius-#{$vert}#{$horz}: $radius;<br>　　　　-webkit-border-#{$vert}-#{$horz}-radius: $radius;<br>　　}<br>使用的时候，可以像下面这样调用：</p>
+<p>　　#navbar li { @include rounded(top, left); }<br>　　#footer { @include rounded(top, left, 5px); }</p>
+<h2 id="颜色函数"><a href="#颜色函数" class="headerlink" title="颜色函数"></a>颜色函数</h2><p>SASS提供了一些内置的颜色函数，以便生成系列颜色。</p>
+<p>　　lighten(#cc3, 10%) // #d6d65c<br>　　darken(#cc3, 10%) // #a3a329<br>　　grayscale(#cc3) // #808080<br>　　complement(#cc3) // #33c</p>
+<h2 id="插入文件"><a href="#插入文件" class="headerlink" title="插入文件"></a>插入文件</h2><p>@import命令，用来插入外部文件。<br>　　@import “path/filename.scss”;<br>如果插入的是.css文件，则等同于css的import命令。<br>　　@import “foo.css”; 　　</p>
+<h1 id="高级用法"><a href="#高级用法" class="headerlink" title="高级用法"></a>高级用法</h1><h2 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h2><p>@if可以用来判断：</p>
+<p>　　p {<br>　　　　@if 1 + 1 == 2 { border: 1px solid; }<br>　　　　@if 5 &lt; 3 { border: 2px dotted; }<br>　　}<br>配套的还有@else命令：</p>
+<p>　　@if lightness($color) &gt; 30% {<br>　　　　background-color: #000;<br>　　} @else {<br>　　　　background-color: #fff;<br>　　}</p>
+<h2 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h2><p>SASS支持for循环：</p>
+<p>　　@for $i from 1 to 10 {<br>　　　　.border-#{$i} {<br>　　　　　　border: #{$i}px solid blue;<br>　　　　}<br>　　}<br>也支持while循环：</p>
+<p>　　$i: 6;<br>　　@while $i &gt; 0 {<br>　　　　.item-#{$i} { width: 2em * $i; }<br>　　　　$i: $i - 2;<br>　　}<br>each命令，作用与for类似：</p>
+<p>　　@each $member in a, b, c, d {<br>　　　　.#{$member} {<br>　　　　　　background-image: url(“/image/#{$member}.jpg”);<br>　　　　}<br>　　}</p>
+<h2 id="自定义函数"><a href="#自定义函数" class="headerlink" title="自定义函数"></a>自定义函数</h2><p>SASS允许用户编写自己的函数。</p>
+<p>　　@function double($n) {<br>　　　　@return $n * 2;<br>　　}<br>　　#sidebar {<br>　　　　width: double(5px);<br>　　}</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-08-21T09:45:25.544Z" itemprop="dateUpdated">2017-08-21 17:45:25</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2017/02/10/SASS用法指南/" target="_blank" rel="external">http://yoursite.com/2017/02/10/SASS用法指南/</a>
+        
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/header.png" alt="我一路向北">
+            我一路向北
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sass/">sass</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/02/10/SASS用法指南/&title=《SASS用法指南》 — 我一路向北&pic=http://yoursite.com/img/header.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/02/10/SASS用法指南/&title=《SASS用法指南》 — 我一路向北&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/02/10/SASS用法指南/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《SASS用法指南》 — 我一路向北&url=http://yoursite.com/2017/02/10/SASS用法指南/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/02/10/SASS用法指南/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/02/12/ES6编码风格/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">ES6编程风格</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/12/14/vim入坑指南/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">vim入坑指南</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=2141718"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wx.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wx.jpg" data-alipay="/img/ali.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="bottom">
+        <p><span>我一路向北 &copy; 2016 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/02/10/SASS用法指南/&title=《SASS用法指南》 — 我一路向北&pic=http://yoursite.com/img/header.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/02/10/SASS用法指南/&title=《SASS用法指南》 — 我一路向北&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/02/10/SASS用法指南/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《SASS用法指南》 — 我一路向北&url=http://yoursite.com/2017/02/10/SASS用法指南/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/02/10/SASS用法指南/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIklEQVR42u3aQY7CMBAEQP7/afa6EgrbPQ4rYVdOSAScymHU9szjEV/Pi+v3t1f3v97zev/Vr26+MDAwvpbxfHvl97SrJN8W62JgYBzAuFr46nP7q1k5TlbBwMDAmIW/ttTOXgQGBgZGXhCTYJeXWgwMDIyVTWxSfGcFNGHfthfHwMD4QkZ+WPb/nz/S38DAwPgqxrO83sPujYbFU2FgYGzNyAtc8kB5+FsvuBgYGCcz2hLZJrSkQOeDYhgYGOcw8lbiXSFyVtCj4o6BgbEdY7bw7PgsD5FtIwEDA2NvRhK/2vi4clTXtjkxMDBOYLRDWjk7H8W4ofhiYGBszcj/oj3izwtusm7UQsDAwNiasTIwkRfKPPC1AREDA+Mcxl3hL289JsG0zYEYGBi7MmYhL//2Ey2EaCwMAwNjU0Y7+rASEPPXF82MYGBgbM1oN5+zxmSRTBfux8DA2JXRbj7bw/rkddw2M4KBgbEpY1Yik4XbAbJZIxMDA+MERls66wGIUZNyaWYEAwPjMEbSAFgpr22sLBIuBgbGMYxZ1Gu3oEnx/WMtDAyMTRnP8vpEg3PlGA4DA+MERttKzItpO2Cxfm6GgYGxN+OuzWqyDW5fWREfMTAwDmC0ha/d4s4muIpBMQwMDIz4uH+2ZS0e9xMFFwMDYztGcmceLvOWQNHCxMDA2JTRNgNawOyoru7EYmBgbMqY5a68BM9iYluIMTAwNmX8AKc1S6lO1tHRAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

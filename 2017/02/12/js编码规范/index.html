@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>JavaScript编码规范指南 | 我一路向北</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="编程">
+    <meta name="description" content="JavaScript编码规范指南=====================常用的一些javascript规范 数据类型 原始类型(Primitives)：当你给一个原始类型赋值时，返回的是这个值的本身。  string number boolean null undefined 123456var foo = 1,  bar = foo;bar = 9;console.log(foo, bar);">
+<meta name="keywords" content="编程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript编码规范指南">
+<meta property="og:url" content="http://yoursite.com/2017/02/12/js编码规范/index.html">
+<meta property="og:site_name" content="我一路向北">
+<meta property="og:description" content="JavaScript编码规范指南=====================常用的一些javascript规范 数据类型 原始类型(Primitives)：当你给一个原始类型赋值时，返回的是这个值的本身。  string number boolean null undefined 123456var foo = 1,  bar = foo;bar = 9;console.log(foo, bar);">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-08-21T09:56:25.883Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript编码规范指南">
+<meta name="twitter:description" content="JavaScript编码规范指南=====================常用的一些javascript规范 数据类型 原始类型(Primitives)：当你给一个原始类型赋值时，返回的是这个值的本身。  string number boolean null undefined 123456var foo = 1,  bar = foo;bar = 9;console.log(foo, bar);">
+    
+        <link rel="alternate" type="application/atom+xml" title="我一路向北" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/header.jpg">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.png)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/header.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">我一路向北</h5>
+          <a href="mailto:1084190606@qq.com" title="1084190606@qq.com" class="mail">1084190606@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/f1084" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/cuterr" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://code.w3ctech.com/5404"  >
+                <i class="icon icon-lg icon-link"></i>
+                Demo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">JavaScript编码规范指南</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">JavaScript编码规范指南</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-02-12T08:12:11.000Z" itemprop="datePublished" class="page-time">
+  2017-02-12
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#JavaScript编码规范指南"><span class="post-toc-number">1.</span> <span class="post-toc-text">JavaScript编码规范指南</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据类型"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">数据类型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对象"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">对象</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数组"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">数组</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#String类型"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">String类型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#函数"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#属性"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">属性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#变量"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">变量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#声明提前"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">声明提前</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#条件表达式与等式"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">条件表达式与等式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#块"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">块</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注释"><span class="post-toc-number">1.11.</span> <span class="post-toc-text">注释</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#空格"><span class="post-toc-number">1.12.</span> <span class="post-toc-text">空格</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#逗号"><span class="post-toc-number">1.13.</span> <span class="post-toc-text">逗号</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关于"><span class="post-toc-number">1.14.</span> <span class="post-toc-text">关于</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-js编码规范"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">JavaScript编码规范指南</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-02-12 16:12:11" datetime="2017-02-12T08:12:11.000Z"  itemprop="datePublished">2017-02-12</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="JavaScript编码规范指南"><a href="#JavaScript编码规范指南" class="headerlink" title="JavaScript编码规范指南"></a>JavaScript编码规范指南</h1><p>=====================<br><em>常用的一些javascript规范</em></p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a><a href="#数据类型" title="数据类型"></a>数据类型</h2><ul>
+<li><p><strong>原始类型(Primitives)</strong>：当你给一个原始类型赋值时，返回的是这个值的本身。</p>
+<ul>
+<li><code>string</code></li>
+<li><code>number</code></li>
+<li><code>boolean</code></li>
+<li><code>null</code></li>
+<li><p><code>undefined</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var foo = 1,</div><div class="line">  bar = foo;</div><div class="line"></div><div class="line">bar = 9;</div><div class="line"></div><div class="line">console.log(foo, bar); // =&gt; 1, 9</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>对象类型</strong>:当你给一个对象类型赋值时，返回的是这个值的引用。</p>
+<ul>
+<li><code>object</code></li>
+<li><code>array</code></li>
+<li><p><code>function</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var foo = [1, 2],</div><div class="line">  bar = foo;</div><div class="line"></div><div class="line">bar[0] = 9;</div><div class="line"></div><div class="line">console.log(foo[0], bar[0]); // =&gt; 9, 9</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a><a href="#对象" title="对象"></a>对象</h2><ul>
+<li><p>新建一个对象的语法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//不推荐</div><div class="line">var item = new Object();</div><div class="line"></div><div class="line">//推荐</div><div class="line">var item = &#123;&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>不要使用<a href="http://es5.github.io/#x7.6.1" target="_blank" rel="external">保留字</a>作为键值，否则在IE8下面会出现问题(<a href="https://github.com/airbnb/javascript/issues/61" target="_blank" rel="external">详情</a>)。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//不推荐</div><div class="line">var superman = &#123;</div><div class="line">  default: &#123; clark: &apos;kent&apos;&#125;,</div><div class="line">  private: true</div><div class="line">&#125;;</div><div class="line"></div><div class="line">//推荐</div><div class="line">var superman =&#123;</div><div class="line">  defaults: &#123; clark: &apos;kent&apos;&#125;,</div><div class="line">  hidden: true</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用可读性强的同义词代替保留字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//不推荐</div><div class="line">var superman = &#123;</div><div class="line">  class: &apos;alien&apos;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">//不推荐</div><div class="line">var superman = &#123;</div><div class="line">  klass: &apos;alien&apos;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">//推荐</div><div class="line">var superman = &#123;</div><div class="line">  type: &apos;alien&apos;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a><a href="#数组" title="数组"></a>数组</h2><ul>
+<li><p>新建一个数组的语法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//不推荐</div><div class="line">var items = new Array();</div><div class="line"></div><div class="line">//推荐</div><div class="line">var items = [];</div></pre></td></tr></table></figure>
+</li>
+<li><p>如果你不知道数组的长度可以使用push将元素加入。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var someStack = [];</div><div class="line"></div><div class="line">//不推荐</div><div class="line">someStack[someStack.length] = &apos;something&apos;;</div><div class="line"></div><div class="line">//推荐</div><div class="line">someStack.push(&apos;something&apos;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>当你需要复制一个数组的时候使用slice。<a href="http://jsperf.com/converting-arguments-to-an-array/7" target="_blank" rel="external">jsPerf</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var len = items.length,</div><div class="line">  itemsCopy = [],</div><div class="line">  i;</div><div class="line"></div><div class="line">//不推荐</div><div class="line">for (i = 0; i &lt; len; i++)&#123;</div><div class="line">  itemsCopy[i] = items[i];</div><div class="line">&#125;</div><div class="line"></div><div class="line">//推荐</div><div class="line">itemsCopy = items.slice();</div></pre></td></tr></table></figure>
+</li>
+<li><p>用slice转换伪数组对象到数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function trigger() &#123;</div><div class="line">  var args = Array.prototype.slice.call(arguments);</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="String类型"><a href="#String类型" class="headerlink" title="String类型"></a><a href="#String类型" title="String类型"></a>String类型</h2><ul>
+<li><p>使用单引号<code>&#39;&#39;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//不推荐</div><div class="line">var name = &quot;Bob Parr&quot;;</div><div class="line"></div><div class="line">//推荐</div><div class="line">var name = &apos;Bob Parr&apos;;</div><div class="line"></div><div class="line">//不推荐</div><div class="line">var fullName - &quot;Bob &quot; + this.lastName;</div><div class="line"></div><div class="line">//推荐</div><div class="line">var fullName = &apos;Bob &apos; + this.lastName;</div></pre></td></tr></table></figure>
+</li>
+<li><p>当字符串长度超过80个时，应该通过字符串连接多行显示。</p>
+</li>
+<li><p>注意：过度使用字符串连接将会影响性能。<a href="http://jsperf.com/ya-string-concat" target="_blank" rel="external">jsPerf</a>&amp;<a href="https://github.com/airbnb/javascript/issues/40" target="_blank" rel="external">Discussion</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">//不推荐</div><div class="line">var errorMessage = &apos;This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.&apos;;</div><div class="line"></div><div class="line">//不推荐</div><div class="line">var errorMessage = &apos;This is a super long error that \</div><div class="line">was thrown because of Batman. \</div><div class="line">When you stop to think about \</div><div class="line">how Batman had anything to do \</div><div class="line">with this, you would get nowhere \</div><div class="line">fast.&apos;;</div><div class="line"></div><div class="line">//推荐</div><div class="line">var errorMessage = &apos;This is a super long error that &apos; +</div><div class="line">  &apos;was thrown because of Batman.&apos; +</div><div class="line">  &apos;When you stop to think about &apos; +</div><div class="line">  &apos;how Batman had anything to do &apos; +</div><div class="line">  &apos;with this, you would get nowhere &apos; +</div><div class="line">  &apos;fast.&apos;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>当程序建立一个字符串时， 使用join代替字符串连接。特别是在IE下：<a href="http://jsperf.com/string-vs-array-concat/2" target="_blank" rel="external">jsPerf</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">var items,</div><div class="line">    messages,</div><div class="line">    length, i;</div><div class="line"></div><div class="line">messages = [&#123;</div><div class="line">    state: &apos;success&apos;,</div><div class="line">    message: &apos;This one worked.&apos;</div><div class="line">&#125;,&#123;</div><div class="line">    state: &apos;success&apos;,</div><div class="line">    message: &apos;This one worked as well.&apos;</div><div class="line">&#125;,&#123;</div><div class="line">    state: &apos;error&apos;,</div><div class="line">    message: &apos;This one did not work.&apos;</div><div class="line">&#125;];</div><div class="line"></div><div class="line">length = messages.length;</div><div class="line"></div><div class="line">// 不推荐</div><div class="line">function inbox(messages) &#123;</div><div class="line">  items = &apos;&lt;ul&gt;&apos;;</div><div class="line"></div><div class="line">  for (i = 0; i &lt; length; i++) &#123;</div><div class="line">    items += &apos;&lt;li&gt;&apos; + messages[i].message + &apos;&lt;/li&gt;&apos;;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  return items + &apos;&lt;/ul&gt;&apos;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 推荐</div><div class="line">function inbox(messages) &#123;</div><div class="line">  items = [];</div><div class="line"></div><div class="line">  for (i = 0; i &lt; length; i++) &#123;</div><div class="line">    items[i] = messages[i].message;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  return &apos;&lt;ul&gt;&lt;li&gt;&apos; + items.join(&apos;&lt;/li&gt;&lt;li&gt;&apos;) + &apos;&lt;/li&gt;&lt;/ul&gt;&apos;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a><a href="#函数" title="函数"></a>函数</h2><ul>
+<li><p>函数表达式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// 匿名函数表达式</div><div class="line">var anonymous = function()&#123;</div><div class="line">  return true;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 命名函数表达式</div><div class="line">var named = function named() &#123;</div><div class="line">  return true;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">// 立即执行的函数表达式（IIFE）</div><div class="line">(function()&#123;</div><div class="line">  console.log(&apos;Welcome to the Internet. Please follow me.&apos;);</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+</li>
+<li><p>不要将函数声明放在如if/while循环或其他任何语句中。但可以用函数表达式来替代函数声明这么做。一些浏览器可能的确可以在语句中使用函数声明。但是在解析方面的处理各不相同，各种浏览器下兼容性很不好。</p>
+</li>
+<li><p><strong>注意:</strong> ECMA-262定义了一系列的语句，但是函数声明并没有被归类为真正的语句。<a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf#page=97" target="_blank" rel="external">关于这点可查看ECMA-262的文档</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">//不推荐</div><div class="line">if (currentUser)&#123;</div><div class="line">  function test() &#123;</div><div class="line">    console.log(&apos;Nope.&apos;);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//推荐</div><div class="line">if (currentUser)&#123;</div><div class="line">  var test = function test() &#123;</div><div class="line">    console.log(&apos;Yup.&apos;);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>arguments</code> 不能作为一个参数的名字， 因为这会覆盖每一个函数内的<code>arguments</code>对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//不推荐</div><div class="line">function nope(name, options, arguments) &#123;</div><div class="line">  // ...stuff...</div><div class="line">&#125;</div><div class="line"></div><div class="line">//推荐</div><div class="line">function yup(name, options, args) &#123;</div><div class="line">  // ...stuff...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a><a href="#属性" title="属性"></a>属性</h2><ul>
+<li><p>访问一个属性时，使用点的形式取值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var luke = &#123;</div><div class="line">  jedi: true,</div><div class="line">  age: 28</div><div class="line">&#125;;</div><div class="line"></div><div class="line">// 不推荐</div><div class="line">var isJedi = luke[&apos;jedi&apos;];</div><div class="line"></div><div class="line">// 推荐</div><div class="line">var isJedi = luke.jedi;</div></pre></td></tr></table></figure>
+</li>
+<li><p>需要一个变量访问一个属性时，使用“[]”来取值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var luke = &#123;</div><div class="line">  jedi: true,</div><div class="line">  age: 28</div><div class="line">&#125;;</div><div class="line"></div><div class="line">function getProp(prop) &#123;</div><div class="line">  return luke[prop];</div><div class="line">&#125;</div><div class="line"></div><div class="line">var isJedi = getProp(&apos;jedi&apos;);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a><a href="#变量" title="变量"></a>变量</h2><ul>
+<li><p>总是使用 <code>var</code> 来定义变量。如果不这么做将定义一个全局变量出来。我们希望避免全局命名空间的污染。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 不推荐</div><div class="line">superPower = new SuperPower();</div><div class="line"></div><div class="line">// 推荐</div><div class="line">var superPower = new SuperPower();</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用一个<code>var</code> 声明多个变量，并且每声明一个变量就换一行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// 不推荐</div><div class="line">var items = getItems();</div><div class="line">var goSportsTeam = true;</div><div class="line">var dragonball = &apos;z&apos;;</div><div class="line"></div><div class="line">// 推荐</div><div class="line">var items = getItems(),</div><div class="line">    goSportsTeam = true,</div><div class="line">    dragonball = &apos;z&apos;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>声明多个变量时，把不赋值的变量放在后面。这样做是有好处的，如果日后你想给未赋值变量赋值的时候，可能要引用到上面已经赋值的变量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// 不推荐</div><div class="line">var i, len, dragonball,</div><div class="line">    items = getItems(),</div><div class="line">    goSportsTeam = true;</div><div class="line"></div><div class="line">// 不推荐</div><div class="line">var i, items = getItems(),</div><div class="line">    dragonball,</div><div class="line">    goSportsTeam = true,</div><div class="line">    len;</div><div class="line"></div><div class="line">// 推荐</div><div class="line">var items = getItems(),</div><div class="line">    goSportsTeam = true,</div><div class="line">    dragonball,</div><div class="line">    length,</div><div class="line">    i;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在一个作用域的顶部给一个变量赋值。这样有助于避开，变量声明和声明提前的分配问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">// 不推荐</div><div class="line">function() &#123;</div><div class="line">  test();</div><div class="line">  console.log(&apos;doing stuff..&apos;);</div><div class="line"></div><div class="line">  //..other stuff..</div><div class="line"></div><div class="line">  var name = getName();</div><div class="line"></div><div class="line">  if (name === &apos;test&apos;) &#123;</div><div class="line">    return false;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  return name;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 推荐</div><div class="line">function() &#123;</div><div class="line">  var name = getName();</div><div class="line"></div><div class="line">  test();</div><div class="line">  console.log(&apos;doing stuff..&apos;);</div><div class="line"></div><div class="line">  //..other stuff..</div><div class="line"></div><div class="line">  if (name === &apos;test&apos;) &#123;</div><div class="line">    return false;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  return name;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 不推荐</div><div class="line">function() &#123;</div><div class="line">  var name = getName();</div><div class="line"></div><div class="line">  if (!arguments.length) &#123;</div><div class="line">    return false;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  return true;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 推荐</div><div class="line">function() &#123;</div><div class="line">  if (!arguments.length) &#123;</div><div class="line">    return false;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  var name = getName();</div><div class="line"></div><div class="line">  return true;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="声明提前"><a href="#声明提前" class="headerlink" title="声明提前"></a><a href="#声明提前" title="声明提前"></a>声明提前</h2><ul>
+<li><p>不管你在何处给一个变量声明或赋值，javascript解析器都会事先在作用域的顶端做声明提前（Hoisting）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">// 我们知道下面将不能正常运行（假设没有全局变量）</div><div class="line">function example() &#123;</div><div class="line">  console.log(notDefined); // =&gt; 抛出一个引用错误</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 在引用这个变量之后，给这个变量赋值将不会抛异常，这是因为javascript解析器有声明提前。</div><div class="line">// 注意：赋的“true”值，不会被提前。</div><div class="line">function example() &#123;</div><div class="line">  console.log(declaredButNotAssigned); // =&gt; undefined</div><div class="line">  var declaredButNotAssigned = true;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// javascript解析器,会在作用域的顶部提前声明变量。</div><div class="line">// 用代码描述出来，其实就等同于下面这种情况。</div><div class="line">function example() &#123;</div><div class="line">  var declaredButNotAssigned;</div><div class="line">  console.log(declaredButNotAssigned); // =&gt; undefined</div><div class="line">  declaredButNotAssigned = true;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>匿名函数表达式将该变量名做了提前声明，没有给该变量赋值函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function example() &#123;</div><div class="line">  console.log(anonymous); // =&gt; undefined</div><div class="line"></div><div class="line">  anonymous(); // =&gt; 抛出异常，anonymous 不是一个函数</div><div class="line"></div><div class="line">  var anonymous = function() &#123;</div><div class="line">    console.log(&apos;anonymous function expression&apos;);</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>和匿名一样，有名函数表达式将该变量名做了提前声明，没有给该变量赋值函数名和函数体。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">function example() &#123;</div><div class="line">  console.log(named); // =&gt; undefined</div><div class="line"></div><div class="line">  named(); // =&gt; 抛出异常， named 不是一个函数</div><div class="line"></div><div class="line">  superPower(); // =&gt; 抛出异常， superPower 没定义</div><div class="line"></div><div class="line">  var named = function superPower() &#123;</div><div class="line">    console.log(&apos;Flying&apos;);</div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 把函数名改成和变量名一样，也得出同样的结果。</div><div class="line">function example() &#123;</div><div class="line">  console.log(named); // =&gt; undefined</div><div class="line"></div><div class="line">  named(); // =&gt; 抛出异常， named 不是一个函数</div><div class="line"></div><div class="line">  var named = function named() &#123;</div><div class="line">    console.log(&apos;named&apos;);</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>函数声明会将函数名和函数体声明提前。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function example() &#123;</div><div class="line">  superPower(); // =&gt; Flying</div><div class="line"></div><div class="line">  function superPower() &#123;</div><div class="line">    console.log(&apos;Flying&apos;);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>更多信息请参照 <a href="http://www.adequatelygood.com/" target="_blank" rel="external">Ben Cherry</a> 的 <a href="http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting" target="_blank" rel="external">JavaScript Scoping &amp; Hoisting</a></p>
+</li>
+</ul>
+<h2 id="条件表达式与等式"><a href="#条件表达式与等式" class="headerlink" title="条件表达式与等式"></a><a href="#条件表达式与等式" title="条件表达式与等式"></a>条件表达式与等式</h2><ul>
+<li><p>使用 <code>===</code> 和 <code>!==</code> 代替 <code>==</code> 和 <code>!=</code>。</p>
+</li>
+<li><p>条件表达式 会通过 <code>ToBoolean</code> 来进行强制转化，而且遵循以下的规则：</p>
+<ul>
+<li><strong>对象</strong>被转化为<strong>true</strong></li>
+<li><strong>Undefined</strong>被转化为<strong>false</strong></li>
+<li><strong>Null</strong>被转化为<strong>false</strong></li>
+<li><strong>布尔值</strong>被转化为<strong>相应的布尔值</strong></li>
+<li><strong>数字</strong>当值为<strong>+0</strong>,<strong>-0</strong>或<strong>NaN</strong>时转化为<strong>false</strong>，其他的转化为<strong>true</strong></li>
+<li><p><strong>Strings类型</strong>如果为空时转化为<strong>false</strong>,否则转化为<strong>true</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if ([0]) &#123;</div><div class="line">  // true    </div><div class="line">  // 因为数组是对象，对象会被转化为 true</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>使用快捷方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">// 不推荐</div><div class="line">if (name !== &apos;&apos;) &#123;</div><div class="line">  // ...stuff...</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 推荐</div><div class="line">if (name) &#123;</div><div class="line">  // ...stuff...</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 不推荐</div><div class="line">if (collection.length &gt; 0) &#123;</div><div class="line">  // ...stuff...</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 推荐</div><div class="line">if (collection.length) &#123;</div><div class="line">  // ...stuff...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>更多的信息 请看 Angus Croll 的 <a href="http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108" target="_blank" rel="external">Truth Equality and JavaScript</a></p>
+</li>
+</ul>
+<h2 id="块"><a href="#块" class="headerlink" title="块"></a><a href="#块" title="块"></a>块</h2><ul>
+<li><p>给多行的块，使用大括号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">// 不推荐</div><div class="line">if (test)</div><div class="line">  return false;</div><div class="line"></div><div class="line">// 推荐</div><div class="line">if (test) return false;</div><div class="line"></div><div class="line">// 推荐</div><div class="line">if (test) &#123;</div><div class="line">  return false;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 不推荐</div><div class="line">function() &#123; return false; &#125;</div><div class="line"></div><div class="line">// 推荐</div><div class="line">function() &#123;</div><div class="line">  return false;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a><a href="#注释" title="注释"></a>注释</h2><ul>
+<li><p>使用 <code>/**...*/</code> 进行多行注释。注释要包括描述、指定类型、参数值和返回值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">// 不推荐</div><div class="line"></div><div class="line">// make() returns a new element</div><div class="line">// based on the passed in tag name</div><div class="line">//</div><div class="line">// @param &lt;String&gt; tag</div><div class="line">// @return &lt;Element&gt; element</div><div class="line">function make(tag) &#123;</div><div class="line"></div><div class="line">  // ...stuff...</div><div class="line"></div><div class="line">  return element;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 推荐</div><div class="line">/**</div><div class="line"> * make() returns a new element</div><div class="line"> * based on the passed in tag name</div><div class="line"> *</div><div class="line"> * @param &lt;String&gt; tag</div><div class="line"> * @return &lt;Element&gt; element</div><div class="line"> */</div><div class="line">function make(tag) &#123;</div><div class="line"></div><div class="line">  // ...stuff...</div><div class="line"></div><div class="line">  return element;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用 <code>//</code> 进行单行注释。注释单独占一行，并写在需要注释对象的上面。在注释的上面留一个空行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">// 不推荐</div><div class="line">var active = true;  // is current tab</div><div class="line"></div><div class="line">// 推荐</div><div class="line">// is current tab</div><div class="line">var active = true;</div><div class="line"></div><div class="line">// 不推荐</div><div class="line">function getType() &#123;</div><div class="line">  console.log(&apos;fetching type...&apos;);</div><div class="line">  // set the default type to &apos;no type&apos;</div><div class="line">  var type = this._type || &apos;no type&apos;;</div><div class="line"></div><div class="line">  return type;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 推荐</div><div class="line">function getType() &#123;</div><div class="line">  console.log(&apos;fetching type...&apos;);</div><div class="line"></div><div class="line">  // set the default type to &apos;no type&apos;</div><div class="line">  var type = this._type || &apos;no type&apos;;</div><div class="line"></div><div class="line">  return type;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>给你的代码加前缀，比如<code>FIXME</code>或<code>TODO</code>，这样有助于其他开发者可以迅速理解你指出的需要被处理的问题。<br>如果想更清晰一点你还可以在后面加上描述，比如: <code>FIXME -- need to figure this out</code>或<code>TODO -- need to implement.</code></p>
+</li>
+<li><p>使用 <code>// FIXME:</code> 去注释问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function Calculator() &#123;</div><div class="line"></div><div class="line">  // FIXME: shouldn&apos;t use a global here</div><div class="line">  total = 0;</div><div class="line"></div><div class="line">  return this;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用 <code>// TODO:</code> 来注释解决方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function Calculator() &#123;</div><div class="line"></div><div class="line">  // TODO: total should be configurable by an options param</div><div class="line">  this.total = 0;</div><div class="line"></div><div class="line">  return this;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="空格"><a href="#空格" class="headerlink" title="空格"></a><a href="#空格" title="空格"></a>空格</h2><ul>
+<li><p>将tab键设成2个空格</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">// 不推荐</div><div class="line">function() &#123;</div><div class="line">∙∙∙∙var name;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 不推荐</div><div class="line">function() &#123;</div><div class="line">∙var name;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 推荐</div><div class="line">function() &#123;</div><div class="line">∙∙var name;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>逗号/冒号/小括号后面留一个空格</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">// 不推荐</div><div class="line">function test()&#123;</div><div class="line">  console.log(&apos;test&apos;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 推荐</div><div class="line">function test() &#123;</div><div class="line">  console.log(&apos;test&apos;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 不推荐</div><div class="line">dog.set(&apos;attr&apos;,&#123;</div><div class="line">  age: &apos;1 year&apos;,</div><div class="line">  breed: &apos;Bernese Mountain Dog&apos;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 推荐</div><div class="line">dog.set(&apos;attr&apos;, &#123;</div><div class="line">  age: &apos;1 year&apos;,</div><div class="line">  breed: &apos;Bernese Mountain Dog&apos;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>在文件的最后留一个空行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 不推荐</div><div class="line">(function(global) &#123;</div><div class="line">  // ...stuff...</div><div class="line">&#125;)(this);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 推荐</div><div class="line">(function(global) &#123;</div><div class="line">  // ...stuff...</div><div class="line">&#125;)(this);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="逗号"><a href="#逗号" class="headerlink" title="逗号"></a><a href="#逗号" title="逗号"></a>逗号</h2><ul>
+<li><p>逗号不要前置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">// 不推荐</div><div class="line">var once</div><div class="line">  , upon</div><div class="line">  , aTime;</div><div class="line"></div><div class="line">// 推荐</div><div class="line">var once,</div><div class="line">    upon,</div><div class="line">    aTime;</div><div class="line"></div><div class="line">// 不推荐</div><div class="line">var hero = &#123;</div><div class="line">    firstName: &apos;Bob&apos;</div><div class="line">  , lastName: &apos;Parr&apos;</div><div class="line">  , heroName: &apos;Mr. Incredible&apos;</div><div class="line">  , superPower: &apos;strength&apos;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">// 推荐</div><div class="line">var hero = &#123;</div><div class="line">  firstName: &apos;Bob&apos;,</div><div class="line">  lastName: &apos;Parr&apos;,</div><div class="line">  heroName: &apos;Mr. Incredible&apos;,</div><div class="line">  superPower: &apos;strength&apos;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>最后一个元素不可以加逗号。这在IE6和IE7还有IE9的怪异模式下出错。</p>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a><a href="#关于" title="关于"></a>关于</h2></li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-08-21T09:56:25.883Z" itemprop="dateUpdated">2017-08-21 17:56:25</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2017/02/12/js编码规范/" target="_blank" rel="external">http://yoursite.com/2017/02/12/js编码规范/</a>
+        
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/header.png" alt="我一路向北">
+            我一路向北
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/02/12/js编码规范/&title=《JavaScript编码规范指南》 — 我一路向北&pic=http://yoursite.com/img/header.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/02/12/js编码规范/&title=《JavaScript编码规范指南》 — 我一路向北&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/02/12/js编码规范/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScript编码规范指南》 — 我一路向北&url=http://yoursite.com/2017/02/12/js编码规范/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/02/12/js编码规范/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/02/12/js实现继承/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">JavaScript实现继承</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/02/12/ES6编码风格/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">ES6编程风格</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=2141718"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wx.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wx.jpg" data-alipay="/img/ali.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="bottom">
+        <p><span>我一路向北 &copy; 2016 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/02/12/js编码规范/&title=《JavaScript编码规范指南》 — 我一路向北&pic=http://yoursite.com/img/header.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/02/12/js编码规范/&title=《JavaScript编码规范指南》 — 我一路向北&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/02/12/js编码规范/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScript编码规范指南》 — 我一路向北&url=http://yoursite.com/2017/02/12/js编码规范/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/02/12/js编码规范/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIUlEQVR42u3aSW7DMAwF0Nz/0um2QGD7k1QLRHpeBY4HvSwUTq9XfLw/js/zV9f/PvP5+f6uxQcGBsbXMt63xz1j1Vvy916uAQMD4wDG1YuvrrnfavMn39+VPwEDAwNjfk01rMTAwMBYy8gXmp/BwMDA6CWx9wlqNezLn7Y4F8fAwPhCRl4s+//Pf9LfwMDA+CrGvFiftC3zM70DAwNjb0Y1XEvCskkQ2VsPBgbG3oxkcdUEdTK60WuUYmBg7M3IE9f8fG+QYl7yw8DA2JWRp5RVQJL0lmPY/FIMDIytGdW2YjUo7CEfwkoMDIwDGL1xh2r5rNpOWBzDYmBgbMpINsHJ0vNVPfxwGBgYBzDy7bW3y/Uan4ViHAYGxjGMySBF0p5MtuNeaQ8DA+MERl51z5ebtwqSrflhnRgYGFszqi+uhoDVb/PPlzwMDIxjGNUy/drm5SSFxsDA2I+RB3Z5EjtpMzSfhoGBsTWjNyRRbTFWRzcwMDAw7hnVADFfxCTojJJYDAyMAxjJkZTeCkMSxQbDQ3KLgYFxACMv+lc3zVVFvVe+N2NgYGzEeBePPOCbjJqVh8YwMDC2ZvT2tGraWR2YGA1bYGBgbMroJa69zfcPw0cMDIwDGJMBiGqroNq2jP4rMDAwMMbR5bLlXn2LgYGBMSiZ3W+y1aDz8l4MDIwDGNWRiLysNmkP5CkuBgbG3oxeoDZpMSY/RH4XBgbG1owfffTGBH+0jzIAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

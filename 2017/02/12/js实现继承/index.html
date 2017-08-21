@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>JavaScript实现继承 | 我一路向北</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="编程,JavaScript">
+    <meta name="description" content="JavaScript中实现继承的几种方法ES5中的实现概述JavaScript(ES5)中没有像Java那样类的概念，写法跟传统的面向对象语言（比如C++和Java）差异很大，很容易让新学习这门语言的程序员感到困惑。但是我们可以通过原型链prototype来模拟类，去实现继承的相关功能。下面来看看ES5中实现继承常见的三种方法。代码如下： 代码123456789101112131415161718">
+<meta name="keywords" content="编程,JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript实现继承">
+<meta property="og:url" content="http://yoursite.com/2017/02/12/js实现继承/index.html">
+<meta property="og:site_name" content="我一路向北">
+<meta property="og:description" content="JavaScript中实现继承的几种方法ES5中的实现概述JavaScript(ES5)中没有像Java那样类的概念，写法跟传统的面向对象语言（比如C++和Java）差异很大，很容易让新学习这门语言的程序员感到困惑。但是我们可以通过原型链prototype来模拟类，去实现继承的相关功能。下面来看看ES5中实现继承常见的三种方法。代码如下： 代码123456789101112131415161718">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-08-21T10:01:17.013Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript实现继承">
+<meta name="twitter:description" content="JavaScript中实现继承的几种方法ES5中的实现概述JavaScript(ES5)中没有像Java那样类的概念，写法跟传统的面向对象语言（比如C++和Java）差异很大，很容易让新学习这门语言的程序员感到困惑。但是我们可以通过原型链prototype来模拟类，去实现继承的相关功能。下面来看看ES5中实现继承常见的三种方法。代码如下： 代码123456789101112131415161718">
+    
+        <link rel="alternate" type="application/atom+xml" title="我一路向北" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/header.jpg">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.png)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/header.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">我一路向北</h5>
+          <a href="mailto:1084190606@qq.com" title="1084190606@qq.com" class="mail">1084190606@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/f1084" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/cuterr" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://code.w3ctech.com/5404"  >
+                <i class="icon icon-lg icon-link"></i>
+                Demo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">JavaScript实现继承</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">JavaScript实现继承</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-02-12T08:12:11.000Z" itemprop="datePublished" class="page-time">
+  2017-02-12
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#JavaScript中实现继承的几种方法"><span class="post-toc-number">1.</span> <span class="post-toc-text">JavaScript中实现继承的几种方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ES5中的实现"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">ES5中的实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#概述"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#代码"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">代码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三种方法比较"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">三种方法比较</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ES6中的实现"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">ES6中的实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#概述-1"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#代码-1"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">代码</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-js实现继承"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">JavaScript实现继承</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-02-12 16:12:11" datetime="2017-02-12T08:12:11.000Z"  itemprop="datePublished">2017-02-12</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="JavaScript中实现继承的几种方法"><a href="#JavaScript中实现继承的几种方法" class="headerlink" title="JavaScript中实现继承的几种方法"></a><a href="#JavaScript中实现继承的几种方法" title="JavaScript中实现继承的几种方法"></a>JavaScript中实现继承的几种方法</h1><h2 id="ES5中的实现"><a href="#ES5中的实现" class="headerlink" title="ES5中的实现"></a><a href="#ES5中的实现" title="ES5中的实现"></a>ES5中的实现</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a><a href="#概述" title="概述"></a>概述</h3><p>JavaScript(ES5)中没有像Java那样类的概念，写法跟传统的面向对象语言（比如C++和Java）差异很大，很容易让新学习这门语言的程序员感到困惑。但是我们可以通过原型链prototype来模拟类，去实现继承的相关功能。下面来看看ES5中实现继承常见的三种方法。代码如下：</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a><a href="#代码" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * JavaScript(ES5)中实现继承的几种方法</div><div class="line"> */</div><div class="line"></div><div class="line">// 定义基类Person</div><div class="line">function Person(name, age) &#123;</div><div class="line">  this.name = name;</div><div class="line">  this.age = age;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 共享数据</div><div class="line">Person.prototype.LEGS_NUM = 2;</div><div class="line"></div><div class="line">// 共享方法</div><div class="line">Person.prototype.info = function () &#123;</div><div class="line">  console.log(&apos;My name is &apos; + this.name + &apos; .I\&apos;m &apos; + this.age + &apos; years old now&apos;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">Person.prototype.walk = function () &#123;</div><div class="line">  console.log(this.name + &apos; is walking...&apos;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">// Student子类</div><div class="line">function Student(name, age, className) &#123;</div><div class="line">  // 调用父类</div><div class="line">  Person.call(this, name, age);</div><div class="line">  this.className = className;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 1⃣️ 方法一：Person.prototype直接赋值给Student.prototype</div><div class="line">// Student.prototype = Person.prototype;</div><div class="line"></div><div class="line">// 2⃣️ 方法二：Student.prototype为Person的实例</div><div class="line">// Student.prototype = new Person();</div><div class="line"></div><div class="line">// 3⃣️ 方法三：创建一个空对象，对象的原型指向Person.prototype，赋值给Student.prototype</div><div class="line">Student.prototype = Object.create(Person.prototype);</div><div class="line"></div><div class="line">Student.prototype.constructor = Student;</div><div class="line"></div><div class="line">// 覆盖父类的info方法</div><div class="line">Student.prototype.info = function () &#123;</div><div class="line">  console.log(&apos;My name is &apos; + this.name + &apos;,I\&apos;m &apos; + this.age + &apos; years old now, and from class &apos; + this.className + &apos;.&apos;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">// Student类的共享方法</div><div class="line">Student.prototype.learn = function (subject) &#123;</div><div class="line">  console.log(this.name + &apos; is learning &apos; + subject + &apos;.&apos;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">// 测试,创建一个Student的实例</div><div class="line">var microzz = new Student(&apos;Microzz&apos;, 22, 5);</div><div class="line">microzz.info(); // My name is Microzz,I&apos;m 22 years old now, and from class 5.</div><div class="line">console.log(microzz.LEGS_NUM); // 2</div><div class="line">microzz.walk(); // Microzz is walking...</div><div class="line">microzz.learn(&apos;JavaScript&apos;); // Microzz is learning JavaScript.</div><div class="line">console.log(microzz.__proto__.__proto__ === Person.prototype); // true</div><div class="line">console.log(microzz.__proto__ === Student.prototype); // true</div><div class="line">console.log(microzz.__proto__.constructor === Student); // true</div></pre></td></tr></table></figure>
+<h3 id="三种方法比较"><a href="#三种方法比较" class="headerlink" title="三种方法比较"></a><a href="#三种方法比较" title="三种方法比较"></a>三种方法比较</h3><p>上面代码中有三种方法实现继承，现在我们可以来分析一下这几种方法。<br>1⃣️这种方法中，Person.prototype直接赋值给Student.prototype，但是有一个很严重的问题，如果子类prototype添加新的东西的话也会改写父类。所以这种方法不推荐。<br>2⃣️第二种方法Student.prototype为Person的实例，这也是可以实现的。但是Person构造函数有参数应该传什么呢？传任何一个都是很奇怪的。所以也不推荐。<br>3⃣️第三种方法是比较理想的，创建一个空对象，对象的原型指向Person.prototype，赋值给Student.prototype。但是Object.create也有一点小瑕疵，因为它是ES5之后才支持的，不过我们可以通过模拟实现Object.create方法。代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">if (!Object.create) &#123;</div><div class="line">  Object.prototype.create = function (proto) &#123;</div><div class="line">    function F() &#123;&#125;</div><div class="line">    F.prototype = proto;</div><div class="line">    return new F;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样在ES5中就完美实现了继承😄</p>
+<h2 id="ES6中的实现"><a href="#ES6中的实现" class="headerlink" title="ES6中的实现"></a><a href="#ES6中的实现" title="ES6中的实现"></a>ES6中的实现</h2><h3 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a><a href="#概述-1" title="概述"></a>概述</h3><p>ES6提供了更接近传统语言”类”的写法，引入了Class（类）这个概念，作为对象的模板。通过class关键字，可以定义类。基本上，ES6的class可以看作只是一个语法糖，它的绝大部分功能，ES5都可以做到，新的class写法只是让对象原型的写法更加清晰、更像面向对象编程的语法而已。下面我们用ES6的语法实现类的继承。</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a><a href="#代码-1" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">// 基类 Person</div><div class="line">class Person &#123;</div><div class="line">  // 父类的构造方法</div><div class="line">  constructor(name, age) &#123;</div><div class="line">    this.name = name;</div><div class="line">    this.age = age;</div><div class="line">    // 共享变量</div><div class="line">    this.LEGS_NUM = 2;</div><div class="line">  &#125;</div><div class="line">  // 父类的info方法</div><div class="line">  info() &#123;</div><div class="line">    console.log(`My name is $&#123;this.name&#125;, I\&apos;m $&#123;this.age&#125; years old now.`);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // 父类的walk方法</div><div class="line">  walk() &#123;</div><div class="line">    console.log(this.name + &apos; is walking...&apos;);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">// 子类 Student</div><div class="line">class Student extends Person &#123;</div><div class="line">  constructor(name, age, className) &#123;</div><div class="line">    // 调用基类的构造方法</div><div class="line">    super(name, age);</div><div class="line">    this.className = className;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // 覆盖父类的info方法</div><div class="line">  info() &#123;</div><div class="line">    console.log(`My name is $&#123;this.name&#125;, I\&apos;m $&#123;this.age&#125; years old, and from class $&#123;this.className&#125;.`);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 实例化一个Student的实例</div><div class="line">let stu = new Student(&apos;Zhaohui&apos;, 22, 5);</div><div class="line">stu.info(); // My name is Zhaohui, I&apos;m 22 years old, and from class 5.</div><div class="line">stu.walk(); // Zhaohui is walking...</div><div class="line">console.log(stu.LEGS_NUM); // 2</div><div class="line">console.log(stu instanceof Student); // true</div><div class="line">console.log(stu instanceof Person); // true</div></pre></td></tr></table></figure>
+<p>这样我们就通过ES6中的class实现了“类”的继承了😄</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-08-21T10:01:17.013Z" itemprop="dateUpdated">2017-08-21 18:01:17</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2017/02/12/js实现继承/" target="_blank" rel="external">http://yoursite.com/2017/02/12/js实现继承/</a>
+        
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/header.png" alt="我一路向北">
+            我一路向北
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/02/12/js实现继承/&title=《JavaScript实现继承》 — 我一路向北&pic=http://yoursite.com/img/header.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/02/12/js实现继承/&title=《JavaScript实现继承》 — 我一路向北&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/02/12/js实现继承/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScript实现继承》 — 我一路向北&url=http://yoursite.com/2017/02/12/js实现继承/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/02/12/js实现继承/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/02/14/原生JS中CSS相关API合集/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">原生JS中CSS相关API合集</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/02/12/js编码规范/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">JavaScript编码规范指南</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=2141718"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wx.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wx.jpg" data-alipay="/img/ali.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="bottom">
+        <p><span>我一路向北 &copy; 2016 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/02/12/js实现继承/&title=《JavaScript实现继承》 — 我一路向北&pic=http://yoursite.com/img/header.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/02/12/js实现继承/&title=《JavaScript实现继承》 — 我一路向北&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/02/12/js实现继承/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScript实现继承》 — 我一路向北&url=http://yoursite.com/2017/02/12/js实现继承/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/02/12/js实现继承/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACL0lEQVR42u3aQW7jMBAEQP//0w6wt4VjuXtoBRBVPAVKJLF0mAzZfDzi8fw33l1/Ha93vf72+GmPMwYGBsZlGc/DMZvE61/O7k3mhoGBcR/GcZFNium7p7X3Hj/t7XUMDAyM4GVJkW0/BAYGBsa3GG2bmOMxMDAw2kXst4rmMeD0tTgGBsYFGW0w8Jc/n5hvYGBgXITxLMdxm5g3gm0g+mFWGBgYWzOS+HC9KOdHN9rqWqSgGBgYl2W0y8jZdPNDGO0H/e//BgYGxm0Ys8LaNpH5pltEwsDAuAGjndbsgNe39sowMDDuxkgmt7Jkbbfqkk+AgYFxN0Z7MGtWatuynmN+yTcwMDC2Y7S3rVxfCUGXFrQYGBhbMIalrdzcb5PVuhxjYGBsypgdrcgnnV9ZiRYwMDD2ZsymkrdreWA5+0AYGBgYeQzQNo7rsUFdcDEwMC7OaI9tzSKEtu1LjmIUeSwGBsbFGfl0k7KbB5YrT6uDAQwMjI0YK4vYWTwwizMxMDDuw4hOYQSvbK+0i+cPS2sMDIybMfIDXivltS3rH65jYGBszchbvfwQxsq9s3dhYGDszXiWo516vvXWbrS9bQ0xMDC2Y6wXxPWmMI9Co8MWGBgYmzLyiHG2cG171VlQgYGBcQdGXgTbLbmVYKAo8RgYGBijcpzHn/nn+9AaYmBgYHxpxZx8iDrfwMDAuAFjdiA1afvajbwhGwMDY2tGGwzkjd1KwHDKBh8GBsb1GD9Mvv718HpL2QAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
