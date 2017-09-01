@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>JavaScript 性能调优 | 我一路向北</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="JavaScript">
+    <meta name="description" content="Web 开发中经常会遇到性能的问题，尤其是针对当今的 Web2.0 应用。JavaScript 是当今使用最为广泛的 Web 开发语言，Web 应用的性能问题很大一部分都是由程序员写的 JavaScript 脚本性能不佳所造成的，里面包括了 JavaScript 语言本身的性能问题，以及其与 DOM 交互时的性能问题。本文主要来探讨一下如何尽可能多的避免这类问题，从而最大限度的提高 Web 应用">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 性能调优">
+<meta property="og:url" content="http://yoursite.com/2017/07/19/JavaScript 性能调优/index.html">
+<meta property="og:site_name" content="我一路向北">
+<meta property="og:description" content="Web 开发中经常会遇到性能的问题，尤其是针对当今的 Web2.0 应用。JavaScript 是当今使用最为广泛的 Web 开发语言，Web 应用的性能问题很大一部分都是由程序员写的 JavaScript 脚本性能不佳所造成的，里面包括了 JavaScript 语言本身的性能问题，以及其与 DOM 交互时的性能问题。本文主要来探讨一下如何尽可能多的避免这类问题，从而最大限度的提高 Web 应用">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-09-01T02:18:49.715Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 性能调优">
+<meta name="twitter:description" content="Web 开发中经常会遇到性能的问题，尤其是针对当今的 Web2.0 应用。JavaScript 是当今使用最为广泛的 Web 开发语言，Web 应用的性能问题很大一部分都是由程序员写的 JavaScript 脚本性能不佳所造成的，里面包括了 JavaScript 语言本身的性能问题，以及其与 DOM 交互时的性能问题。本文主要来探讨一下如何尽可能多的避免这类问题，从而最大限度的提高 Web 应用">
+    
+        <link rel="alternate" type="application/atom+xml" title="我一路向北" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/header.jpg">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.png)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/header.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">我一路向北</h5>
+          <a href="mailto:1084190606@qq.com" title="1084190606@qq.com" class="mail">1084190606@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/f1084" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/cuterr" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://code.w3ctech.com/5404"  >
+                <i class="icon icon-lg icon-link"></i>
+                Demo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">JavaScript 性能调优</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">JavaScript 性能调优</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-07-19T14:22:55.000Z" itemprop="datePublished" class="page-time">
+  2017-07-19
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#JavaScript-性能调优"><span class="post-toc-number">1.</span> <span class="post-toc-text">JavaScript 性能调优</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-eval-的问题"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1. eval 的问题</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-function-的用法"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2. function 的用法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-函数的作用域链（scope-chain）："><span class="post-toc-number">1.3.</span> <span class="post-toc-text">3.函数的作用域链（scope chain）：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-使用局部变量"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">4. 使用局部变量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-慎用-with"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">5. 慎用 with</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-改进-with"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">6. 改进 with</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-缩小对象访问层级"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">7. 缩小对象访问层级</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-字符串简单拼接"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">8. 字符串简单拼接</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#9-字符串数组方式拼接"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">9. 字符串数组方式拼接</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#10-字符串快速拼接"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">10. 字符串快速拼接</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#11-隐式类型转换"><span class="post-toc-number">1.11.</span> <span class="post-toc-text">11. 隐式类型转换</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#12-避免隐式类型转换"><span class="post-toc-number">1.12.</span> <span class="post-toc-text">12. 避免隐式类型转换</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#13-字符串匹配"><span class="post-toc-number">1.13.</span> <span class="post-toc-text">13.字符串匹配</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#14-利用变量"><span class="post-toc-number">1.14.</span> <span class="post-toc-text">14. 利用变量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#15-利用提前退出"><span class="post-toc-number">1.15.</span> <span class="post-toc-text">15. 利用提前退出</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#16-reflow-介绍"><span class="post-toc-number">1.16.</span> <span class="post-toc-text">16. reflow 介绍</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#17-减少-reflow"><span class="post-toc-number">1.17.</span> <span class="post-toc-text">17. 减少 reflow</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#18-利用-display-减少-reflow"><span class="post-toc-number">1.18.</span> <span class="post-toc-text">18. 利用 display 减少 reflow</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#19-特殊测量属性"><span class="post-toc-number">1.19.</span> <span class="post-toc-text">19. 特殊测量属性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#20-样式相关"><span class="post-toc-number">1.20.</span> <span class="post-toc-text">20. 样式相关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#className-解决方案"><span class="post-toc-number">1.20.1.</span> <span class="post-toc-text">className 解决方案</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cssText-解决方案"><span class="post-toc-number">1.20.2.</span> <span class="post-toc-text">cssText 解决方案</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#21-动态创建-script-标签"><span class="post-toc-number">1.21.</span> <span class="post-toc-text">21.动态创建 script 标签</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结束语"><span class="post-toc-number">1.22.</span> <span class="post-toc-text">结束语</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-JavaScript 性能调优"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">JavaScript 性能调优</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-07-19 22:22:55" datetime="2017-07-19T14:22:55.000Z"  itemprop="datePublished">2017-07-19</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>Web 开发中经常会遇到性能的问题，尤其是针对当今的 Web2.0 应用。JavaScript 是当今使用最为广泛的 Web 开发语言，Web 应用的性能问题很大一部分都是由程序员写的 JavaScript 脚本性能不佳所造成的，里面包括了 JavaScript 语言本身的性能问题，以及其与 DOM 交互时的性能问题。本文主要来探讨一下如何尽可能多的避免这类问题，从而最大限度的提高 Web 应用的性能。</p>
+</blockquote>
+<h1 id="JavaScript-性能调优"><a href="#JavaScript-性能调优" class="headerlink" title="JavaScript 性能调优"></a>JavaScript 性能调优</h1><p>JavaScript 语言由于它的单线程和解释执行的两个特点，决定了它本身有很多地方有性能问题，所以可改进的地方有不少。<br>eval 的问题：<br>比较下述代码：</p>
+<h2 id="1-eval-的问题"><a href="#1-eval-的问题" class="headerlink" title="1. eval 的问题"></a>1. eval 的问题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var reference = &#123;&#125;, props = “p1”; </div><div class="line">eval(“reference.” + props + “=5”) </div><div class="line"> </div><div class="line">var reference = &#123;&#125;, props = “p1”; </div><div class="line">reference[props] = 5</div></pre></td></tr></table></figure>
+<p>有<code>eval</code>的代码比没有<code>eval</code>的代码要慢上 100 倍以上。</p>
+<blockquote>
+<p>主要原因是：JavaScript 代码在执行前会进行类似<code>预编译</code>的操作：首先会创建一个当前执行环境下的活动对象，并将那些用 var 申明的变量设置为活动对象的属性，但是此时这些变量的赋值都是 undefined，并将那些以 function 定义的函数也添加为活动对象的属性，而且它们的值正是函数的定义。但是，如果你使用了<code>eval</code>，则<code>eval</code>中的代码（实际上为字符串）无法预先识别其上下文，无法被提前解析和优化，即无法进行预编译的操作。所以，其性能也会大幅度降低。</p>
+</blockquote>
+<h2 id="2-function-的用法"><a href="#2-function-的用法" class="headerlink" title="2. function 的用法"></a>2. function 的用法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var func1 = new Function(“return arguments[0] + arguments[1]”);</div><div class="line">func1(10, 20); </div><div class="line"> </div><div class="line">var func2 = function()&#123; return arguments[0] + arguments[1] &#125;;</div><div class="line">func2(10, 20);</div></pre></td></tr></table></figure>
+<p>这里类似之前提到的<code>eval</code>方法，这里<code>func1</code>的效率会比<code>func2</code>的效率差很多，所以推荐使用第二种方式。</p>
+<h2 id="3-函数的作用域链（scope-chain）："><a href="#3-函数的作用域链（scope-chain）：" class="headerlink" title="3.函数的作用域链（scope chain）："></a>3.函数的作用域链（scope chain）：</h2><blockquote>
+<p>JavaScript 代码解释执行，在进入函数内部时，它会预先分析当前的变量，并将这些变量归入不同的层级（level），一般情况下：<br>局部变量放入层级 1（浅），全局变量放入层级 2（深）。如果进入<code>with</code>或<code>try – catch</code>代码块，则会增加新的层级，即将<code>with</code>或<code>catch</code>里的变量放入最浅层（层 1），并将之前的层级依次加深。</p>
+</blockquote>
+<p>参考如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var myObj = … .. </div><div class="line">… .. </div><div class="line"> function process()&#123; </div><div class="line"> var images = document.getElementsByTagName(&quot;img&quot;), </div><div class="line"> widget = document.getElementsByTagName(&quot;input&quot;), </div><div class="line"> combination = []; </div><div class="line"> for(var i = 0; i &lt; images.length; i++)&#123; </div><div class="line"> combination.push(combine(images[i], widget[2*i])); </div><div class="line"> &#125; </div><div class="line"> myObj.container.property1 = combination[0]; </div><div class="line"> myObj.container.property2 = combination[combination.length-1]; </div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>这里我们可以看到，<code>images</code>，<code>widget</code>，<code>combination</code>属于局部变量,在层 1。<code>documen</code>，<code>myObj</code>属于全局变量，<br>在层 2。变量所在的层越浅，访问（读取或修改）速度越快，层越深，访问速度越慢。所以这里对<code>images</code>，<code>widget</code>，<code>combination</code>的访问速度比<code>document</code>，<code>myObj</code>要快一些。所以推荐尽量使用局部变量。</p>
+</blockquote>
+<h2 id="4-使用局部变量"><a href="#4-使用局部变量" class="headerlink" title="4. 使用局部变量"></a>4. 使用局部变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var myObj; </div><div class="line"> function process()&#123; </div><div class="line"> var doc = document;</div><div class="line"> var images = doc.getElementsByTagName(&quot;img&quot;), </div><div class="line"> widget = doc.getElementsByTagName(&quot;input&quot;), </div><div class="line"> combination = []; </div><div class="line"> for(var i = 0; i &lt; images.length; i++)&#123; </div><div class="line"> combination.push(combine(images[i], widget[2*i])); </div><div class="line"> &#125; </div><div class="line"> myObj.container.property1 = combination[0]; </div><div class="line"> myObj.container.property2 = combination[combination.length-1]; </div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p>我们用局部变量<code>doc</code>取代全局变量<code>document</code>，这样可以改进性能，尤其是对于大量使用全局变量的函数里面。</p>
+<h2 id="5-慎用-with"><a href="#5-慎用-with" class="headerlink" title="5. 慎用 with"></a>5. 慎用 with</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var myObj;</div><div class="line">function process()&#123; </div><div class="line">    var doc = document; </div><div class="line">    var images = doc.getElementsByTagName(&quot;img&quot;), </div><div class="line">    widget = doc.getElementsByTagName(&quot;input&quot;), </div><div class="line">    combination = []; </div><div class="line">    for(var i = 0; i &lt; images.length; i++)&#123; </div><div class="line">        combination.push(combine(images[i], widget[2*i])); </div><div class="line">    &#125; </div><div class="line">    with (myObj.container) &#123;</div><div class="line">        property1 = combination[0];</div><div class="line">        property2 = combination[combination.length-1];</div><div class="line">    &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>加上<code>with</code>关键字，我们让代码更加简洁清晰了，但是这样做性能会受影响。正如之前说的，当我们进入<code>with</code>代码块时，<code>combination</code>便从原来的层 1 变到了层 2，这样，效率会大打折扣。所以比较一下，还是使用原来的代码。</p>
+</blockquote>
+<h2 id="6-改进-with"><a href="#6-改进-with" class="headerlink" title="6. 改进 with"></a>6. 改进 with</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var myObj;</div><div class="line"> function process()&#123; </div><div class="line"> var doc = document; </div><div class="line"> var images = doc.getElementsByTagName(&quot;img&quot;), </div><div class="line"> widget = doc.getElementsByTagName(&quot;input&quot;), </div><div class="line"> combination = []; </div><div class="line"> for(var i = 0; i &lt; images.length; i++)&#123; </div><div class="line"> combination.push(combine(images[i], widget[2*i])); </div><div class="line"> &#125; </div><div class="line"> myObj.container.property1 = combination[0];</div><div class="line"> myObj.container.property2 = combination[combination.length-1];</div><div class="line">      &#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>但是这样并不是最好的方式，JavaScript 有个特点，对于 object 对象来说，其属性访问层级越深，效率越低，比如这里的<code>myObj</code>已经访问到了第 3 层，我们可以这样改进一下：</p>
+</blockquote>
+<h2 id="7-缩小对象访问层级"><a href="#7-缩小对象访问层级" class="headerlink" title="7. 缩小对象访问层级"></a>7. 缩小对象访问层级</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var myObj = … .. </div><div class="line">… .. </div><div class="line"> function process()&#123; </div><div class="line"> var doc = document; </div><div class="line">    var images = doc.getElementsByTagName(&quot;img&quot;), </div><div class="line"> widget = doc.getElementsByTagName(&quot;input&quot;), </div><div class="line"> combination = []; </div><div class="line"> for(var i = 0; i &lt; images.length; i++)&#123; </div><div class="line"> combination.push(combine(images[i], widget[2*i])); </div><div class="line"> &#125; </div><div class="line"> var ctn = myObj.container;</div><div class="line"> ctn.property1 = combination[0];</div><div class="line"> ctn.property2 = combination[combination.length-1];</div><div class="line">      &#125;</div></pre></td></tr></table></figure>
+<p>我们用局部变量来代替“myObj”的第 2 层的“container”对象。如果有大量的这种对对象深层属性的访问，可以参照以上方式提高性能。<br>字符串（String）相关<br>字符串拼接<br>经常看到这样的代码：</p>
+<h2 id="8-字符串简单拼接"><a href="#8-字符串简单拼接" class="headerlink" title="8. 字符串简单拼接"></a>8. 字符串简单拼接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">str += “str1” + “str2”</div></pre></td></tr></table></figure>
+<p>这是我们拼接字符串常用的方式，但是这种方式会有一些临时变量的创建和销毁，影响性能，所以推荐使用如下方式拼接</p>
+<h2 id="9-字符串数组方式拼接"><a href="#9-字符串数组方式拼接" class="headerlink" title="9. 字符串数组方式拼接"></a>9. 字符串数组方式拼接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var str_array = []; </div><div class="line">str_array.push(“str1”); </div><div class="line">str_array.push(“str2”); </div><div class="line">str = str_array.join(“”);</div></pre></td></tr></table></figure>
+<p>这里我们利用数组（array）的“join”方法实现字符串的拼接，尤其是程序的老版本的 Internet Explore（IE6）上运行时，会有非常明显的性能上的改进。<br>当然，最新的浏览器（如火狐 Firefox3+，IE8+ 等等）对字符串的拼接做了优化，我们也可以这样写：</p>
+<h2 id="10-字符串快速拼接"><a href="#10-字符串快速拼接" class="headerlink" title="10. 字符串快速拼接"></a>10. 字符串快速拼接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">str +=“str1”</div><div class="line">str +=“str2”</div></pre></td></tr></table></figure>
+<p>新的浏览器对“+=”做了优化，性能略快于数组的“join”方法。在不久的将来更新版本浏览器可能对“+”也会做优化，所以那时我们可以直接写：str += “str1” + “str2”。<br>隐式类型转换<br>参考如下代码：</p>
+<h2 id="11-隐式类型转换"><a href="#11-隐式类型转换" class="headerlink" title="11. 隐式类型转换"></a>11. 隐式类型转换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var str = “12345678”, arr = []; </div><div class="line">for(var i = 0; i &lt;= s.length; i++)&#123; </div><div class="line">arr.push( str.charAt(i)); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里我们在每个循环时都会调用字符串的“charAt”方法，但是由于我们是将常量“12345678”赋值给“str”，所以“str”这里事实上并不是一个字符串对象，当它每次调用“charAt”函数时，都会临时构造值为“12345678”的字符串对象，然后调用“charAt”方法，最后再释放这个字符串临时对象。我们可以做一些改进：</p>
+<h2 id="12-避免隐式类型转换"><a href="#12-避免隐式类型转换" class="headerlink" title="12. 避免隐式类型转换"></a>12. 避免隐式类型转换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var str = new Stirng(“12345678”), arr = []; </div><div class="line">for(var i = 0; i &lt;= s.length; i++)&#123; </div><div class="line">arr.push( str.charAt(i)); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样一来，变量“str”作为一个字符串对象，就不会有这种隐式类型转换的过程了，这样一来，效率会显著提高。</p>
+<h2 id="13-字符串匹配"><a href="#13-字符串匹配" class="headerlink" title="13.字符串匹配"></a>13.字符串匹配</h2><p>JavaScript 有 RegExp 对象，支持对字符串的正则表达式匹配。是一个很好的工具，但是它的性能并不是非常理想。相反，字符串对象（String）本身的一些基本方法的效率是非常高的，比如“substring”，“indexOf”，“charAt”等等，在我们需要用正则表达式匹配字符串时，可以考虑一下：<br>是否能够通过字符串对象本身支持的基本方法解决问题。<br>是否可以通过“substring”来缩小需要用正则表达式的范围。<br>这些方式都能够有效的提高程序的效率。<br>关于正则表达式对象，还有一点需要注意，参考如下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">for(var i = 0; i &lt;= str_array.length; i++)&#123; </div><div class="line"> if(str_array[i].match(/^s*extra\s/))&#123; </div><div class="line"> &#125; </div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<p>这里，我们往“match”方法传入“/^s<em>extra\s/”是会影响效率的，它会构建临时值为“/^s</em>extra\s/”的正则表达式对象，执行“match”方法，然后销毁临时的正则表达式对象。我们可以这样做：</p>
+<h2 id="14-利用变量"><a href="#14-利用变量" class="headerlink" title="14. 利用变量"></a>14. 利用变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var sExpr = /^s*extra\s/;</div><div class="line"> for(var i = 0; i &lt;= str_array.length; i++)&#123; </div><div class="line"> if(str_array[i].match(sExpr))&#123; </div><div class="line"> &#125; </div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p>这样就不会有临时对象了。<br>setTimeout 和 setInterval<br>“setTimeout”和“setInterval”这两个函数可以接受字符串变量，但是会带来和之前谈到的“eval”类似的性能问题，所以建议还是直接传入函数对象本身。<br>利用提前退出<br>参考如下两段代码：</p>
+<h2 id="15-利用提前退出"><a href="#15-利用提前退出" class="headerlink" title="15. 利用提前退出"></a>15. 利用提前退出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"> // 代码 1</div><div class="line">var name = … .; </div><div class="line">var source = …… ; </div><div class="line">if(source.match(/ …… /))&#123; </div><div class="line"></div><div class="line">&#125; </div><div class="line"></div><div class="line"></div><div class="line">// 代码 2</div><div class="line">var name = … .; </div><div class="line">var source = …… ; </div><div class="line">if(name.indexOf( … ) &amp;&amp;source.match(/ …… /))&#123; </div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>代码 2 多了一个对“name.indexOf( … )”的判断，这使得程序每次走到这一段时会先执行“indexOf”的判断，再执行后面的“match”，在“indexOf”比“match”效率高很多的前提下，这样做会减少“match”的执行次数，从而一定程度的提高效率。<br>DOM 操作性能调优<br>JavaScript 的开发离不开 DOM 的操作，所以对 DOM 操作的性能调优在 Web 开发中也是非常重要的。<br>Repaint 和 Reflow<br>Repaint 也叫 Redraw，它指的是一种不会影响当前 DOM 的结构和布局的一种重绘动作。如下动作会产生 Repaint 动作：<br>不可见到可见（visibility 样式属性）<br>颜色或图片变化（background, border-color, color 样式属性）<br>不改变页面元素大小，形状和位置，但改变其外观的变化<br>Reflow 比起 Repaint 来讲就是一种更加显著的变化了。它主要发生在 DOM 树被操作的时候，任何改变 DOM 的结构和布局都会产生 Reflow。但一个元素的 Reflow 操作发生时，它的所有父元素和子元素都会放生 Reflow，最后 Reflow 必然会导致 Repaint 的产生。举例说明，如下动作会产生 Repaint 动作：<br>浏览器窗口的变化<br>DOM 节点的添加删除操作<br>一些改变页面元素大小，形状和位置的操作的触发<br>减少 Reflow<br>通过 Reflow 和 Repaint 的介绍可知，每次 Reflow 比其 Repaint 会带来更多的资源消耗，我们应该尽量减少 Reflow 的发生，或者将其转化为只会触发 Repaint 操作的代码。<br>参考如下代码：</p>
+</blockquote>
+<h2 id="16-reflow-介绍"><a href="#16-reflow-介绍" class="headerlink" title="16. reflow 介绍"></a>16. reflow 介绍</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var pDiv = document.createElement(“div”); </div><div class="line">document.body.appendChild(pDiv);----- reflow</div><div class="line">var cDiv1 = document.createElement(“div”); </div><div class="line">var cDiv2 = document.createElement(“div”); </div><div class="line">pDiv.appendChild(cDiv1);----- reflow</div><div class="line">pDiv.appendChild(cDiv2);----- reflow</div></pre></td></tr></table></figure>
+<p>这是我们经常接触的代码了，但是这段代码会产生 3 次 reflow。再看如下代码：</p>
+<h2 id="17-减少-reflow"><a href="#17-减少-reflow" class="headerlink" title="17. 减少 reflow"></a>17. 减少 reflow</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var pDiv = document.createElement(“div”); </div><div class="line">var cDiv1 = document.createElement(“div”); </div><div class="line">var cDiv2 = document.createElement(“div”); </div><div class="line">pDiv.appendChild(cDiv1); </div><div class="line">pDiv.appendChild(cDiv2); </div><div class="line">document.body.appendChild(pDiv);----- reflow</div></pre></td></tr></table></figure>
+<p>这里便只有一次 reflow，所以我们推荐这种 DOM 节点操作的方式。<br>关于上述较少 Reflow 操作的解决方案，还有一种可以参考的模式：</p>
+<h2 id="18-利用-display-减少-reflow"><a href="#18-利用-display-减少-reflow" class="headerlink" title="18. 利用 display 减少 reflow"></a>18. 利用 display 减少 reflow</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> pDiv = <span class="built_in">document</span>.getElementById(“parent”); </div><div class="line">pDiv.style.display = “none”----- reflow</div><div class="line"> </div><div class="line">pDiv.appendChild(cDiv1); </div><div class="line">pDiv.appendChild(cDiv2); </div><div class="line">pDiv.appendChild(cDiv3); </div><div class="line">pDiv.appendChild(cDiv4); </div><div class="line">pDiv.appendChild(cDiv5); </div><div class="line">pDiv.style.width = “<span class="number">100</span>px”; </div><div class="line">pDiv.style.height = “<span class="number">100</span>px”; </div><div class="line"> </div><div class="line">pDiv.style.display = “block”----- reflow</div></pre></td></tr></table></figure>
+<p>先隐藏 pDiv，再显示，这样，隐藏和显示之间的操作便不会产生任何的 Reflow，提高了效率。<br>特殊测量属性和方法<br>DOM 元素里面有一些特殊的测量属性的访问和方法的调用，也会触发 Reflow，比较典型的就是“offsetWidth”属性和“getComputedStyle”方法。<br>图 1. 特殊测量属性和方法<br>图 1. 特殊测量属性和方法<br>这些测量属性和方法大致有这些：<br>offsetLeft<br>offsetTop<br>offsetHeight<br>offsetWidth<br>scrollTop/Left/Width/Height<br>clientTop/Left/Width/Height<br>getComputedStyle()<br>currentStyle(in IE))<br>这些属性和方法的访问和调用，都会触发 Reflow 的产生，我们应该尽量减少对这些属性和方法的访问和调用，参考如下代码：</p>
+<h2 id="19-特殊测量属性"><a href="#19-特殊测量属性" class="headerlink" title="19. 特殊测量属性"></a>19. 特殊测量属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var pe = document.getElementById(“pos_element”); </div><div class="line"> var result = document.getElementById(“result_element”); </div><div class="line"> var pOffsetWidth = pe.offsetWidth;</div><div class="line"> result.children[0].style.width  = pOffsetWidth; </div><div class="line"> result.children[1].style.width  = pOffsetWidth; </div><div class="line"> result.children[2].style.width  = pOffsetWidth; </div><div class="line">…………其他修改…………</div></pre></td></tr></table></figure>
+<p>这里我们可以用临时变量将“offsetWidth”的值缓存起来，这样就不用每次访问“offsetWidth”属性。这种方式在循环里面非常适用，可以极大地提高性能。<br>样式相关<br>我们肯定经常见到如下的代码：</p>
+<h2 id="20-样式相关"><a href="#20-样式相关" class="headerlink" title="20. 样式相关"></a>20. 样式相关</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var sElement = document.getElementById(“pos_element”); </div><div class="line">sElement.style.border = ‘ 1px solid red ’</div><div class="line">sElement.style.backgroundColor = ‘ silver ’</div><div class="line">sElement.style.padding = ‘ 2px 3px ’</div><div class="line">sElement.style.marginLeft = ‘ 5px ’</div></pre></td></tr></table></figure>
+<p>但是可以看到，这里的每一个样式的改变，都会产生 Reflow。需要减少这种情况的发生，我们可以这样做：<br>解决方案 1：</p>
+<h3 id="className-解决方案"><a href="#className-解决方案" class="headerlink" title="className 解决方案"></a>className 解决方案</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.class1 &#123; </div><div class="line">border: ‘ <span class="number">1</span>px solid red ’</div><div class="line">background-color: ‘ silver ’</div><div class="line">padding: ‘ <span class="number">2</span>px <span class="number">3</span>px ’</div><div class="line">margin-left: ‘ <span class="number">5</span>px ’</div><div class="line">&#125; </div><div class="line"><span class="built_in">document</span>.getElementById(“pos_element”).className = ‘class1’ ;</div></pre></td></tr></table></figure>
+<p>用 class 替代 style，可以将原有的所有 Reflow 或 Repaint 的次数都缩减到一个。<br>解决方案 2：</p>
+<h3 id="cssText-解决方案"><a href="#cssText-解决方案" class="headerlink" title="cssText 解决方案"></a>cssText 解决方案</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sElement = <span class="built_in">document</span>.getElementById(“pos_element”); </div><div class="line"><span class="keyword">var</span> newStyle = ‘ border: <span class="number">1</span>px solid red; ’ + ‘ background-color: silver; ’ + </div><div class="line">                                ‘ padding: <span class="number">2</span>px <span class="number">3</span>px; ’ + “margin-left: <span class="number">5</span>px;”</div><div class="line">sElement.style.cssText += newStyle;</div></pre></td></tr></table></figure>
+<p>一次性设置所有样式，也是减少 Reflow 提高性能的方法。</p>
+<h2 id="21-动态创建-script-标签"><a href="#21-动态创建-script-标签" class="headerlink" title="21.动态创建 script 标签"></a>21.动态创建 script 标签</h2><p>加载并执行一段 JavaScript 脚本是需要一定时间的，在我们的程序中，有时候有些 JavaScript 脚本被加载后基本没有被使用过 （比如：脚本里的函数从来没有被调用等等）。加载这些脚本只会占用 CPU 时间和增加内存消耗，降低 Web 应用的性能。所以推荐动态的加载 JavaScript 脚本文件，尤其是那些内容较多，消耗资源较大的脚本文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">if(needXHR)&#123; </div><div class="line">document.write(“&lt;script type= ’ test\/JavaScript ’ src= &apos;dojo_xhr.js&apos; &gt;”); </div><div class="line">&#125; </div><div class="line">if(dojo.isIE)&#123; </div><div class="line">document.write(“&lt;script type= ’ test\/JavaScript ’ src= &apos;vml.js&apos; &gt;”); </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><pre><code>最后，总结下常见的dom操作的优化方法（节选自高性能JavaScript）
+
+ 1  最小化dom访问次数，尽可能在js端执行；
+ 2  如果需要多次访问某个dom节点，请使用局部变量存储对它的引用；
+ 3  小心处理html集合，因为它实时连系着底层的文档，把集合的长度缓存到一个变量中，并在迭代中使用它，如果需要经常操作集合，建议把它拷贝到一个数组中；
+ 4  如果可能的话，使用速度更快的API，比如querySelectorAll和firstElementChild；
+ 5  要留意重绘和重排；批量修改样式时，“离线”操作dom树；使用缓存，并减少访问布局的次数；
+ 6  动画中使用绝对定位，使用拖放代理
+ 7  使用事件委托来减少事件处理器的数量
+
+ 总结下js中对数据访问的优化（节选自高性能JavaScript）
+
+ 1  函数中读写局部变量总是最快的，而全局变量的读取则是最慢的；
+ 2  尽可能地少用with 语句，因为它会增加with 语句以外的数据的访问代价；
+ 3  闭包尽管强大，但不可滥用，否则会影响到执行速度以及内存；
+ 4  嵌套的对象成员会明显影响性能，尽量少用；
+ 5  避免多次访问对象成员或函数中的全局变量，尽量将它们赋值给局部变量以缓存。
+</code></pre>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2017/07/19/JavaScript 性能调优/" target="_blank" rel="external">http://yoursite.com/2017/07/19/JavaScript 性能调优/</a>
+        
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/header.png" alt="我一路向北">
+            我一路向北
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/07/19/JavaScript 性能调优/&title=《JavaScript 性能调优》 — 我一路向北&pic=http://yoursite.com/img/header.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/07/19/JavaScript 性能调优/&title=《JavaScript 性能调优》 — 我一路向北&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/07/19/JavaScript 性能调优/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScript 性能调优》 — 我一路向北&url=http://yoursite.com/2017/07/19/JavaScript 性能调优/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/07/19/JavaScript 性能调优/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/07/25/webpack配置react开发环境/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">webpack配置react开发环境</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/06/29/react 全家桶实现后台管理界面/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">React 全家桶实现后台管理界面</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=2141718"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wx.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wx.jpg" data-alipay="/img/ali.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="bottom">
+        <div class="friend">
+            <h4>常用链接：</h4>
+            <ul style="list-style:none">
+                <li><a target="_blank" href="https://github.com/" >github</a></li>
+                <li><a target="_blank" href="https://75team.com/">奇舞团</a></li>
+                <li><a target="_blank" href="https://juejin.im/">掘金</a></li>
+                <li><a target="_blank" href="https://segmentfault.com/">segmentfault</a></li>
+                <li><a target="_blank" href="https://w3ctech.com/">w3ctech</a></li>
+                <li><a target="_blank" href="https://babeljs.io/">babel</a></li>
+                <li><a target="_blank" href="http://caniuse.com/">Can i use</a></li>
+                <li><a target="_blank" href="http://iconfont.cn/">iconfont</a></li>
+                <li><a target="_blank" href="https://webpack.js.org/">webpack</a></li>
+                <li><a target="_blank" href="http://stackoverflow.com/">stackoverflow</a></li>
+                <li><a target="_blank" href="https://aotu.io/">aotu.io</a></li>
+                <li><a target="_blank" href="http://www.alloyteam.com/">alloyteam</a></li>
+            </ul>
+        </div>
+        <p><span>我一路向北 &copy; 2016 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+<style>
+    .friend ul,h4{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .friend ul li{
+        float: left;
+        padding: 0 5px;
+    }
+</style>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/07/19/JavaScript 性能调优/&title=《JavaScript 性能调优》 — 我一路向北&pic=http://yoursite.com/img/header.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/07/19/JavaScript 性能调优/&title=《JavaScript 性能调优》 — 我一路向北&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/07/19/JavaScript 性能调优/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScript 性能调优》 — 我一路向北&url=http://yoursite.com/2017/07/19/JavaScript 性能调优/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/07/19/JavaScript 性能调优/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACGklEQVR42u3aQY7CMAwF0Ln/pTtbpIHwbZeRSF5WFZTg14VVx/75idf1sF59/vjtq0/+Xif/ctvCwMD4Wsa1XOt7etRk//y3GBgY5zBeZbDkeg1IEmsvNWNgYGCst6um0V6IGBgYGHNGrwDOd8bAwMCops6Empe7a/YHa3EMDIwvZORJ8/+vP9LfwMDA+CrGVVxJWqyGWG0GPIkKAwNja0ae4KqBzpsN5eEPDAyMYxjzNJqUwXmpXChZMTAwNmUkjcleM2DeCi20EDAwMLZmVI/p86ScNxV632JgYJzGSBJusl31/nW4CQ8DA+McxmT8Ky9WCwdn99biGBgYBzAmx3O90jcnFRIuBgbGRox5Mu01AKpNzUInFgMDYwvG5Jisd5SfjHlVmxYYGBi7MubDW72w5i+XGBgYpzGqKe+uY7X1/xbiwcDAOIZRfZmrpuzJq2c0LYKBgbEpIw+3XBMHr3rrfaqfY2Bg7M2YJNk8oOQR5EdsGBgYZzKqL2QJdVL05kNpGBgYpzGSQ/880B64isHAwDiTkdzZS6bVo7dCOsbAwNiUcRXXJLFODuPePCwMDIytGdXU1nt9nBSu+fAHBgbG3oxqQPNxit6wxZtHgIGBcQBjkvjysJL9m60CDAwMjDh1VsH5Q7k54WJgYBzDmFAnZe2T32JgYBzAyEcieuNfyehq9aFgYGCcw+iVjtWkmQd9FxUDA2MLxi+BoLwqH4gONgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

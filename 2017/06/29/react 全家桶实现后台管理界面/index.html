@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>React 全家桶实现后台管理界面 | 我一路向北</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="React">
+    <meta name="description" content="React 全家桶实现后台管理界面一、实验介绍1.1 实验内容React 是一个 Facebook 和 Instagram 用来创建用户界面的 JavaScript 库。创造 React 是为了解决一个问题：构建随着时间数据“不断变化”的“大规模”应用程序。本课程虽然使用了前端框架 antd，从零开始构建一个 React 后台管理界面，并结合 React+React-Router+React-Re">
+<meta name="keywords" content="React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React 全家桶实现后台管理界面">
+<meta property="og:url" content="http://yoursite.com/2017/06/29/react 全家桶实现后台管理界面/index.html">
+<meta property="og:site_name" content="我一路向北">
+<meta property="og:description" content="React 全家桶实现后台管理界面一、实验介绍1.1 实验内容React 是一个 Facebook 和 Instagram 用来创建用户界面的 JavaScript 库。创造 React 是为了解决一个问题：构建随着时间数据“不断变化”的“大规模”应用程序。本课程虽然使用了前端框架 antd，从零开始构建一个 React 后台管理界面，并结合 React+React-Router+React-Re">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-09-01T01:35:55.612Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React 全家桶实现后台管理界面">
+<meta name="twitter:description" content="React 全家桶实现后台管理界面一、实验介绍1.1 实验内容React 是一个 Facebook 和 Instagram 用来创建用户界面的 JavaScript 库。创造 React 是为了解决一个问题：构建随着时间数据“不断变化”的“大规模”应用程序。本课程虽然使用了前端框架 antd，从零开始构建一个 React 后台管理界面，并结合 React+React-Router+React-Re">
+    
+        <link rel="alternate" type="application/atom+xml" title="我一路向北" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/header.jpg">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.png)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/header.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">我一路向北</h5>
+          <a href="mailto:1084190606@qq.com" title="1084190606@qq.com" class="mail">1084190606@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/f1084" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/cuterr" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://code.w3ctech.com/5404"  >
+                <i class="icon icon-lg icon-link"></i>
+                Demo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">React 全家桶实现后台管理界面</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">React 全家桶实现后台管理界面</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-06-29T13:12:55.000Z" itemprop="datePublished" class="page-time">
+  2017-06-29
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#React-全家桶实现后台管理界面"><span class="post-toc-number">1.</span> <span class="post-toc-text">React 全家桶实现后台管理界面</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一、实验介绍"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">一、实验介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-1-实验内容"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">1.1 实验内容</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-2-实验知识点"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">1.2 实验知识点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-3-实验环境"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">1.3 实验环境</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-4-适合人群"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">1.4 适合人群</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-5-代码获取"><span class="post-toc-number">1.1.5.</span> <span class="post-toc-text">1.5 代码获取</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二、实验原理"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">二、实验原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三、开发准备"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">三、开发准备</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#四、项目文件结构"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">四、项目文件结构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#五、实验步骤"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">五、实验步骤</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-1-安装-React-的系列依赖"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">5.1 安装 React 的系列依赖</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-2-安装-Babel-并在根目录下创建并配置-babelrc-文件"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">5.2 安装 Babel 并在根目录下创建并配置 .babelrc 文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-3-安装-webpack-所需要的-loader"><span class="post-toc-number">1.5.3.</span> <span class="post-toc-text">5.3 安装 webpack 所需要的 loader</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-4-安装-webpack-dev-server"><span class="post-toc-number">1.5.4.</span> <span class="post-toc-text">5.4 安装 webpack-dev-server</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-5-安装并配置-json-server-模拟后台数据接口"><span class="post-toc-number">1.5.5.</span> <span class="post-toc-text">5.5 安装并配置 json-server 模拟后台数据接口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-6-antd-axios-的简介及安装"><span class="post-toc-number">1.5.6.</span> <span class="post-toc-text">5.6 antd axios 的简介及安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-7-新建模板文件-index-html"><span class="post-toc-number">1.5.7.</span> <span class="post-toc-text">5.7 新建模板文件 index.html</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-6-新建入口文件-index-js-并利用-react-router-构建本项目的路由"><span class="post-toc-number">1.5.8.</span> <span class="post-toc-text">5.6 新建入口文件 index.js 并利用 react-router 构建本项目的路由</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-6-构建页面"><span class="post-toc-number">1.5.9.</span> <span class="post-toc-text">5.6 构建页面</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#六、实验总结"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">六、实验总结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#八、参考链接"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">八、参考链接</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-react 全家桶实现后台管理界面"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">React 全家桶实现后台管理界面</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-06-29 21:12:55" datetime="2017-06-29T13:12:55.000Z"  itemprop="datePublished">2017-06-29</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="React-全家桶实现后台管理界面"><a href="#React-全家桶实现后台管理界面" class="headerlink" title="React 全家桶实现后台管理界面"></a>React 全家桶实现后台管理界面</h1><h2 id="一、实验介绍"><a href="#一、实验介绍" class="headerlink" title="一、实验介绍"></a>一、实验介绍</h2><h3 id="1-1-实验内容"><a href="#1-1-实验内容" class="headerlink" title="1.1 实验内容"></a>1.1 实验内容</h3><p>React 是一个 Facebook 和 Instagram 用来创建用户界面的 JavaScript 库。创造 React 是为了解决一个问题：构建随着时间数据“不断变化”的“大规模”应用程序。本课程虽然使用了前端框架 antd，从零开始构建一个 React 后台管理界面，并结合 React+React-Router+React-Redux 实现页面功能，加深对 React 全家桶的理解及运用。</p>
+<h3 id="1-2-实验知识点"><a href="#1-2-实验知识点" class="headerlink" title="1.2 实验知识点"></a>1.2 实验知识点</h3><ul>
+<li><code>webpack</code> 基础配置及使用</li>
+<li><code>React</code> 构建项目流程</li>
+<li><code>Redux</code> 简介及基础使用</li>
+<li>UI框架 <code>antd</code> 的基本使用</li>
+<li><code>axios</code> 的基本使用</li>
+<li><code>json-server</code> 模拟后台数据接口</li>
+</ul>
+<h3 id="1-3-实验环境"><a href="#1-3-实验环境" class="headerlink" title="1.3 实验环境"></a>1.3 实验环境</h3><ul>
+<li>node.js</li>
+<li>centos</li>
+</ul>
+<h3 id="1-4-适合人群"><a href="#1-4-适合人群" class="headerlink" title="1.4 适合人群"></a>1.4 适合人群</h3><p>本课程难度为一般，属于初级级别课程，适合具有React基础的用户，熟悉React基础知识加深巩固。</p>
+<h3 id="1-5-代码获取"><a href="#1-5-代码获取" class="headerlink" title="1.5 代码获取"></a>1.5 代码获取</h3><p>你可以通过下面命令将代码下载到实验楼环境中，作为参照对比进行学习。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ wget http://labfile.oss.aliyuncs.com/courses/857/react.zip</div></pre></td></tr></table></figure>
+<p>代码下载完成后解压并进入项目目录执行一下命令就能项目就能跑起来，打开浏览器输入127.0.0.1:3005,就能看到效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ unzip react.zip</div><div class="line">$ cd react </div><div class="line">$ npm i   #这步较慢请耐心等待</div><div class="line">$ npm run dev</div><div class="line">$ sudo npm install json-server -g</div><div class="line">$ npm run server</div></pre></td></tr></table></figure>
+<h2 id="二、实验原理"><a href="#二、实验原理" class="headerlink" title="二、实验原理"></a>二、实验原理</h2><p>由于React 中组件间通信是单向数据流， 当项目中组件嵌套复杂时，子组件向父组件通信数据传递就变得非常复杂。所以 Fackbook 提出 Flux 来管理 React 的数据流，后续又出现不同的架构，通过对比发现 Redux 相对其他的更为简化。但 Redux 和 React 是没有必然关系的，Redux 仅仅是用于管理 state。</p>
+<p>Redux 主要的组成部分为: Action，Reducer，Store。Redux 的执行流程：首先需要注册一个全局唯一的store对象，用来维护整个应用的state；当要变更state时，我们会dispatch一个action，reducer根据action更新相应的state。</p>
+<p>Aciton 它可以理解为一个载体，是数据从应用传递到store的载体，其中 type 是必备的一个字段，用来标识类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//在页面中可引入这个函数并调用，产生新的state</div><div class="line">export function GetUserDetail(userDetail,totalElements,currentPage)&#123;</div><div class="line">    return&#123;</div><div class="line">        type: GET_USER_DETAIL,</div><div class="line">        userDetail,totalElements,currentPage</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Reducer 实际上就是一个函数，需要传入两个参数 state action，用来修改store的状态。本课程新建一个rootReducer.js来统一管理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">//定义初始state</div><div class="line">var init=&#123;</div><div class="line">    userDetail:[],//保存从后台传递的数据</div><div class="line">    usercount: 0,</div><div class="line">    totalElements:0,</div><div class="line">    currentPage:0,</div><div class="line">    userOne:&apos;&apos;,</div><div class="line">&#125;;</div><div class="line">export default function user(state=init,action)&#123;</div><div class="line">    switch(action.type)&#123;</div><div class="line">        //case 后的名称必须与action中type保持一致</div><div class="line">        case GET_USER_DETAIL:</div><div class="line">            return Object.assign(&#123;&#125;,state,&#123;userDetail:action.userDetail,totalElements:action.totalElements,currentPage:action.currentPage&#125;);</div><div class="line">        default :</div><div class="line">            return state;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Store 是一个全局对象，用来维护 state 状态的，主要有两个方法 <code>store.getState()</code> 获取最近内部的 state，<code>store.dispatch(action)</code> 连接 action，reducer 与 state。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 引入总的rootReducer</div><div class="line">import rootReducer from &quot;../reducers/rootReducer&quot;;</div><div class="line">// 引入redux，包含中间件</div><div class="line">import &#123; createStore,applyMiddleware &#125; from &apos;redux&apos;;</div><div class="line">import thunk from &apos;redux-thunk&apos;;</div><div class="line"></div><div class="line">const store=createStore(rootReducer, applyMiddleware(thunk));</div><div class="line">export default store;</div></pre></td></tr></table></figure>
+<p>React-Redux 是一个轻量级的库，核心的方法只有 Provider 与 connect。 Provider 的功能主要包含以下两点：</p>
+<ul>
+<li>包裹原应用组件的最外层，使整个应用成为成为其子组件</li>
+<li>接收 Redux 的 store 作为 props，通过context对象传递给子孙组件 connect 是真正链接 React 和 Redux 的模块</li>
+</ul>
+<h2 id="三、开发准备"><a href="#三、开发准备" class="headerlink" title="三、开发准备"></a>三、开发准备</h2><p>打开Xfce终端，进入 <code>Code</code> 目录，创建 <code>react</code> 文件夹, npm的下载速度较慢，我们修改npm源，这个步骤比较慢，请大家耐等待(如已经了解安装的同学，可直接下载项目的package.json放到自己的项目，npm install),安装完成之后 <code>cnpm -v</code> 查看是否安装成功。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ mkdir react &amp;&amp; cd react</div><div class="line">$ sudo npm config set registry https://registry.npm.taobao.org</div><div class="line">$ sudo npm info underscore</div></pre></td></tr></table></figure>
+<p>初始化 <code>package.json</code></p>
+<p>执行以下命令后，一直按enter键，如果需要对于项目名称，作者等信息进行修改，根据提示做相应的操作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm init</div></pre></td></tr></table></figure>
+<p>安装 <code>webpack</code> 并在根目录下创建并配置 webpack.config.js 文件</p>
+<p>webpck 需要全局和本地同时安装。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo npm install webpack -g</div><div class="line">$ sudo npm install webpack --save-dev</div></pre></td></tr></table></figure>
+<p>webpack.config.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">var path = require(&apos;path&apos;);</div><div class="line">var webpack = require(&apos;webpack&apos;);</div><div class="line">//__dirname是node.js中的一个全局变量，它指向当前执行脚本所在的目录</div><div class="line">module.exports = &#123;</div><div class="line">    devtool: &apos;eval-source-map&apos;, //生成Source Maps,这里选择eval-source-map</div><div class="line">    entry:[&apos;webpack/hot/dev-server&apos;, path.resolve(__dirname, &apos;./app/index.js&apos;)], //唯一入口文件</div><div class="line">    output: &#123; //输出目录</div><div class="line">        path: __dirname + &quot;/build&quot;, //打包后的js文件存放的目录</div><div class="line">        filename: &apos;bundle.js&apos;, //打包后的js文件名</div><div class="line">    &#125;,</div><div class="line">    module: &#123;</div><div class="line">        loaders: [&#123;</div><div class="line">            test: /\.jsx?$/,</div><div class="line">            exclude: /node_modules/, //屏蔽不需要处理的文件（文件夹）（可选）</div><div class="line">            loader: &apos;babel-loader&apos;</div><div class="line">        &#125;, &#123;</div><div class="line">            test: /\.css$/,</div><div class="line">            loader: &apos;style-loader!css-loader&apos;</div><div class="line">        &#125;, &#123;</div><div class="line">            test: /\.less$/,</div><div class="line">            loader: &apos;style-loader!css-loader!less-loader&apos;</div><div class="line">        &#125;, &#123;</div><div class="line">            test: /\.(png|jpg)$/,</div><div class="line">            loader: &apos;url-loader?limit=25000&apos;</div><div class="line">        &#125;]</div><div class="line">    &#125;,</div><div class="line">    plugins: [//热刷新</div><div class="line">        new webpack.HotModuleReplacementPlugin()</div><div class="line">    ],</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="四、项目文件结构"><a href="#四、项目文件结构" class="headerlink" title="四、项目文件结构"></a>四、项目文件结构</h2><p>根据文件结构新建初步项目目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ mkdir app build</div><div class="line">$ cd app mkdir actions reducers components store style views</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">├── app                 源码目录，在这个目录下做开发</div><div class="line">│   ├── actions         存储可以发出的 action</div><div class="line">│   │   ├── ajax.js     自主封装ajax</div><div class="line">│   │   ├── login.js    控制登录验证</div><div class="line">│   │   └── user.js     user的增删改查获取，弹出框控制action</div><div class="line">│   ├── components      普通组件目录(如，弹出表单组件)</div><div class="line">│   │   └── User</div><div class="line">│   │       └── AlertUser.js   编辑添加弹出Form框组件</div><div class="line">│   ├── index.js        入口文件，路由配置文件</div><div class="line">│   ├── reducers        存放action的处理器reducers</div><div class="line">│   │   ├── rootReducer.js</div><div class="line">│   │   └── user.js</div><div class="line">│   ├── store           全局 store 存储目录</div><div class="line">│   │   └── store.js</div><div class="line">│   ├── style           样式目录</div><div class="line">│   │   └── index.css</div><div class="line">│   └── views           容器组件存放目录</div><div class="line">│       ├── Index.js</div><div class="line">│       ├── Login.js</div><div class="line">│       ├── Menu.js</div><div class="line">│       └── User.js</div><div class="line">├── build               打包后文件存储目录及模板文件存放位置 </div><div class="line">│   ├── bundle.js</div><div class="line">│   └── index.html</div><div class="line">├── .babelrc            babel配置文件(默认隐藏)</div><div class="line">├── db.json             模拟后台数据</div><div class="line">├── package.json        npm配置文件</div><div class="line">└── webpack.config.js   webpack配置文件</div></pre></td></tr></table></figure>
+<h2 id="五、实验步骤"><a href="#五、实验步骤" class="headerlink" title="五、实验步骤"></a>五、实验步骤</h2><h3 id="5-1-安装-React-的系列依赖"><a href="#5-1-安装-React-的系列依赖" class="headerlink" title="5.1 安装 React 的系列依赖"></a>5.1 安装 React 的系列依赖</h3><p>本课程 react-router 的版本使用3.0.5，redux-thunk 一个中间件，可以让action创建函数先不返回一个action对象，而是返回一个函数，函数传递两个参数(dispatch,getState),在函数体内进行业务逻辑的封装。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo npm install --save-dev react react-dom redux react-redux react-router@3.0.5 react-redux-router redux-thunk</div></pre></td></tr></table></figure>
+<h3 id="5-2-安装-Babel-并在根目录下创建并配置-babelrc-文件"><a href="#5-2-安装-Babel-并在根目录下创建并配置-babelrc-文件" class="headerlink" title="5.2 安装 Babel 并在根目录下创建并配置 .babelrc 文件"></a>5.2 安装 Babel 并在根目录下创建并配置 .babelrc 文件</h3><p>使用JSX，可以极大的简化React元素的创建，其语法风格类似于HTML语法风格，让习惯html的人更容易理解。但浏览器引擎并不能识别JSX语法，而 Babel 可以Jsx语法转化为可是别的。这只是 Babel 的一个作用，它还会将ES6,ES7转化为能识别的ES*。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo npm install --save-dev babel-core babel-loader  babel-preset-es2015 babel-preset-react</div></pre></td></tr></table></figure>
+<p>.babelrc (在react目录下新建)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;presets&quot;:[</div><div class="line">        &quot;es2015&quot;,</div><div class="line">        &quot;react&quot;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="5-3-安装-webpack-所需要的-loader"><a href="#5-3-安装-webpack-所需要的-loader" class="headerlink" title="5.3 安装 webpack 所需要的 loader"></a>5.3 安装 webpack 所需要的 loader</h3><p>现今浏览器引擎不能是被 react 的 JSX 语法，需通过Babel</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo npm install --save-dev babel-loader css-loader less-loader style-loader url-loader file-loader</div></pre></td></tr></table></figure>
+<h3 id="5-4-安装-webpack-dev-server"><a href="#5-4-安装-webpack-dev-server" class="headerlink" title="5.4 安装 webpack-dev-server"></a>5.4 安装 webpack-dev-server</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo npm install --save-dev webpack-dev-server</div></pre></td></tr></table></figure>
+<p>安装完成后在 webpack.config.js 的 module 中添加devServer</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">devServer: &#123;</div><div class="line">    contentBase: &quot;./build&quot;, //默认webpack-dev-server会为根文件夹提供本地服务器，本实例设置 build 目录</div><div class="line">    historyApiFallback: true, //开发单页应用时，如果设置为true，所有的跳转将指向index.html</div><div class="line">    inline: true, //设置为true，自动刷新页面</div><div class="line">    port: 3001, //设置默认监听端口,默认为&quot;8080&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>需在package.json 文件的 scripts 中添加 build 及 dev 以后直接使用 <code>npm run dev</code> 就能开启页面查看实现效果，并能实现热刷新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&quot;scripts&quot;: &#123;</div><div class="line">   &quot;build&quot;: &quot;webpack&quot;,</div><div class="line">   &quot;dev&quot;: &quot;webpack-dev-server --devtool eval --progress --colors --content-base build&quot;,</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<h3 id="5-5-安装并配置-json-server-模拟后台数据接口"><a href="#5-5-安装并配置-json-server-模拟后台数据接口" class="headerlink" title="5.5 安装并配置 json-server 模拟后台数据接口"></a>5.5 安装并配置 json-server 模拟后台数据接口</h3><p>json-server 使用第三方库真实化模拟数据,但是数据传输的端口及 config 文件需要手动配置，这里为了方便后续使用我们在 package.json 文件的 scripts 中添加 server 后续使用 <code>npm run server</code> 就能开启后台数据接口。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&quot;scripts&quot;: &#123;</div><div class="line">   &quot;server&quot;: &quot;json-server db.json -w -p 3000&quot;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p>终端执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo npm install json-server --save-dev </div><div class="line">$ vi db.json</div></pre></td></tr></table></figure>
+<p>db.json</p>
+<p>因为是用户列表，所以初步设计的用户信息包含 id(唯一值)，name，age，email，user_type(识别用户身份，0-普通用户，1-标准会员，2-高级会员)文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;user&quot;: [</div><div class="line">    &#123;</div><div class="line">      &quot;name&quot;: &quot;大毛&quot;,</div><div class="line">      &quot;username&quot;: &quot;admin&quot;,</div><div class="line">      &quot;email&quot;: &quot;123456@qq.com&quot;,</div><div class="line">      &quot;password&quot;: &quot;000000&quot;,</div><div class="line">      &quot;user_type&quot;: 2,</div><div class="line">      &quot;id&quot;: 1</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      &quot;id&quot;: 2,</div><div class="line">      &quot;name&quot;: &quot;王二麻子&quot;,</div><div class="line">      &quot;age&quot;: 18,</div><div class="line">      &quot;email&quot;: &quot;123@qq.com&quot;,</div><div class="line">      &quot;user_type&quot;: 0,</div><div class="line">      &quot;username&quot;: &quot;admin1&quot;,</div><div class="line">      &quot;password&quot;: 123456789</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      &quot;name&quot;: &quot;张三&quot;,</div><div class="line">      &quot;username&quot;: &quot;admin3&quot;,</div><div class="line">      &quot;email&quot;: &quot;123@qq.com&quot;,</div><div class="line">      &quot;password&quot;: &quot;000000&quot;,</div><div class="line">      &quot;user_type&quot;: 2,</div><div class="line">      &quot;id&quot;: 3</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      &quot;name&quot;: &quot;admin&quot;,</div><div class="line">      &quot;username&quot;: &quot;admin4&quot;,</div><div class="line">      &quot;email&quot;: &quot;123@123456.com&quot;,</div><div class="line">      &quot;password&quot;: &quot;000000&quot;,</div><div class="line">      &quot;user_type&quot;: 0,</div><div class="line">      &quot;id&quot;: 4</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      &quot;name&quot;: &quot;aaaa&quot;,</div><div class="line">      &quot;username&quot;: &quot;aaaa&quot;,</div><div class="line">      &quot;email&quot;: &quot;aaa@11.com&quot;,</div><div class="line">      &quot;password&quot;: &quot;222222&quot;,</div><div class="line">      &quot;user_type&quot;: 0,</div><div class="line">      &quot;id&quot;: 5</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      &quot;name&quot;: &quot;ffff&quot;,</div><div class="line">      &quot;username&quot;: &quot;222@qq.com&quot;,</div><div class="line">      &quot;email&quot;: &quot;222@qq.com&quot;,</div><div class="line">      &quot;password&quot;: &quot;000000&quot;,</div><div class="line">      &quot;user_type&quot;: 1,</div><div class="line">      &quot;id&quot;: 7</div><div class="line">    &#125;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="5-6-antd-axios-的简介及安装"><a href="#5-6-antd-axios-的简介及安装" class="headerlink" title="5.6 antd axios 的简介及安装"></a>5.6 antd axios 的简介及安装</h3><p>Ant Design 简称antd，是蚂蚁金服开发并正在使用的一套企业级的前端设计语言和基于 React 的前端框架实现，用于构建丰富的交互式用户界面。其官网地址：<a href="https://ant.design/docs/react/introduce/" target="_blank" rel="external">https://ant.design/docs/react/introduce/</a>.</p>
+<p>axios 是一个基于Promise 的 HTTP 客户端，可同时在浏览器和 node.js 中使用。参考：<a href="https://www.npmjs.com/package/axios" target="_blank" rel="external">https://www.npmjs.com/package/axios</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install antd axios --save-dev</div></pre></td></tr></table></figure>
+<h3 id="5-7-新建模板文件-index-html"><a href="#5-7-新建模板文件-index-html" class="headerlink" title="5.7 新建模板文件 index.html"></a>5.7 新建模板文件 index.html</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cd build </div><div class="line">$ vi index.html</div></pre></td></tr></table></figure>
+<p>index.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">    &lt;head lang=&quot;en&quot;&gt;</div><div class="line">        &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">        &lt;title&gt;React Test&lt;/title&gt;</div><div class="line">    &lt;/head&gt;</div><div class="line">    &lt;body&gt;</div><div class="line">         &lt;!--要插入React组件的位置--&gt;</div><div class="line">        &lt;div id=&quot;content&quot;&gt;&lt;/div&gt;</div><div class="line">        &lt;!-- 引入打包后的文件(相对路径) --&gt;</div><div class="line">        &lt;script src=&quot;/bundle.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;/body</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h3 id="5-6-新建入口文件-index-js-并利用-react-router-构建本项目的路由"><a href="#5-6-新建入口文件-index-js-并利用-react-router-构建本项目的路由" class="headerlink" title="5.6 新建入口文件 index.js 并利用 react-router 构建本项目的路由"></a>5.6 新建入口文件 index.js 并利用 react-router 构建本项目的路由</h3><p>首先，本项目实现的页面包含:登录，首页，用户列表 三个页面，所以在构建路由时需要实现页面间的跳转。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cd app </div><div class="line">$ vi index.js</div></pre></td></tr></table></figure>
+<p>index.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">//引入react,react-dom</div><div class="line">import React from &apos;react&apos;;</div><div class="line">import &#123; render &#125; from &apos;react-dom&apos;;</div><div class="line">// 引入React-Router模块</div><div class="line">//引入react,react-dom</div><div class="line">import React from &apos;react&apos;;</div><div class="line">import &#123; render &#125; from &apos;react-dom&apos;;</div><div class="line">import &#123;</div><div class="line">    Provider</div><div class="line">&#125;from &quot;react-redux&quot;;</div><div class="line"></div><div class="line">// 引入React-Router模块</div><div class="line">import &#123; Router, Route, Link, hashHistory, IndexRoute &#125; from &apos;react-router&apos;;</div><div class="line">import store from &quot;./store/store&quot;;</div><div class="line">// 全局引入Ant-Design样式</div><div class="line">import &quot;antd/dist/antd.min.css&quot;;</div><div class="line">//引入全局样式</div><div class="line">import &apos;./style/index.css&apos;</div><div class="line"></div><div class="line">//引入自定义组件</div><div class="line">import Login from &quot;./views/Login&quot;;//登录页面</div><div class="line">import User from &quot;./views/User&quot;//用户列表</div><div class="line">import Menu from &quot;./views/Menu&quot;//侧边栏菜单</div><div class="line">import Index from &quot;./views/Index&quot;//欢迎页面</div><div class="line"></div><div class="line">// 配置路由</div><div class="line">render((</div><div class="line">    &lt;Provider store=&#123;store&#125;&gt;</div><div class="line">        &lt;Router history=&#123;hashHistory&#125;&gt;</div><div class="line">            &lt;Route path=&quot;/login&quot; component=&#123;Login&#125; /&gt;</div><div class="line">            &lt;Route path=&quot;/&quot; component=&#123;Menu&#125; &gt;</div><div class="line">                &lt;IndexRoute component=&#123;Index&#125;/&gt;</div><div class="line">                &lt;Route path=&quot;user&quot; component=&#123;User&#125; /&gt;</div><div class="line">            &lt;/Route&gt;</div><div class="line">        &lt;/Router&gt;</div><div class="line">    &lt;/Provider&gt;</div><div class="line">),document.getElementById(&apos;content&apos;));</div></pre></td></tr></table></figure>
+<h3 id="5-6-构建页面"><a href="#5-6-构建页面" class="headerlink" title="5.6 构建页面"></a>5.6 构建页面</h3><p>本课程主要的页面包含4个，登录页面，菜单页，首页及用户列表页面,页面的代码实现都在views目录下。主要的业务逻辑用户列表，包含查询，添加，编辑，删除。而编辑与新建时弹出的模态框封装在 components 目录下.</p>
+<p>首先我们需要构建一个全局的store用于管理state，在app/store 目录下创建 <code>store.js</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 引入总的rootReducer</div><div class="line">import rootReducer from &quot;../reducers/rootReducer&quot;;</div><div class="line">// 引入redux，包含中间件</div><div class="line">import &#123; createStore,applyMiddleware &#125; from &apos;redux&apos;;</div><div class="line">import thunk from &apos;redux-thunk&apos;;</div><div class="line"></div><div class="line">const store=createStore(rootReducer, applyMiddleware(thunk));</div><div class="line">export default store;</div></pre></td></tr></table></figure>
+<p>在app/reducers构建一个总的reducer管理文件rootReduce.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">import &#123;</div><div class="line">    combineReducers</div><div class="line">&#125; from &quot;redux&quot;;</div><div class="line">//引入每个页面的reducer</div><div class="line">import user from &quot;./user&quot;;</div><div class="line">var rootReducer=combineReducers(&#123;</div><div class="line">    user,</div><div class="line">&#125;);</div><div class="line">export default rootReducer;</div></pre></td></tr></table></figure>
+<p>做到这里，我们就可以根据路由引入文件在 <code>view</code> 目录下编写自己的页面，如果需要有行为,如:增加，需在action目录下创建，如页面内需要使用到 state 信息，需要reducers目录对应创建，详细需根据项目创建。以下是以编辑功能作为实例进行介绍。</p>
+<p>User.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">import &#123;</div><div class="line">    userOneFun,showModal,</div><div class="line">&#125; from &quot;../actions/user&quot;;</div><div class="line">import &#123;</div><div class="line">    connect</div><div class="line">&#125; from &quot;react-redux&quot;;</div><div class="line">//引入弹出框Form表单</div><div class="line">import AlertUser from &quot;../components/User/AlertUser&quot;</div><div class="line">class User extends React.Component &#123;</div><div class="line">    //编辑用户</div><div class="line">    toEdit(id) &#123;</div><div class="line">        //获取单行数据,存储在userOne中</div><div class="line">        this.props.dispatch(userOneFun(id));</div><div class="line">        //显示弹出框</div><div class="line">        this.props.dispatch(showModal(true));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">        const columns = [&#123;</div><div class="line">                title: &apos;操作&apos;,</div><div class="line">                key: &apos;action&apos;,</div><div class="line">                render: (text, record) =&gt; (//record表示单行数据</div><div class="line">                    &lt;span &gt;</div><div class="line">                        &lt;Button onClick=&#123;()=&gt;this.toEdit(record.id)&#125;&gt; 编辑 &lt;/Button&gt;</div><div class="line">                    &lt;/span &gt;</div><div class="line">                ),</div><div class="line">            &#125;</div><div class="line">        ]</div><div class="line">        return(</div><div class="line">            &lt;Layout&gt;</div><div class="line">                &lt;Content&gt;</div><div class="line">                    &#123;/* AlertUser组件 */&#125;</div><div class="line">                    &lt;AlertUser /&gt;</div><div class="line">                &lt;/Content&gt;</div><div class="line">            &lt;/Layout&gt;</div><div class="line">        )</div><div class="line">    &#125;</div><div class="line"></div><div class="line">function select(state)&#123;</div><div class="line">    return&#123;</div><div class="line">        userOne:state.user.userOne,</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//导出组件</div><div class="line">export default connect(select) (User);</div></pre></td></tr></table></figure>
+<p>actions user.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line">//ajax是自主封装的文件</div><div class="line">import * as Ajax from &apos;./ajax&apos;;</div><div class="line"></div><div class="line">//定义常量</div><div class="line">export const GET_USER_DETAIL = &quot;GET_USER_DETAIL&quot;</div><div class="line">export const GET_USER_ONE = &quot;GET_USER_ONE&quot;</div><div class="line">export const GET_MODAL_SHOW = &quot;GET_MODAL_SHOW&quot;</div><div class="line"></div><div class="line">//获取所有用户列表</div><div class="line">export function GetUserDetail(userDetail,totalElements,currentPage)&#123;</div><div class="line">    return&#123;</div><div class="line">        type:GET_USER_DETAIL,</div><div class="line">        userDetail,totalElements,currentPage</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">export function ascyGetDetails(data)&#123;</div><div class="line">    return function (dispatch)&#123;</div><div class="line">        Ajax.getAjax(&quot;http://localhost:3000/user&quot;,function(response)&#123;</div><div class="line">            if (response.data) &#123;</div><div class="line">                let number = 1;</div><div class="line">                if (data) &#123;</div><div class="line">                    number = data.page</div><div class="line">                &#125;</div><div class="line">                dispatch(GetUserDetail(response.data,response.data.length,number));</div><div class="line">            &#125; else &#123;</div><div class="line">                dispatch(GetUserDetail([],0,1));</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//新增与修改用户，通过有无id判断是添加还是删除</div><div class="line">export function AddUser(data)&#123;</div><div class="line">    return function (dispatch)&#123;</div><div class="line">        if (data.id) &#123;</div><div class="line">            Ajax.putAjax(&quot;http://localhost:3000/user/&quot;+data.id,data,function(response)&#123;</div><div class="line">                if(response.data)&#123;</div><div class="line">                    //成功后刷新页面</div><div class="line">                    dispatch(ascyGetDetails());</div><div class="line">                    //成功后关闭form弹出框</div><div class="line">                    dispatch(showModal(false));</div><div class="line">                &#125;</div><div class="line">            &#125;);</div><div class="line">        &#125; else &#123;</div><div class="line">            Ajax.postAjax(&quot;http://localhost:3000/user&quot;,data,function(response)&#123;</div><div class="line">                if(response.data)&#123;</div><div class="line">                    dispatch(ascyGetDetails());</div><div class="line">                    dispatch(showModal(false));</div><div class="line">                &#125;</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//点击编辑时获取每行数据</div><div class="line">function getUserone(userOne)&#123;</div><div class="line">    return&#123;</div><div class="line">        type:GET_USER_ONE,</div><div class="line">        userOne</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">export function userOneFun(id)&#123;</div><div class="line">    return function (dispatch)&#123;</div><div class="line">        Ajax.getAjax(&quot;http://localhost:3000/user/&quot;+id,function(response)&#123;</div><div class="line">            if(response.data)&#123;</div><div class="line">                //将返回的每行数据传给getUserone</div><div class="line">                dispatch(getUserone(response.data));</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//新增或编辑时控制弹出框的显示与隐藏,将状态值保存至modaldisplay中</div><div class="line">export function showModal(modaldisplay)&#123;</div><div class="line">    return&#123;</div><div class="line">        type:GET_MODAL_SHOW,</div><div class="line">        modaldisplay</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>reducers user.js 链接 action 和 store, 根据不同的action返回不同state</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">import &#123; GET_USER_DETAIL, GET_USER_ONE,GET_MODAL_SHOW &#125; from &apos;../actions/user&apos;</div><div class="line">//初始state</div><div class="line">let init=&#123;</div><div class="line">    userDetail:[],</div><div class="line">    totalElements:0,</div><div class="line">    currentPage:0,</div><div class="line">    userOne:&apos;&apos;,</div><div class="line">    modaldisplay:false</div><div class="line">&#125;;</div><div class="line">export default function user(state=init,action)&#123;</div><div class="line">    switch(action.type)&#123;</div><div class="line">        //用户的所有信息，用于开始的展示</div><div class="line">        case GET_USER_DETAIL:</div><div class="line">            return Object.assign(&#123;&#125;,state,&#123;userDetail:action.userDetail,totalElements:action.totalElements,currentPage:action.currentPage&#125;);</div><div class="line">        //点击编辑时，取得当前用户信息</div><div class="line">        case GET_USER_ONE:</div><div class="line">            return Object.assign(&#123;&#125;,state,&#123;userOne:action.userOne&#125;);</div><div class="line">        //控制弹出框的显示与隐藏</div><div class="line">        case GET_MODAL_SHOW:</div><div class="line">            return Object.assign(&#123;&#125;,state,&#123;modaldisplay:action.modaldisplay&#125;);</div><div class="line">        default :</div><div class="line">            return state;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="六、实验总结"><a href="#六、实验总结" class="headerlink" title="六、实验总结"></a>六、实验总结</h2><p>本课程基于 React 全家桶进行了简单项目的构建，从零开始搭建项目不仅能回顾基础知识，引入 Redux 也解决了我们单个 React 项目中的组件间通信困难的问题，加深对 React 项目的理解及使用，学会使用 antd UI框架，能更快节省开发周期，本课程设计的 antd 组件较少，可以根据官网API自主学习。</p>
+<h2 id="八、参考链接"><a href="#八、参考链接" class="headerlink" title="八、参考链接"></a>八、参考链接</h2><p><a href="http://www.redux.org.cn/" target="_blank" rel="external">Redux中文文档</a></p>
+<p><a href="https://ant.design/docs/react/introduce/" target="_blank" rel="external">antd参考文档</a></p>
+<p><a href="https://www.npmjs.com/package/axios" target="_blank" rel="external">axiosAPI</a></p>
+<p><code>文章引用自实验楼，转载请注明来源</code></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2017/06/29/react 全家桶实现后台管理界面/" target="_blank" rel="external">http://yoursite.com/2017/06/29/react 全家桶实现后台管理界面/</a>
+        
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/header.png" alt="我一路向北">
+            我一路向北
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/06/29/react 全家桶实现后台管理界面/&title=《React 全家桶实现后台管理界面》 — 我一路向北&pic=http://yoursite.com/img/header.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/06/29/react 全家桶实现后台管理界面/&title=《React 全家桶实现后台管理界面》 — 我一路向北&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/06/29/react 全家桶实现后台管理界面/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《React 全家桶实现后台管理界面》 — 我一路向北&url=http://yoursite.com/2017/06/29/react 全家桶实现后台管理界面/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/06/29/react 全家桶实现后台管理界面/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/07/19/JavaScript 性能调优/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">JavaScript 性能调优</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/02/18/你真的了解JS吗？/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">你真的知道JavaScript吗</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=2141718"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wx.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wx.jpg" data-alipay="/img/ali.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="bottom">
+        <div class="friend">
+            <h4>常用链接：</h4>
+            <ul style="list-style:none">
+                <li><a target="_blank" href="https://github.com/" >github</a></li>
+                <li><a target="_blank" href="https://75team.com/">奇舞团</a></li>
+                <li><a target="_blank" href="https://juejin.im/">掘金</a></li>
+                <li><a target="_blank" href="https://segmentfault.com/">segmentfault</a></li>
+                <li><a target="_blank" href="https://w3ctech.com/">w3ctech</a></li>
+                <li><a target="_blank" href="https://babeljs.io/">babel</a></li>
+                <li><a target="_blank" href="http://caniuse.com/">Can i use</a></li>
+                <li><a target="_blank" href="http://iconfont.cn/">iconfont</a></li>
+                <li><a target="_blank" href="https://webpack.js.org/">webpack</a></li>
+                <li><a target="_blank" href="http://stackoverflow.com/">stackoverflow</a></li>
+                <li><a target="_blank" href="https://aotu.io/">aotu.io</a></li>
+                <li><a target="_blank" href="http://www.alloyteam.com/">alloyteam</a></li>
+            </ul>
+        </div>
+        <p><span>我一路向北 &copy; 2016 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+<style>
+    .friend ul,h4{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .friend ul li{
+        float: left;
+        padding: 0 5px;
+    }
+</style>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/06/29/react 全家桶实现后台管理界面/&title=《React 全家桶实现后台管理界面》 — 我一路向北&pic=http://yoursite.com/img/header.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/06/29/react 全家桶实现后台管理界面/&title=《React 全家桶实现后台管理界面》 — 我一路向北&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/06/29/react 全家桶实现后台管理界面/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《React 全家桶实现后台管理界面》 — 我一路向北&url=http://yoursite.com/2017/06/29/react 全家桶实现后台管理界面/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/06/29/react 全家桶实现后台管理界面/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsElEQVR42u3a0WrdMBAE0Pz/T6fQp5ZynZldKbmF46fgOLaOApKY3Y+P+Pr8fb26/+f17/3nv8rf8+ptBy48PDy80dBfXclnXj2f/LadxHzMeHh4eLd5zx97RXreBvKl/3kk+ZN4eHh478ZrGe1An7ccPDw8vP+Xt1mmi6NwORF4eHh4389LwohZ4LuJaJOA41jWgoeHh9etwMWg3+Hni/U9PDw8vEVVPVl2Z8WwzbQW48TDw8O7wJvFtfsOrzzkzQ/lUdaCh4eHt+blpf3ZndlXkv9JVHLDw8PDu8DbRxJtW9U+6q33PTw8PLyjvE1pfxZYnC22fTHpeHh4eD/E27RSPR95Z+/Jn8fDw8O7zZst2ck2sG9QmB3x8fDw8G7w2sTi2JI9Kr8NS2h4eHh4R3mnGMmynk9HGxNH+x4eHh7eN/KGB9kSnL+tCFDw8PDwLvD2C3peEtu0BcxiETw8PLwbvLZxKm8XmDVpzabmiyM1Hh4e3lFeXgbLj7D5FCQtBftQAw8PD+8eLxlKO7i2xLXZBl6y8fDw8I7yZq/IC/x5/Nq2DkTjwcPDw7vM2zehzgLfoIu1iB7+uo+Hh4d3gVe0fpbDykPeNrBYtQ7g4eHhrXlt5JpvBjmpfaY44uPh4eFd4yVLfBvpPv/cHtDz+3h4eHi3ebOHNoPbHKbzkAIPDw/vHq89TLcl/JZ0dqvAw8PDu8HbXM/DzYtVq31sUVTDw8PDm/E+y6s91O5D3qQlq9738PDw8Ba8dhvYbBh5W2q+2bQRCR4eHt4pXjuguoQ/Cj7yloKopwwPDw/vAi8pdLWH7ySSuJe74uHh4b0Pb9Mc0G4nbRqNh4eH9268fYw7e3IIw8PDw7vMm4UR+fP3No8vvouHh4d3gdcWwNqGgCgyWLRnHWgjwMPDw0t5vwDbaUrfWVx46gAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
