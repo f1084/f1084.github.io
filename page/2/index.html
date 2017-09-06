@@ -246,6 +246,155 @@ vim的设计理念命令组合:Vim强大的编辑能力中很大部分是来自�
         </li>
     
         <li class="post-list-item fade">
+            <article id="post-set数据结构"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-12-06 19:22:15" datetime="2016-12-06T11:22:15.000Z"  itemprop="datePublished">2016-12-06</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2016/12/06/set数据结构/">Set数据结构-ES6学习笔记</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        Set数据结构Set基本用法
+ES6 提供了新的数据结构 Set。它类似于数组，但是成员的值都是唯一的，没有重复的值
+在 Set 内部，两个NaN是相等,两个对象总是不相等的。
+
+
+数组去重:1234function dedupe(array) &#123;  return Array.from(new Set(array));&#125;dedupe([1, 1, 2, 3])
+
+Set ...
+    
+
+        <a href="/2016/12/06/set数据结构/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6/">es6</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-let与const命令-ES6学习笔记"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-12-02 19:32:15" datetime="2016-12-02T11:32:15.000Z"  itemprop="datePublished">2016-12-02</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2016/12/02/let与const命令-ES6学习笔记/">let和const命令-ES6学习笔记</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        let和const命令
+let命令只作用于代码块内
+let命令必须先声明，后使用。所以，不存在变量提升。
+在未声明之前，变量是不可用的。所以，typeof不再是一个百分之百安全的操作
+1234567891011if (true) &#123;  // TDZ开始  tmp = &apos;abc&apos;; // ReferenceError  console.log(tmp); // R...
+    
+
+        <a href="/2016/12/02/let与const命令-ES6学习笔记/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es5/">es5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6/">es6</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-变量的解构赋值"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-12-02 19:32:15" datetime="2016-12-02T11:32:15.000Z"  itemprop="datePublished">2016-12-02</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2016/12/02/变量的解构赋值/">变量的解构赋值-ES6学习笔记</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        变量的解构赋值数组的解构赋值
+如果解构不成功，变量的值就等于undefined
+
+123456789let [a, b, c] = [1, 2, 3];let [head, ...tail] = [1, 2, 3, 4];head // 1tail // [2, 3, 4]let [x, y, ...z] = [&apos;a&apos;];x // &quot;a&quot;y // un...
+    
+
+        <a href="/2016/12/02/变量的解构赋值/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es5/">es5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6/">es6</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-markdown学习笔记"
   class="article-card article-type-post" itemprop="blogPost">
 

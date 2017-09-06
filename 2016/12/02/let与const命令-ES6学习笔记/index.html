@@ -13,25 +13,25 @@
     
     
     
-    <title>原生JS中CSS相关API合集 | 我一路向北</title>
+    <title>let和const命令-ES6学习笔记 | 我一路向北</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="JavaScript,CSS">
-    <meta name="description" content="原生JS中CSS相关API合集类名操作12345678910111213141516171819//ie8以下Element.className  //获取元素节点的类名Element.className += &amp;apos; &amp;apos; + newClassName  //新增一个类名//判断是否有某个类名function hasClass(element,className)&amp;#123;  r">
-<meta name="keywords" content="JavaScript,CSS">
+    <meta name="keywords" content="es6,es5">
+    <meta name="description" content="let和const命令 let命令只作用于代码块内 let命令必须先声明，后使用。所以，不存在变量提升。 在未声明之前，变量是不可用的。所以，typeof不再是一个百分之百安全的操作 1234567891011if (true) &amp;#123;  // TDZ开始  tmp = &amp;apos;abc&amp;apos;; // ReferenceError  console.log(tmp); // Refe">
+<meta name="keywords" content="es6,es5">
 <meta property="og:type" content="article">
-<meta property="og:title" content="原生JS中CSS相关API合集">
-<meta property="og:url" content="http://yoursite.com/2017/02/14/原生JS中CSS相关API合集/index.html">
+<meta property="og:title" content="let和const命令-ES6学习笔记">
+<meta property="og:url" content="http://yoursite.com/2016/12/02/let与const命令-ES6学习笔记/index.html">
 <meta property="og:site_name" content="我一路向北">
-<meta property="og:description" content="原生JS中CSS相关API合集类名操作12345678910111213141516171819//ie8以下Element.className  //获取元素节点的类名Element.className += &amp;apos; &amp;apos; + newClassName  //新增一个类名//判断是否有某个类名function hasClass(element,className)&amp;#123;  r">
+<meta property="og:description" content="let和const命令 let命令只作用于代码块内 let命令必须先声明，后使用。所以，不存在变量提升。 在未声明之前，变量是不可用的。所以，typeof不再是一个百分之百安全的操作 1234567891011if (true) &amp;#123;  // TDZ开始  tmp = &amp;apos;abc&amp;apos;; // ReferenceError  console.log(tmp); // Refe">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-08-21T10:06:25.691Z">
+<meta property="og:updated_time" content="2017-09-06T03:14:04.828Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="原生JS中CSS相关API合集">
-<meta name="twitter:description" content="原生JS中CSS相关API合集类名操作12345678910111213141516171819//ie8以下Element.className  //获取元素节点的类名Element.className += &amp;apos; &amp;apos; + newClassName  //新增一个类名//判断是否有某个类名function hasClass(element,className)&amp;#123;  r">
+<meta name="twitter:title" content="let和const命令-ES6学习笔记">
+<meta name="twitter:description" content="let和const命令 let命令只作用于代码块内 let命令必须先声明，后使用。所以，不存在变量提升。 在未声明之前，变量是不可用的。所以，typeof不再是一个百分之百安全的操作 1234567891011if (true) &amp;#123;  // TDZ开始  tmp = &amp;apos;abc&amp;apos;; // ReferenceError  console.log(tmp); // Refe">
     
         <link rel="alternate" type="application/atom+xml" title="我一路向北" href="/atom.xml">
     
@@ -119,7 +119,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">原生JS中CSS相关API合集</div>
+        <div class="flex-col header-title ellipsis">let和const命令-ES6学习笔记</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -141,11 +141,11 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">原生JS中CSS相关API合集</h1>
+        <h1 class="title">let和const命令-ES6学习笔记</h1>
         <h5 class="subtitle">
             
-                <time datetime="2017-02-14T07:12:11.000Z" itemprop="datePublished" class="page-time">
-  2017-02-14
+                <time datetime="2016-12-02T11:32:15.000Z" itemprop="datePublished" class="page-time">
+  2016-12-02
 </time>
 
 
@@ -164,17 +164,17 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#原生JS中CSS相关API合集"><span class="post-toc-number">1.</span> <span class="post-toc-text">原生JS中CSS相关API合集</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#类名操作"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">类名操作</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#style操作"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">style操作</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#let和const命令"><span class="post-toc-number">1.</span> <span class="post-toc-text">let和const命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#do-表达式"><span class="post-toc-number">2.</span> <span class="post-toc-text">do 表达式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#const-命令"><span class="post-toc-number">3.</span> <span class="post-toc-text">const 命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ES6-声明变量的六种方法"><span class="post-toc-number">4.</span> <span class="post-toc-text">ES6 声明变量的六种方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#顶层对象的属性"><span class="post-toc-number">5.</span> <span class="post-toc-text">顶层对象的属性</span></a></li></ol>
         </nav>
     </aside>
     
-<article id="post-原生JS中CSS相关API合集"
+<article id="post-let与const命令-ES6学习笔记"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">原生JS中CSS相关API合集</h1>
+        <h1 class="post-card-title">let和const命令-ES6学习笔记</h1>
         <div class="post-meta">
-            <time class="post-time" title="2017-02-14 15:12:11" datetime="2017-02-14T07:12:11.000Z"  itemprop="datePublished">2017-02-14</time>
+            <time class="post-time" title="2016-12-02 19:32:15" datetime="2016-12-02T11:32:15.000Z"  itemprop="datePublished">2016-12-02</time>
 
             
 
@@ -187,15 +187,41 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="原生JS中CSS相关API合集"><a href="#原生JS中CSS相关API合集" class="headerlink" title="原生JS中CSS相关API合集"></a>原生JS中CSS相关API合集</h1><h2 id="类名操作"><a href="#类名操作" class="headerlink" title="类名操作"></a><a href="#类名操作" title="类名操作"></a>类名操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">//ie8以下</div><div class="line">Element.className  //获取元素节点的类名</div><div class="line">Element.className += &apos; &apos; + newClassName  //新增一个类名</div><div class="line"></div><div class="line">//判断是否有某个类名</div><div class="line">function hasClass(element,className)&#123;</div><div class="line">  return new RegExp(className,&apos;gi&apos;).test(element.className);</div><div class="line">&#125;</div><div class="line"></div><div class="line">//移除class</div><div class="line">function removeClass(element,className)&#123;</div><div class="line">  element.className = element.className.replace(new RegExp(&apos;(^|\\b)&apos; + className.split(&apos; &apos;).join(&apos;|&apos;) + &apos;(\\b|$)&apos;, &apos;gi&apos;),&apos;&apos;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">//ie10 </div><div class="line">element.classList.add(className)  //新增</div><div class="line">element.classList.remove(className)  //删除</div><div class="line">element.classList.contains(className)  //是否包含</div><div class="line">element.classList.toggle(className)  //toggle class</div></pre></td></tr></table></figure>
-<h2 id="style操作"><a href="#style操作" class="headerlink" title="style操作"></a><a href="#style操作" title="style操作"></a>style操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">element.setAttribute(&apos;style&apos;,&apos;&apos;)</div><div class="line"></div><div class="line">element.style.backgroundColor = &apos;red&apos;</div><div class="line"></div><div class="line">element.style.cssText //用来读写或删除整个style属性</div><div class="line"></div><div class="line">element.style.setProperty(propertyName,value)  //设置css属性</div><div class="line">element.style.getPropertyValue(property)  //获取css属性</div><div class="line">element.style.removeProperty(property)  //删除css属性</div><div class="line">操作非内联样式</div><div class="line">//ie8</div><div class="line">element.currentStyle[attrName]</div><div class="line">//ie9+</div><div class="line">window.getComputedStyle(el,null)[attrName] </div><div class="line">window.getComputedStyle(el,null).getPropertyValue(attrName)</div><div class="line">//伪类</div><div class="line">window.getComputedStyle(el,&apos;:after&apos;)[attrName]</div></pre></td></tr></table></figure>
+            <h2 id="let和const命令"><a href="#let和const命令" class="headerlink" title="let和const命令"></a><code>let</code>和<code>const</code>命令</h2><ul>
+<li><code>let</code>命令只作用于代码块内</li>
+<li><code>let</code>命令必须先声明，后使用。所以，不存在变量提升。</li>
+<li><p>在未声明之前，变量是不可用的。所以，<code>typeof</code>不再是一个百分之百安全的操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">if (true) &#123;</div><div class="line">  // TDZ开始</div><div class="line">  tmp = &apos;abc&apos;; // ReferenceError</div><div class="line">  console.log(tmp); // ReferenceError</div><div class="line"></div><div class="line">  let tmp; // TDZ结束</div><div class="line">  console.log(tmp); // undefined</div><div class="line"></div><div class="line">  tmp = 123;</div><div class="line">  console.log(tmp); // 123</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>let</code>不允许在相同作用域内，重复声明同一个变量。因此，不能在函数内部重新声明参数</p>
+</li>
+<li><code>ES5</code> 只有全局作用域和函数作用域,<code>let</code>为<code>ES6</code>带来了块级作用域</li>
+<li><code>ES5</code> 规定，函数只能在顶层作用域和函数作用域之中声明，不能在块级作用域声明。</li>
+<li><code>ES6</code> 引入了块级作用域，明确允许在块级作用域之中声明函数。<code>ES6</code> 规定，块级作用域之中，函数声明语句的行为类似于<code>let</code>，在块级作用域之外不可引用。</li>
+<li><code>ES6</code> 的块级作用域允许声明函数的规则，只在使用大括号的情况下成立，如果没有使用大括号，就会报错</li>
+</ul>
+<h2 id="do-表达式"><a href="#do-表达式" class="headerlink" title="do 表达式"></a><code>do</code> 表达式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 变量x会得到整个块级作用域的返回值</div><div class="line">let x = do &#123;</div><div class="line">  let t = f();</div><div class="line">  t * t + 1;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="const-命令"><a href="#const-命令" class="headerlink" title="const 命令"></a><code>const</code> 命令</h2><ul>
+<li><code>const</code>声明一个只读的常量。一旦声明，常量的值就不能改变</li>
+<li><code>const</code>一旦声明变量，就必须立即初始化，不能留到以后赋值</li>
+<li><code>const</code>的作用域与<code>let</code>命令相同：只在声明所在的块级作用域内有效</li>
+<li><code>const</code>只能保证这个指针是固定的，至于它指向的数据结构是不是可变的，就完全不能控制了</li>
+</ul>
+<h2 id="ES6-声明变量的六种方法"><a href="#ES6-声明变量的六种方法" class="headerlink" title="ES6 声明变量的六种方法"></a><code>ES6</code> 声明变量的六种方法</h2><ul>
+<li><code>var</code> <code>function</code> <code>let</code> <code>const</code> <code>import</code> <code>class</code></li>
+</ul>
+<h2 id="顶层对象的属性"><a href="#顶层对象的属性" class="headerlink" title="顶层对象的属性"></a>顶层对象的属性</h2><ul>
+<li><code>ES5</code>之中，顶层对象的属性与全局变量是等价的。</li>
+<li>从<code>ES6</code>开始,<code>let</code>命令、<code>const</code>命令、<code>class</code>命令声明的全局变量，不属于顶层对象的属性</li>
+</ul>
+<p><a href="http://es6.ruanyifeng.com" target="_blank" rel="external">参考资料：ES6入门-阮一峰 http://es6.ruanyifeng.com/</a></p>
 
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2017/02/14/原生JS中CSS相关API合集/" target="_blank" rel="external">http://yoursite.com/2017/02/14/原生JS中CSS相关API合集/</a>
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2016/12/02/let与const命令-ES6学习笔记/" target="_blank" rel="external">http://yoursite.com/2016/12/02/let与const命令-ES6学习笔记/</a>
         
     </div>
     <footer>
@@ -215,7 +241,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es5/">es5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6/">es6</a></li></ul>
 
 
             
@@ -225,7 +251,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/02/14/原生JS中CSS相关API合集/&title=《原生JS中CSS相关API合集》 — 我一路向北&pic=http://yoursite.com/img/header.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/12/02/let与const命令-ES6学习笔记/&title=《let和const命令-ES6学习笔记》 — 我一路向北&pic=http://yoursite.com/img/header.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -235,22 +261,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/02/14/原生JS中CSS相关API合集/&title=《原生JS中CSS相关API合集》 — 我一路向北&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/12/02/let与const命令-ES6学习笔记/&title=《let和const命令-ES6学习笔记》 — 我一路向北&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/02/14/原生JS中CSS相关API合集/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/12/02/let与const命令-ES6学习笔记/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《原生JS中CSS相关API合集》 — 我一路向北&url=http://yoursite.com/2017/02/14/原生JS中CSS相关API合集/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《let和const命令-ES6学习笔记》 — 我一路向北&url=http://yoursite.com/2016/12/02/let与const命令-ES6学习笔记/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/02/14/原生JS中CSS相关API合集/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/12/02/let与const命令-ES6学习笔记/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -273,18 +299,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2017/02/18/你真的了解JS吗？/" id="post-prev" class="post-nav-link">
+      <a href="/2016/12/06/set数据结构/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">你真的知道JavaScript吗</h4>
+        <h4 class="title">Set数据结构-ES6学习笔记</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2017/02/12/ES6编码风格/" id="post-next" class="post-nav-link">
+      <a href="/2016/12/02/变量的解构赋值/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">ES6编程风格</h4>
+        <h4 class="title">变量的解构赋值-ES6学习笔记</h4>
       </a>
     </div>
   
@@ -394,7 +420,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/02/14/原生JS中CSS相关API合集/&title=《原生JS中CSS相关API合集》 — 我一路向北&pic=http://yoursite.com/img/header.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/12/02/let与const命令-ES6学习笔记/&title=《let和const命令-ES6学习笔记》 — 我一路向北&pic=http://yoursite.com/img/header.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -404,22 +430,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/02/14/原生JS中CSS相关API合集/&title=《原生JS中CSS相关API合集》 — 我一路向北&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/12/02/let与const命令-ES6学习笔记/&title=《let和const命令-ES6学习笔记》 — 我一路向北&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/02/14/原生JS中CSS相关API合集/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/12/02/let与const命令-ES6学习笔记/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《原生JS中CSS相关API合集》 — 我一路向北&url=http://yoursite.com/2017/02/14/原生JS中CSS相关API合集/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《let和const命令-ES6学习笔记》 — 我一路向北&url=http://yoursite.com/2016/12/02/let与const命令-ES6学习笔记/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/02/14/原生JS中CSS相关API合集/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/12/02/let与const命令-ES6学习笔记/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -430,7 +456,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACGklEQVR42u3aQY7CMAwFUO5/6bJFQi3fTorU5GWFRqXxY+FJbL9e8To+1udfvj9/P3/93etdJi8MDIzHMo7LdfbMdUDf70/2SvY9pWJgYGzASLbPw71OoHn6TmLDwMDASBjVdJmzMTAwMO5j9ELHwMDAuGbkr7svgf7pLo6BgfFARl51///nW/obGBgYj2IcxTV+vBt52+kuGBgYSzOqRf/xpuashIuBgbEbIw83D6jXpMyboD/AGBgYizJ6Y2FzL8DVI2bhQouBgfFwxqzUmSfokVEzDAyMPRm9klneeuy9odoExcDAWJVxxwhFtQ0w8nNgYGDswOgVtqrPjDDKkWBgYCzHqJbYqmmx1+YsgzEwMJZm5MWv3jW1N/KVj4sV9BgYGA9nVL88Em71ylpoP2BgYCzKuN6s15icNcBRaJ1iYGAszcjHs5KBifxae0fpDQMDY1VGnv5Gguu1LQstBwwMjKUZ1W2qTcpeI6F5JMXAwNiA0Qs6b0AmabT3LQwMjN0YvaGuXtUrL7pFx1AMDIxtGNXNkmTdK6WVFwYGxqKMo7jyI+B4W3RCJxYDA2MJxtycljcSetfUCQkaAwPjsYxquW2kxDYr4WJgYOzJSApnvdJ/8vf8f8LpkxgYGBjDybcKKJ9nMTAwMFojrUnKzn+UH8MZGBgYGzCSS2xh9GGgSdAbqMXAwFibUT139S60STquhoiBgbEB4w3P/omH2FwBlwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACw0lEQVR42u3aS07DQBAFwNz/0iCxQgI7rz9jWJRXUUicqVm4h9f9esXXx9d19fr7dfWtn+8n37r/5NqFh4eH11r61XW10Pul3985X8PPv+ZrxsPDwzvNy4tBvqz7e14tPdnQZM14eHh4/4GXL/2+tOSY/A54eHh4/5M3iTB6S8+P+Hh4eHjP8/I4YH4ET7Yg4S1nLXh4eHgxb94Ae/71o/09PDw8vLgkJI/d6oO7eoDOi8Ev38LDw8M7wMsj2q14Nw8mekFG9AN4eHh4A171gd5j5+Uh36xosAAPDw/vGC9/4FaHA/JWVm98ITpM4+Hh4R3g9Ri7C+oVjzcHazw8PLxjvF57Kd+U6kbkgDebjoeHh3eMV21uVT9TjTmOZC14eHh4S7zkgVttfeUjAvMmXHQfPDw8vGO8PHidDB/k41x5ePGq/iQeHh7egJc/oHvFo/d+Pm4VDV3h4eHhrfLy8jCJbvPxgmp8XDia4+Hh4R3g5T2jXjBRXVx1o6MigYeHh7fE67Wj8hBhAsgDZTw8PLzneb2AoLoF+bBCtcBc3hkPDw9vlVcdAF0YIW1tVv6Lr96u4OHh4bV4+b/61Qd9HnZsRRu/FAY8PDy8Y7z56Gp1y5JAubqShRqFh4eHF+ec1ZigF79W22CjYoOHh4d36hxbGCNIItTJeGuyNQuDXHh4eHhLvCRg7Q2MToKJck+v2qnDw8PDK/LuH7h5oJBQ8wij+kk8PDy853nVeLR3yJ5sX/PCw8PDW+V9FK9eayo5TOdFpbAePDw8vAO8SfFYO/LGvztpm+Hh4eHt8vJiUG1HVY/pkwbYm8kIPDw8vAO8XvOpmgPkm1UtJGsxLh4eHt4xXq+o9BiTAQU8PDy8v+X1DrXVQa7epiwcqfHw8PCKvCogHybYDYKr24eHh4d3gjdvgE1mn/LSkowLNKl4eHh46TufRYXuA8rAPesAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
